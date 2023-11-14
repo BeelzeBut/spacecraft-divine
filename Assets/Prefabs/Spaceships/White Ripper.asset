@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: White Ripper
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: b9908c70e7a77bc4ea10b53edbb66de6, type: 3}
+  secondarySound: {fileID: 8300000, guid: 928279548a1b3644c957af6f341fbcbe, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: ef6303c888187c14fb9471db898346c0, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 7.5
+  currentHealth: 5.640515
+  minHealth: 7.5
+  fireRate: 0.25
+  firePoints:
+  - {fileID: 5648597859472494572, guid: df59d667a3532334b8a19e60bee3331b, type: 3}
+  range: 5
+  bulletsShot: 1
+  spread: 3.25
+  maxMoveSpeed: 3.3
+  damagePerBullet: 0.75
+  bulletPushBack: 1
+  bulletPrefab: {fileID: 4246151732436456956, guid: f57ad220e94770144a4a7a885988d566,
+    type: 3}
+  thrusters:
+  - {fileID: 2673039758041332384, guid: cbd629daaaa07e040ad360873cd19a19, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: d7f2eb7ba6f98d54bb2dc45b3edf1827, type: 2}
+  secondaryGun: {fileID: 11400000, guid: fb3f6de67f4d43c4aa75351c90a80c83, type: 2}
+  numberOfBursts: 5
+  waitTimeBetweenBursts: 0.04
+  alternateFirePoints: 0
+  shipName: White Ripper
+  critChance: 35
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 6
+  priceToUnlock: 3500
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: c623bbb997b3f7648a792099dec917db, type: 2}
+  ability: {fileID: 11400000, guid: c623bbb997b3f7648a792099dec917db, type: 2}
+  attackUpgradeMultiplier: 1.1
+  defenseUpgradeMultiplier: 0.85
+  speedUpgradeMultiplier: 1.1
+  attackMultiplier: 17.5
+  defenseMultiplier: 10
+  regenAmount: 5
+  speedMultiplier: 17.5
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 0
+  bonusDefenseStat: 0
+  bonusSpeedStat: -1.5
+  audioIndex: 3
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: ded7def1f9cc2b44ca2abd95d68070b5, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: 36cab16a26c6ab946b32ca755f4de849, type: 3}
+  primaryGunDescription: Fires a burst of homing rotating bullets from the main gun
+  secondaryGunDescription: Shoots a concentrated laser beam that continuously damages
+    enemies hit
+  playerUpgrades: []
+  upgradesIndex: 

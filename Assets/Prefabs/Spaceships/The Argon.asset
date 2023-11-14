@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: The Argon
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: c676b4f8a57b7584a862e2fba0658812, type: 3}
+  secondarySound: {fileID: 8300000, guid: 20fa833e398f8d942a74b9f87fa5278d, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: f20fbfd043343a0429dd4bcefea54ab8, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 8
+  currentHealth: 8
+  minHealth: 8
+  fireRate: 0.45
+  firePoints:
+  - {fileID: 975633257853023440, guid: 3cc5d65a6ab3966439b3531b77e60157, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.25
+  maxMoveSpeed: 3
+  damagePerBullet: 3.3
+  bulletPushBack: 1.75
+  bulletPrefab: {fileID: 1702204627942810581, guid: c302708898912884c9810d4ddcc34d75,
+    type: 3}
+  thrusters:
+  - {fileID: 8937715515405637959, guid: 030134e48674d694bbabdb8334748c06, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: ecf069087668c7d429cb32f8facf56a4, type: 2}
+  secondaryGun: {fileID: 11400000, guid: d0ba8f027f7b492478738ae14bfd9127, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 0
+  shipName: The Argon
+  critChance: 25
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 3
+  priceToUnlock: 1000
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 7cb2ea527b7d5334aaa7135ce389fde7, type: 2}
+  ability: {fileID: 11400000, guid: 7cb2ea527b7d5334aaa7135ce389fde7, type: 2}
+  attackUpgradeMultiplier: 1.2
+  defenseUpgradeMultiplier: 0.8
+  speedUpgradeMultiplier: 0.9
+  attackMultiplier: 15
+  defenseMultiplier: 12.5
+  regenAmount: 5
+  speedMultiplier: 20
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 1.5
+  bonusDefenseStat: 0
+  bonusSpeedStat: 2
+  audioIndex: 0
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: 4bd81b12f85b16545923e5149685339b, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: 03bed241fd9bb904a97f487fd89a83cf, type: 3}
+  primaryGunDescription: Fires a powerful helix bullet from the main guns
+  secondaryGunDescription: After a short charge up, dashes in any direction and leaves
+    a trail of bullets behind
+  playerUpgrades: []
+  upgradesIndex: 

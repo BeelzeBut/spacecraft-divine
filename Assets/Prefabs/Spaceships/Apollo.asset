@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Apollo
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: 4777af9b13eaf0644a69dd3d6a219808, type: 3}
+  secondarySound: {fileID: 8300000, guid: 3f73124cce6ef2443abe44d75f431f23, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: 29537ee0de6c7064a9e2fa60ba3b3a6c, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 9
+  currentHealth: 6.25
+  minHealth: 9
+  fireRate: 0.1
+  firePoints:
+  - {fileID: 1077636662888516421, guid: 8237469ecaf0d2a4c9efb7be52855f23, type: 3}
+  - {fileID: 397748056220472277, guid: 09e366e9fdef78a49a5fe6612923e5e9, type: 3}
+  range: 5
+  bulletsShot: 1
+  spread: 0.75
+  maxMoveSpeed: 3.1
+  damagePerBullet: 0.7
+  bulletPushBack: 0.7
+  bulletPrefab: {fileID: 6257981571815040139, guid: dfb80ecb4ea08c14fa969c79febd7778,
+    type: 3}
+  thrusters:
+  - {fileID: 8096501509200725396, guid: a95e61629e2ffa148abb7d76576b7fb0, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: d7f2eb7ba6f98d54bb2dc45b3edf1827, type: 2}
+  secondaryGun: {fileID: 11400000, guid: 66443fbdb5edcaa4eaac89575434693f, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 1
+  shipName: Apollo
+  critChance: 25
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 2
+  priceToUnlock: 750
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 9f6f6fae82db6a44ea085990ffe30edd, type: 2}
+  ability: {fileID: 11400000, guid: 9f6f6fae82db6a44ea085990ffe30edd, type: 2}
+  attackUpgradeMultiplier: 1.1
+  defenseUpgradeMultiplier: 0.85
+  speedUpgradeMultiplier: 1.1
+  attackMultiplier: 17.5
+  defenseMultiplier: 12.5
+  regenAmount: 5
+  speedMultiplier: 15
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 0
+  bonusDefenseStat: 0
+  bonusSpeedStat: 3
+  audioIndex: 3
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: 03e8e265fb9ddba4a85371d5e41c635a, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: e237d1234a862084ba049a5dfea2902a, type: 3}
+  primaryGunDescription: Shoots fast bullets from the main guns
+  secondaryGunDescription: Dash behind an enemy and shoot a quick burst of bullets
+    with the main guns
+  playerUpgrades: []
+  upgradesIndex: 

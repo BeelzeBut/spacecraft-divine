@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d8d5e02ded1c747a20b1bca1b0e3fd, type: 3}
+  m_Name: Orbiting Bullets
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 6
+  cooldown: 6
+  abilityName: Orbiting Bullets
+  abilitySprite: {fileID: -4904903377027251730, guid: e71275bbac5159a45ac3f42f88789afe,
+    type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 1
+  level: 3
+  description: Spawn bullets that orbit around the spaceship and deal high damage
+    to any enemies hit
+  damagePerBullet: 2
+  bulletPrefab: {fileID: 1002066514253190565, guid: 04f229307d3579145b567da411cf81b3,
+    type: 3}
+  duration: 3.5
+  rotationSpeed: 225
+  maxOrbitSize: 1.75
+  rotativeObjectPrefab: {fileID: 7918813225562320427, guid: 4a44725cb02ba9f4b890740627a3a470,
+    type: 3}

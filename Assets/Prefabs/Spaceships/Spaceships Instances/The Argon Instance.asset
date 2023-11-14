@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: The Argon Instance
+  m_EditorClassIdentifier: 
+  level: 1
+  isUnlocked: 0
+  shipSprite: {fileID: 21300000, guid: f20fbfd043343a0429dd4bcefea54ab8, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 8
+  currentHealth: 8.00041
+  minHealth: 5.7509174
+  fireRate: 0.45
+  firePoints:
+  - {fileID: 975633257853023440, guid: 3cc5d65a6ab3966439b3531b77e60157, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.25
+  maxMoveSpeed: 3
+  damagePerBullet: 3
+  bulletPushBack: 1.75
+  bulletPrefab: {fileID: 1702204627942810581, guid: c302708898912884c9810d4ddcc34d75,
+    type: 3}
+  thrusters:
+  - {fileID: 8937715515405637959, guid: 030134e48674d694bbabdb8334748c06, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: ecf069087668c7d429cb32f8facf56a4, type: 2}
+  secondaryGun: {fileID: 11400000, guid: d0ba8f027f7b492478738ae14bfd9127, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 0
+  shipName: The Argon
+  critChance: 25
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 2
+  priceToUnlock: 1000
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 7cb2ea527b7d5334aaa7135ce389fde7, type: 2}
+  ability: {fileID: 11400000, guid: 27f2d7f5bb5b9d34ca3251eaadca0cae, type: 2}
+  attackUpgradeMultiplier: 1.2
+  defenseUpgradeMultiplier: 0.8
+  speedUpgradeMultiplier: 0.9
+  attackMultiplier: 12.5
+  defenseMultiplier: 12.5
+  regenAmount: 5
+  speedMultiplier: 15
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 0
+  bonusDefenseStat: 0
+  bonusSpeedStat: 0
+  audioIndex: 0
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.6
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 0}
+  secondaryGunSprite: {fileID: 0}
+  primaryGunDescription: 
+  secondaryGunDescription: 
+  playerUpgrades: []

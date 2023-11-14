@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Hot Talon
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: c3dc35022fa6ba14aa62447ffc1d4b8e, type: 3}
+  secondarySound: {fileID: 8300000, guid: be2feafc5731f2f4292e11d4255fddd9, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: 7979553fdbd04a244ba22109eee4130b, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 10
+  currentHealth: 10
+  minHealth: 10
+  fireRate: 0.2
+  firePoints:
+  - {fileID: 177311906692064575, guid: c776899d6dc15674883df40e9977fef5, type: 3}
+  - {fileID: 177311906692064575, guid: 5367ff7ccd9d9a74d94a5d8c5cb25d60, type: 3}
+  range: 5
+  bulletsShot: 1
+  spread: 0.3
+  maxMoveSpeed: 2.85
+  damagePerBullet: 1.7
+  bulletPushBack: 1.5
+  bulletPrefab: {fileID: 7956598821293488722, guid: 9f873dc3c0a91ae48b0389227ed99523,
+    type: 3}
+  thrusters:
+  - {fileID: 4572056243232978314, guid: 392748ceb633dae4584511bb723db9e3, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: d7f2eb7ba6f98d54bb2dc45b3edf1827, type: 2}
+  secondaryGun: {fileID: 11400000, guid: 53e3f6eebf3668b43937d26d986dcfd6, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 1
+  shipName: Hot Talon
+  critChance: 20
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 7
+  priceToUnlock: 3000
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 7867d42e77494f74d80d0323a6748421, type: 2}
+  ability: {fileID: 11400000, guid: 7867d42e77494f74d80d0323a6748421, type: 2}
+  attackUpgradeMultiplier: 1.1
+  defenseUpgradeMultiplier: 0.9
+  speedUpgradeMultiplier: 1
+  attackMultiplier: 12.5
+  defenseMultiplier: 17.5
+  regenAmount: 5
+  speedMultiplier: 22.5
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 0
+  bonusDefenseStat: 0
+  bonusSpeedStat: 0
+  audioIndex: 2
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: ff2a8cc6153cd444d9cbbd193b052783, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: 93724a4c87a5f0e419d656a2c770a159, type: 3}
+  primaryGunDescription: Shoots laser alternatively from the main guns
+  secondaryGunDescription: Fires 4 small lasers that quickly disintegrate into multiple
+    smaller bullets
+  playerUpgrades: []
+  upgradesIndex: 

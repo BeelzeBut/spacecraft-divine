@@ -1,0 +1,5 @@
+Product ID,Published State,Purchase Type,Auto Translate,Locale; Title; Description,Auto Fill Prices,Price,Pricing Template ID
+com.kodagames.spaceshipdivine.gems1000,published,managed_by_android,FALSE,en-US; 1000 Gems; Gives the player 1000 gems,FALSE,,4.63837E+18
+com.kodagames.spaceshipdivine.removeads,published,managed_by_android,FALSE,en-US; Remove unwanted ads; Remove all skippable ads that don't reward the player. Optional ads for extra lives or extra gems can still be seen.,FALSE,,4.63454E+18
+com.kodagames.spaceshipdivine.gems5000,published,managed_by_android,FALSE,en-US; 5000 Gems; Gives the player 5000 gems,FALSE,,4.63629E+18
+com.kodagames.spaceshipdivine.gems2250,published,managed_by_android,FALSE,en-US; 2250 Gems; Gives the player 2250 gems,FALSE,,4.63817E+18

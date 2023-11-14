@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266c334c50b566743b6c157d3df5a366, type: 3}
+  m_Name: Bat Secondary Gun
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  shootTimer: -0.002825595
+  cooldown: 5
+  chargeTime: 0.5
+  charge: {fileID: 0}
+  chargeEffect: {fileID: 4334999349559468802, guid: 542baa31a6abcac45b4b4c19d716376b,
+    type: 3}

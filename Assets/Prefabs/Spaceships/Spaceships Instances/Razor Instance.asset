@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Razor Instance
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  shipSprite: {fileID: 21300000, guid: 046e4435173665143a1e971ff8e0924d, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 11
+  currentHealth: 0
+  minHealth: 0
+  fireRate: 0.18
+  firePoints:
+  - {fileID: 3118834761224456626, guid: 91a5822e29b1d8f44a34b9d84816c140, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.75
+  maxMoveSpeed: 2.9
+  damagePerBullet: 3
+  bulletPushBack: 3
+  bulletPrefab: {fileID: 7956598821293488722, guid: eb33326867cbca34f9f417e3177f92d8,
+    type: 3}
+  thrusters:
+  - {fileID: 8239619254875385024, guid: 2c0d77967f8c1ec418befd3bcde1b98f, type: 3}
+  - {fileID: 6931126590788480324, guid: e0f1f9f9496032f47a641ee0301e8a78, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 0
+  gun: {fileID: 0}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 0
+  shipName: Razor
+  critChance: 0
+  selected: 0
+  orderNumber: 4
+  priceToUnlock: 1000
+  canBeBoughtWithGems: 0
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  ability: {fileID: 11400000, guid: 03ce6934456be904abe35a409be39fff, type: 2}
+  attackMultiplier: 40
+  defenseMultiplier: 20
+  regenAmount: 0
+  speedMultiplier: 30
+  audioIndex: 0

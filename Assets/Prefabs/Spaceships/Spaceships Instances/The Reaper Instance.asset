@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: The Reaper Instance
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: 9514e7e29d1802e4ebc16d97273349cf, type: 3}
+  secondarySound: {fileID: 8300000, guid: b8dd626742b923b4fafea336c1e79f50, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: 931a22d3052442040961c89f577bdf24, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 10
+  currentHealth: 5.7515125
+  minHealth: 10
+  fireRate: 0.35
+  firePoints:
+  - {fileID: 7084575347540781469, guid: 0df03d1fa3d3aba4bb928dbfbdfbb986, type: 3}
+  - {fileID: 3508301529459665064, guid: 22220089eaac83a4f99689775284cb5b, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.75
+  maxMoveSpeed: 2.8
+  damagePerBullet: 0.9
+  bulletPushBack: 0.9
+  bulletPrefab: {fileID: 1810446897991463559, guid: d0fb27f2b7cc48344bffd01a2d853f29,
+    type: 3}
+  thrusters:
+  - {fileID: 3183461922823433204, guid: 756fd347d0ee4114b909e4a080f3d601, type: 3}
+  - {fileID: 8821543748732320206, guid: 0318956f0563de34984c0ed1e5c4ef94, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: d7f2eb7ba6f98d54bb2dc45b3edf1827, type: 2}
+  secondaryGun: {fileID: 11400000, guid: 3d1d5553878f4dc49b3a047477b59def, type: 2}
+  numberOfBursts: 6
+  waitTimeBetweenBursts: 0.045
+  alternateFirePoints: 1
+  shipName: The Reaper
+  critChance: 15
+  critMultiplier: 2.2
+  selected: 1
+  orderNumber: 5
+  priceToUnlock: 4000
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 4af8c00a589782d44ae8a70a4a0d43ff, type: 2}
+  ability: {fileID: 0}
+  attackUpgradeMultiplier: 1
+  defenseUpgradeMultiplier: 1.1
+  speedUpgradeMultiplier: 0.85
+  attackMultiplier: 10
+  defenseMultiplier: 12.5
+  regenAmount: 5
+  speedMultiplier: 15
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 0
+  bonusDefenseStat: 0
+  bonusSpeedStat: 0
+  audioIndex: 0
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 0}
+  secondaryGunSprite: {fileID: 0}
+  primaryGunDescription: 
+  secondaryGunDescription: 
+  playerUpgrades:
+  - {fileID: 11400000, guid: c4964b0930b71b240991d4138774ed55, type: 2}

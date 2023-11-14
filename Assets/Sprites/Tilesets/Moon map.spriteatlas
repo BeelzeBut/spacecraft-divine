@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Moon map
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+    totalSpriteSurfaceArea: 0
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 5620067327767594302, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 2161735204562997532, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 5409701705698531971, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 3691748823133878384, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -7847750845473725383, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -2451382291531520888, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -8321295320150623356, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 4602113109210517554, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 3302496152091220258, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -88729021422929979, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 5027282802205149413, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 3849803057581329484, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 8614460776525825096, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -2314338103995636671, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 4900707452328982788, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: 6798571673368334751, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -5359536628590334575, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -2909089027860699478, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -1588397523147317959, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -8956392525319036126, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  - {fileID: -2318968148567798316, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Tileset moon_18
+  - Tileset moon_19
+  - Tileset moon_14
+  - Tileset moon_15
+  - Tileset moon_16
+  - Tileset moon_17
+  - Tileset moon_10
+  - Tileset moon_11
+  - Tileset moon_12
+  - Tileset moon_13
+  - Tileset moon_5
+  - Tileset moon_4
+  - Tileset moon_7
+  - Tileset moon_6
+  - Tileset moon_1
+  - Tileset moon_0
+  - Tileset moon_3
+  - Tileset moon_2
+  - Tileset moon_9
+  - Tileset moon_8
+  - Tileset moon_20
+  m_RenderDataMap: {}
+  m_Tag: Moon map
+  m_IsVariant: 0

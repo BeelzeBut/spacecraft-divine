@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44af0e6c4307958409c98e1a70e4335e, type: 3}
+  m_Name: Damage Aura Ability
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 7.5
+  cooldown: 6.8
+  abilityName: Fire Aura
+  abilitySprite: {fileID: 21300000, guid: 5160b87ebf734d54697f253a0254feb8, type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 1
+  level: 3
+  description: Activates a fire aura, dealing damage over time to every enemy in
+    range
+  canBeUsedWhileMoving: 1
+  canBeUsedWhileShooting: 1
+  duration: 4.5
+  damagePerTick: 0.8
+  spawningObjects: {fileID: 1660602857538720618, guid: 248822a0206acf446ab36cb546a603a4,
+    type: 3}
+  areaPrefab: {fileID: 863000491384311107, guid: 393a2d39cefa5c94fad99a5301af2694,
+    type: 3}
+  radius: 1.9

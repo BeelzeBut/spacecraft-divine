@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Bat-Oh-No
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: 72212e2a57ac3e643894e1653a8a3f18, type: 3}
+  secondarySound: {fileID: 8300000, guid: 664825ccb671dd5499318f550955986a, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: 901f4f61a696aea4c9055991ab44562c, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 8.25
+  currentHealth: 8.25
+  minHealth: 8.25
+  fireRate: 0.375
+  firePoints:
+  - {fileID: 2529222123137987830, guid: b82909376f5848f4fa1573dc8aa3e420, type: 3}
+  - {fileID: 7655907871427975600, guid: 48442bcfe751979499a94aa5738e3d8f, type: 3}
+  - {fileID: 1670912467566833442, guid: 5ac165e86befb6d4c9e73c4566f83560, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.1
+  maxMoveSpeed: 3
+  damagePerBullet: 2
+  bulletPushBack: 2
+  bulletPrefab: {fileID: 7956598821293488722, guid: 44f4c34d64981274e8b1358c39b295cd,
+    type: 3}
+  thrusters:
+  - {fileID: 945436195442162251, guid: 716c895e2a0a05f4491158cb797b4166, type: 3}
+  - {fileID: 2597051561933199984, guid: 7e72cfd4204a3c647b0f168af0bf1918, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: 1388983c002cbb44d915e53aa08386a7, type: 2}
+  secondaryGun: {fileID: 11400000, guid: 8cb65c7a5fb47d14ebeaf68be07aaada, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0.185
+  alternateFirePoints: 1
+  shipName: Bat-Oh-No
+  critChance: 25
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 8
+  priceToUnlock: 9.99
+  canBeBoughtWithGems: 0
+  canBeBoughtWithCurrency: 1
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 5160e3a890c6c15439c1dceadf585580, type: 2}
+  ability: {fileID: 11400000, guid: 5160e3a890c6c15439c1dceadf585580, type: 2}
+  attackUpgradeMultiplier: 1.05
+  defenseUpgradeMultiplier: 0.95
+  speedUpgradeMultiplier: 1
+  attackMultiplier: 12.5
+  defenseMultiplier: 17.5
+  regenAmount: 5
+  speedMultiplier: 20
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 4
+  bonusDefenseStat: 0
+  bonusSpeedStat: 0
+  audioIndex: 0
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: 44397452d442baf4aa70413019204a7f, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: 17ad9a3aed06cb94ab416738fc3607a3, type: 3}
+  primaryGunDescription: Shoots lasers from the side guns and a bomb from the center
+    gun
+  secondaryGunDescription: Charges up then shoots piercing lasers from all guns
+  playerUpgrades: []
+  upgradesIndex: 

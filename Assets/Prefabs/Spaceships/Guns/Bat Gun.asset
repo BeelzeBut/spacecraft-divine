@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47b7f0cd3e299e428da2301b62d6b74, type: 3}
+  m_Name: Bat Gun
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  chargeTime: 0
+  isBeam: 0
+  maxWidth: 0
+  isCharging: 0
+  bigBullet: {fileID: 2430084761661239079, guid: 7e3136b51e526494c8c5516f32fcb1a9,
+    type: 3}
+  bombSound: {fileID: 8300000, guid: b6e7650798a67c64699aaa086d991258, type: 3}

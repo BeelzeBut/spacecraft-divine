@@ -1,0 +1,471 @@
+// GENERATED AUTOMATICALLY FROM 'Assets/Player Controls.inputactions'
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
+
+public class @PlayerControls : IInputActionCollection, IDisposable
+{
+    public InputActionAsset asset { get; }
+    public @PlayerControls()
+    {
+        asset = InputActionAsset.FromJson(@"{
+    ""name"": ""Player Controls"",
+    ""maps"": [
+        {
+            ""name"": ""Gameplay"",
+            ""id"": ""a842362f-462e-497d-bc6d-111b1d9cccb1"",
+            ""actions"": [
+                {
+                    ""name"": ""Shooting Primary"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac0021e1-f162-4f1b-968e-d0ce19791ca3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shooting Secondary"",
+                    ""type"": ""Button"",
+                    ""id"": ""aa7aee0e-4238-4c23-ba2b-013f9d7d3550"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Ability"",
+                    ""type"": ""Button"",
+                    ""id"": ""4726f99b-e43b-4734-b09b-12de20631f77"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c30ea1a-9143-4b8a-8a51-59a6f186243c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""bbadd9d1-71ae-451f-a432-bd5d0df1bbd2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack Power"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc64abd1-d7a9-4d7d-b389-11c98d873a0f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Speed Power"",
+                    ""type"": ""Button"",
+                    ""id"": ""61a8e28e-5578-40b1-b98f-4112dd91da41"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Defense Power"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c108105-429b-4284-8594-30339ff7b5f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Touchpress"",
+                    ""type"": ""Button"",
+                    ""id"": ""f56c0f49-3d56-4cfa-85d6-683562b834ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4ea78ef6-eda8-4dbb-8081-45be8e3fdfc7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""187c11ac-dfe4-48d8-aa33-a7fa1780ed19"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting Primary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22b00c8a-c598-4278-84d1-f582ce7ff77d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting Secondary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c82cdd6-edbb-4782-a30a-3b40a067ae85"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b12b5a28-0442-4ab8-8505-72c6870b58ae"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95a4c3a4-4ca4-4841-a4dc-ce082bd3259b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack Power"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca013625-babb-4652-9055-8f71cf5b6ed2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Speed Power"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8bc63f1-2164-46a8-814d-6dd0eb3aae54"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Defense Power"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63a24e2d-8f7b-40b6-8725-008194a03f55"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touchpress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""318ec020-4430-4281-94d5-90f21a088b4e"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0ea2294-ba87-44a2-aa8b-0ccf9eabfcee"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffd5f9bf-a436-4728-9e18-27e8a2fe9831"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""0956a2c4-4deb-40ad-8944-78340e5e3bdf"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f95b481-2f46-4010-bf4e-3e106c364f5e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c3a6597f-7bd5-4642-aa46-0d1216a16394"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        }
+    ],
+    ""controlSchemes"": []
+}");
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_ShootingPrimary = m_Gameplay.FindAction("Shooting Primary", throwIfNotFound: true);
+        m_Gameplay_ShootingSecondary = m_Gameplay.FindAction("Shooting Secondary", throwIfNotFound: true);
+        m_Gameplay_Ability = m_Gameplay.FindAction("Ability", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_AttackPower = m_Gameplay.FindAction("Attack Power", throwIfNotFound: true);
+        m_Gameplay_SpeedPower = m_Gameplay.FindAction("Speed Power", throwIfNotFound: true);
+        m_Gameplay_DefensePower = m_Gameplay.FindAction("Defense Power", throwIfNotFound: true);
+        m_Gameplay_Touchpress = m_Gameplay.FindAction("Touchpress", throwIfNotFound: true);
+        m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
+    }
+
+    public void Dispose()
+    {
+        UnityEngine.Object.Destroy(asset);
+    }
+
+    public InputBinding? bindingMask
+    {
+        get => asset.bindingMask;
+        set => asset.bindingMask = value;
+    }
+
+    public ReadOnlyArray<InputDevice>? devices
+    {
+        get => asset.devices;
+        set => asset.devices = value;
+    }
+
+    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+    public bool Contains(InputAction action)
+    {
+        return asset.Contains(action);
+    }
+
+    public IEnumerator<InputAction> GetEnumerator()
+    {
+        return asset.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public void Enable()
+    {
+        asset.Enable();
+    }
+
+    public void Disable()
+    {
+        asset.Disable();
+    }
+
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private IGameplayActions m_GameplayActionsCallbackInterface;
+    private readonly InputAction m_Gameplay_ShootingPrimary;
+    private readonly InputAction m_Gameplay_ShootingSecondary;
+    private readonly InputAction m_Gameplay_Ability;
+    private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_Pause;
+    private readonly InputAction m_Gameplay_AttackPower;
+    private readonly InputAction m_Gameplay_SpeedPower;
+    private readonly InputAction m_Gameplay_DefensePower;
+    private readonly InputAction m_Gameplay_Touchpress;
+    private readonly InputAction m_Gameplay_Movement;
+    public struct GameplayActions
+    {
+        private @PlayerControls m_Wrapper;
+        public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ShootingPrimary => m_Wrapper.m_Gameplay_ShootingPrimary;
+        public InputAction @ShootingSecondary => m_Wrapper.m_Gameplay_ShootingSecondary;
+        public InputAction @Ability => m_Wrapper.m_Gameplay_Ability;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
+        public InputAction @AttackPower => m_Wrapper.m_Gameplay_AttackPower;
+        public InputAction @SpeedPower => m_Wrapper.m_Gameplay_SpeedPower;
+        public InputAction @DefensePower => m_Wrapper.m_Gameplay_DefensePower;
+        public InputAction @Touchpress => m_Wrapper.m_Gameplay_Touchpress;
+        public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+        public void SetCallbacks(IGameplayActions instance)
+        {
+            if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
+            {
+                @ShootingPrimary.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootingPrimary;
+                @ShootingPrimary.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootingPrimary;
+                @ShootingPrimary.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootingPrimary;
+                @ShootingSecondary.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootingSecondary;
+                @ShootingSecondary.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootingSecondary;
+                @ShootingSecondary.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootingSecondary;
+                @Ability.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAbility;
+                @Ability.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAbility;
+                @Ability.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAbility;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @AttackPower.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttackPower;
+                @AttackPower.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttackPower;
+                @AttackPower.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttackPower;
+                @SpeedPower.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpeedPower;
+                @SpeedPower.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpeedPower;
+                @SpeedPower.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSpeedPower;
+                @DefensePower.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDefensePower;
+                @DefensePower.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDefensePower;
+                @DefensePower.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDefensePower;
+                @Touchpress.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchpress;
+                @Touchpress.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchpress;
+                @Touchpress.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchpress;
+                @Movement.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMovement;
+            }
+            m_Wrapper.m_GameplayActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ShootingPrimary.started += instance.OnShootingPrimary;
+                @ShootingPrimary.performed += instance.OnShootingPrimary;
+                @ShootingPrimary.canceled += instance.OnShootingPrimary;
+                @ShootingSecondary.started += instance.OnShootingSecondary;
+                @ShootingSecondary.performed += instance.OnShootingSecondary;
+                @ShootingSecondary.canceled += instance.OnShootingSecondary;
+                @Ability.started += instance.OnAbility;
+                @Ability.performed += instance.OnAbility;
+                @Ability.canceled += instance.OnAbility;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @AttackPower.started += instance.OnAttackPower;
+                @AttackPower.performed += instance.OnAttackPower;
+                @AttackPower.canceled += instance.OnAttackPower;
+                @SpeedPower.started += instance.OnSpeedPower;
+                @SpeedPower.performed += instance.OnSpeedPower;
+                @SpeedPower.canceled += instance.OnSpeedPower;
+                @DefensePower.started += instance.OnDefensePower;
+                @DefensePower.performed += instance.OnDefensePower;
+                @DefensePower.canceled += instance.OnDefensePower;
+                @Touchpress.started += instance.OnTouchpress;
+                @Touchpress.performed += instance.OnTouchpress;
+                @Touchpress.canceled += instance.OnTouchpress;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+            }
+        }
+    }
+    public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Newaction;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
+    public interface IGameplayActions
+    {
+        void OnShootingPrimary(InputAction.CallbackContext context);
+        void OnShootingSecondary(InputAction.CallbackContext context);
+        void OnAbility(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnAttackPower(InputAction.CallbackContext context);
+        void OnSpeedPower(InputAction.CallbackContext context);
+        void OnDefensePower(InputAction.CallbackContext context);
+        void OnTouchpress(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+    }
+}

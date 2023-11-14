@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Red Map
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+    totalSpriteSurfaceArea: 0
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 5220866498541477858, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 8689395772754522769, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -8754509239346878287, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 317143061396912832, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 4976303721854377359, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 647031953158273074, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -3120532779388542561, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 664850313241178283, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 616815011481687824, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 5914016359239118124, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 4572331101916661394, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -2231228373252997566, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -8792121041879177820, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -6403121615471796135, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -3153867788814576393, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -3161265716969382982, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 7183215395720881195, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -1873587472438208484, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: 3819506016515481066, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  - {fileID: -5041559311166145199, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Red Tileset_14
+  - Red Tileset_15
+  - Red Tileset_16
+  - Red Tileset_17
+  - Red Tileset_10
+  - Red Tileset_11
+  - Red Tileset_12
+  - Red Tileset_13
+  - Red Tileset_18
+  - Red Tileset_19
+  - Red Tileset_9
+  - Red Tileset_8
+  - Red Tileset_5
+  - Red Tileset_4
+  - Red Tileset_7
+  - Red Tileset_6
+  - Red Tileset_1
+  - Red Tileset_0
+  - Red Tileset_3
+  - Red Tileset_2
+  m_RenderDataMap: {}
+  m_Tag: Red Map
+  m_IsVariant: 0

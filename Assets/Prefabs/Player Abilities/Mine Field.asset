@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334b09bf98931d7458123797ccb2cdcb, type: 3}
+  m_Name: Mine Field
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 8
+  cooldown: 8
+  abilityName: Mine Field
+  abilitySprite: {fileID: 21300000, guid: 96cedb4bd69b13b469a4647bfc0df732, type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 0
+  level: 1
+  description: Drops a mine field around the spaceship. Each mine explodes on contact
+    with the enemy or after a duration
+  canBeUsedWhileMoving: 1
+  canBeUsedWhileShooting: 1
+  mineSpeed: 2.5
+  mineDamage: 3
+  numberOfMines: 10
+  lifeTime: 6
+  minesFirepoint: {fileID: 7918813225562320427, guid: 4a44725cb02ba9f4b890740627a3a470,
+    type: 3}
+  minePrefab: {fileID: 4188436445289977454, guid: 5a6d705aa32ff9442bb25051f2c9a853,
+    type: 3}

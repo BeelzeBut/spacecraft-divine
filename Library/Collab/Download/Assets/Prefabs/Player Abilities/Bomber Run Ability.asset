@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc3efafdc25e34e90315306e9fdb25, type: 3}
+  m_Name: Bomber Run Ability
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 2
+  cooldown: 2
+  abilityName: Bombing Run
+  abilitySprite: {fileID: 21300000, guid: 751cab97f1a5fb14ca5918c2bc3844fb, type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 1
+  level: 1
+  description: 
+  rangeAreaPrefab: {fileID: 9173536004443066770, guid: 90e9c6485df7c8e4cb99d517763f27d2,
+    type: 3}
+  rangeIncrease: 3
+  distance: 4.211767
+  pMoveDirection: {x: 0, y: -1}
+  playerSpeed: 35
+  explosionPrefab: {fileID: 3148762011416458164, guid: fa94395b0e86d0b43a873aa8bb86c4f7,
+    type: 3}
+  damagePerExplosion: 6
+  damage: 6
+  trailPrefab: {fileID: 8285886410690636295, guid: 0a2a3414d2023184a9b67fd4b114859d,
+    type: 3}
+  trail: {fileID: 0}

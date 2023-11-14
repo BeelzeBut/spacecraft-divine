@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Lunar Hunter Instance
+  m_EditorClassIdentifier: 
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: 008e8de12ff0ccd4b9fe32838b0b5539, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 9
+  currentHealth: 9
+  minHealth: 9
+  fireRate: 1.1
+  firePoints:
+  - {fileID: 4569321588520422287, guid: 655b630c5c74df340a7328a8e20744b3, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.75
+  maxMoveSpeed: 3.1
+  damagePerBullet: 7.25
+  bulletPushBack: 10
+  bulletPrefab: {fileID: 899927293594487284, guid: 8f505e69dc0d3974a9a015a8eea5e2e4,
+    type: 3}
+  thrusters:
+  - {fileID: 8388545417230826961, guid: 1507b538d33eeb24a9f2c2ac199e96a1, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: 972db39cc8014ae40afb6db3addacd4b, type: 2}
+  secondaryGun: {fileID: 11400000, guid: 8e90701ac0bc73d49b32bd2c9dfe9e0b, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 0
+  shipName: Lunar Hunter
+  critChance: 25
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 10
+  priceToUnlock: 1250
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 3b834aa6c6b32b640bf3c075642e3266, type: 2}
+  ability: {fileID: 11400000, guid: 3b834aa6c6b32b640bf3c075642e3266, type: 2}
+  attackUpgradeMultiplier: 1.2
+  defenseUpgradeMultiplier: 0.75
+  speedUpgradeMultiplier: 1.15
+  attackMultiplier: 12.5
+  defenseMultiplier: 12.5
+  regenAmount: 5
+  speedMultiplier: 15
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 0
+  bonusDefenseStat: 0
+  bonusSpeedStat: 0
+  audioIndex: 6
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  primaryGunSprite: {fileID: 0}
+  secondaryGunSprite: {fileID: 0}
+  primaryGunDescription: 
+  secondaryGunDescription: 

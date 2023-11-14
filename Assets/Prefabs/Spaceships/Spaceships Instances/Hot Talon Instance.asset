@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Hot Talon Instance
+  m_EditorClassIdentifier: 
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: 7979553fdbd04a244ba22109eee4130b, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 10
+  currentHealth: 8.250837
+  minHealth: 10
+  fireRate: 0.2
+  firePoints:
+  - {fileID: 177311906692064575, guid: c776899d6dc15674883df40e9977fef5, type: 3}
+  - {fileID: 177311906692064575, guid: 5367ff7ccd9d9a74d94a5d8c5cb25d60, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.5
+  maxMoveSpeed: 2.85
+  damagePerBullet: 1.35
+  bulletPushBack: 3
+  bulletPrefab: {fileID: 6257981571815040139, guid: f6b12782378681741b68f825a2b7e722,
+    type: 3}
+  thrusters:
+  - {fileID: 4572056243232978314, guid: 392748ceb633dae4584511bb723db9e3, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 0
+  gun: {fileID: 0}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 1
+  shipName: Hot Talon
+  critChance: 10
+  selected: 0
+  orderNumber: 7
+  priceToUnlock: 3000
+  canBeBoughtWithGems: 0
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  ability: {fileID: 11400000, guid: 7867d42e77494f74d80d0323a6748421, type: 2}
+  attackMultiplier: 30
+  defenseMultiplier: 20
+  regenAmount: 4
+  speedMultiplier: 30
+  audioIndex: 2

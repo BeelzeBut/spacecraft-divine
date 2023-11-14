@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Warspite
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: 8d6f05d1261ed214ea87a756465e55d7, type: 3}
+  secondarySound: {fileID: 8300000, guid: 2b2881c8e5cf2ac4ebccc2a4a0c1932a, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: b05df6d9982e91d49995f81f5eb9c569, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 9.5
+  currentHealth: 7.661127
+  minHealth: 7
+  fireRate: 0.75
+  firePoints:
+  - {fileID: 5869300861423691743, guid: 3728d8446f9c672488b83a3f3738bc0f, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0
+  maxMoveSpeed: 3
+  damagePerBullet: 6
+  bulletPushBack: 6
+  bulletPrefab: {fileID: 6954887879926758242, guid: 3776a6de347cb354a813e08e96e98315,
+    type: 3}
+  thrusters:
+  - {fileID: 4761248000098501050, guid: c146bc61826c1834e8e64284c1af787b, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: 102b465af784681498e7e267016ae9b8, type: 2}
+  secondaryGun: {fileID: 11400000, guid: 8edb6f13ebfc0254a83a3c472c3e4c8d, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 0
+  shipName: Warspite
+  critChance: 25
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 11
+  priceToUnlock: 0
+  canBeBoughtWithGems: 0
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 1
+  unlockInstructions: This blueprint is obtained by destroying 1500 enemy spaceships
+  signatureAbility: {fileID: 11400000, guid: 27f2d7f5bb5b9d34ca3251eaadca0cae, type: 2}
+  ability: {fileID: 11400000, guid: 27f2d7f5bb5b9d34ca3251eaadca0cae, type: 2}
+  attackUpgradeMultiplier: 1.15
+  defenseUpgradeMultiplier: 0.8
+  speedUpgradeMultiplier: 1.05
+  attackMultiplier: 15
+  defenseMultiplier: 17.5
+  regenAmount: 5
+  speedMultiplier: 17.5
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 1
+  bonusDefenseStat: -0.75
+  bonusSpeedStat: -1.5
+  audioIndex: 6
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: cc9bc4e318266a142b6b41b4c5bea3db, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: 86c1a3e296c576440842f662c15f4fdd, type: 3}
+  primaryGunDescription: Shortly charges up to fire a less powerful beam
+  secondaryGunDescription: Charges then shoots a big bullet with smaller bullets
+    orbiting it
+  playerUpgrades: []
+  upgradesIndex: 

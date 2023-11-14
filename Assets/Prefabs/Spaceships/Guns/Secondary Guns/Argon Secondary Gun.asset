@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f07f334ea3e74c40ae5a2ca505a0030, type: 3}
+  m_Name: Argon Secondary Gun
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  shootTimer: 0.3714433
+  cooldown: 6.5
+  charge: {fileID: 0}
+  firePointsPrefabs:
+  - {fileID: 7688264404831428143, guid: f438ea25c0f4d8e41bef384fbff238fd, type: 3}
+  - {fileID: 7583606277055670155, guid: cbd6493ecb059d14c9a95799cd52e2aa, type: 3}
+  bulletPrefab: {fileID: 335244318546696839, guid: a53d75f1f67e45d4bafea0199abaadd5,
+    type: 3}
+  damage: 2
+  chargeEffect: {fileID: 5158746740093549324, guid: 307d0169a253d22449499f7cb4c2a16e,
+    type: 3}
+  trailPrefab: {fileID: 4785205254785503170, guid: 2e2eb5323c3ab2c4caa6f3ab26680a7e,
+    type: 3}
+  dashDuration: 1.5
+  fireRate: 0.03
+  chargeSound: {fileID: 8300000, guid: 666ea48e7eb284f409798e87ba58f9d7, type: 3}
+  flySound: {fileID: 8300000, guid: 3dc1f7682c805b34f867031b535cfa54, type: 3}

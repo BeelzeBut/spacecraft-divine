@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Swamp map
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+    totalSpriteSurfaceArea: 0
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 7202448095670794456, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: -7788556739668927656, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: 6029315090447693364, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: -8047628837979323130, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: -8470601553677714273, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: -540314787129868215, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: 718668051380150511, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: 6373798128959987616, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: -2530123936958000138, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: 2205397513918146019, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: -5359210415874324125, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: 6092900692272703130, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: 3904453336681253388, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: 5617206325226228468, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  - {fileID: -5989810456399131075, guid: e11b9eed3b4a45540af2806e0d94789b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Swamp planet tiles_12
+  - Swamp planet tiles_13
+  - Swamp planet tiles_10
+  - Swamp planet tiles_11
+  - Swamp planet tiles_14
+  - Swamp planet tiles_9
+  - Swamp planet tiles_8
+  - Swamp planet tiles_7
+  - Swamp planet tiles_6
+  - Swamp planet tiles_5
+  - Swamp planet tiles_4
+  - Swamp planet tiles_3
+  - Swamp planet tiles_2
+  - Swamp planet tiles_1
+  - Swamp planet tiles_0
+  m_RenderDataMap: {}
+  m_Tag: Swamp map
+  m_IsVariant: 0

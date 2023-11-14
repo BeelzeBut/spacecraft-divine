@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ba265072446ce4286a164c35cedc14, type: 3}
+  m_Name: Doom Cannon
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 6
+  cooldown: 6
+  abilityName: Doom Cannon
+  abilitySprite: {fileID: 21300000, guid: 5749e0040774fe14b978323e545c9656, type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 1
+  level: 3
+  description: Activates the modified tank turret mounted on the spaceship's back,
+    automatically shooting at enemies for a set duration
+  duration: 6
+  bulletPrefab: {fileID: 7956598821293488722, guid: eb33326867cbca34f9f417e3177f92d8,
+    type: 3}
+  muzzleFlash: {fileID: 4501067345832075309, guid: 31b37834cfcfdae4a97a15c33f981588,
+    type: 3}
+  damagePerBullet: 1.1
+  firerate: 0.4
+  cannonPrefab: {fileID: 2725572028398979161, guid: 9a6919421e2267a47a4bba51b68f66f4,
+    type: 3}

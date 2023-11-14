@@ -1,0 +1,5 @@
+Product ID,Published State,Purchase Type,Auto Translate,Locale; Title; Description,Auto Fill Prices,Price,Pricing Template ID
+com.kodagames.spaceshipdivine.gems1000,published,managed_by_android,false,en_US;1000 gems;Gives the player 1000 gems,false,,Small bag
+com.kodagames.spaceshipdivine.gems2250,published,managed_by_android,false,en_US;2250 gems;Gives the player 2250 gems,false,,Medium bag
+com.kodagames.spaceshipdivine.gems5000,published,managed_by_android,false,en_US;5000 gems;Gives the player 5000 gems,false,,Big bag
+com.kodagames.spaceshipdivine.gems10000,published,managed_by_android,false,en_US;10000 gems;Gives the player 10000 gems,false,,Very big bag

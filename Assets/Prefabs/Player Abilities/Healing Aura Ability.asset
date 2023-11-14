@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85023a685c74f544f87d85a2aa994ecf, type: 3}
+  m_Name: Healing Aura Ability
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 9
+  cooldown: 9
+  abilityName: Healing Aura
+  abilitySprite: {fileID: 21300000, guid: 5d0c9c53599f23149a4e73698717290e, type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 1
+  level: 1
+  description: Activates a healing aura, healing all allied units in range
+  canBeUsedWhileMoving: 1
+  canBeUsedWhileShooting: 1
+  duration: 4
+  healingPerSecond: 1.25
+  spawningObjects: {fileID: 6936555363123327820, guid: f5acbb110a5110f43b4bcfe72586a10a,
+    type: 3}
+  areaPrefab: {fileID: 7974779548347126168, guid: e655cef460d16fc4eb36ef8cd6483fd1,
+    type: 3}
+  radius: 1.6

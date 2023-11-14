@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffd1a4c2ebf35b4ca5890015d9f2c71, type: 3}
+  m_Name: Lunar Hunter Secondary Gun
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  shootTimer: -0.0006220555
+  cooldown: 6.5
+  charge: {fileID: 0}
+  playerGun: {fileID: 11400000, guid: 972db39cc8014ae40afb6db3addacd4b, type: 2}
+  material: {fileID: 2100000, guid: 3aca662073cac164ea18f03291f34161, type: 2}

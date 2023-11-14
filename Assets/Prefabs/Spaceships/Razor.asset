@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Razor
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: 01b761a8834e11b4881f928d82335a0a, type: 3}
+  secondarySound: {fileID: 8300000, guid: b32b0f2ef93e2a2479d0bfc9806e13d3, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: 046e4435173665143a1e971ff8e0924d, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 9.5
+  currentHealth: 8
+  minHealth: 9.5
+  fireRate: 0.75
+  firePoints:
+  - {fileID: 3118834761224456626, guid: 91a5822e29b1d8f44a34b9d84816c140, type: 3}
+  range: 5
+  bulletsShot: 1
+  spread: 0.05
+  maxMoveSpeed: 2.9
+  damagePerBullet: 4.25
+  bulletPushBack: 4
+  bulletPrefab: {fileID: 5738453524716312408, guid: 4065de2f956508c46b3f979bb01fb503,
+    type: 3}
+  thrusters:
+  - {fileID: 8239619254875385024, guid: 2c0d77967f8c1ec418befd3bcde1b98f, type: 3}
+  - {fileID: 6931126590788480324, guid: e0f1f9f9496032f47a641ee0301e8a78, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 1
+  gun: {fileID: 11400000, guid: d7f2eb7ba6f98d54bb2dc45b3edf1827, type: 2}
+  secondaryGun: {fileID: 11400000, guid: 8932c87b428900445a6e725418d8572e, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 0
+  shipName: Razor
+  critChance: 15
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 4
+  priceToUnlock: 1500
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: d4f609ddbe820444b8cf3b38d513a38a, type: 2}
+  ability: {fileID: 11400000, guid: d4f609ddbe820444b8cf3b38d513a38a, type: 2}
+  attackUpgradeMultiplier: 1.1
+  defenseUpgradeMultiplier: 0.8
+  speedUpgradeMultiplier: 1
+  attackMultiplier: 15
+  defenseMultiplier: 17.5
+  regenAmount: 5
+  speedMultiplier: 17.5
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 4
+  bonusDefenseStat: 0
+  bonusSpeedStat: 0
+  audioIndex: 2
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: c59b2f6e58566aa47804da89f78e656c, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: a51095878bb87fd4bb9282f0e15cad08, type: 3}
+  primaryGunDescription: Fires a powerful bullet that leaves behind a trail of rotating
+    bullets
+  secondaryGunDescription: Places down a device that periodically shoots bullets
+    in random directions
+  playerUpgrades: []
+  upgradesIndex: 

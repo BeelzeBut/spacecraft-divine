@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Valiant
+  m_EditorClassIdentifier: 
+  primarySound: {fileID: 8300000, guid: 2c0c15eb0608d9c44b6095d60ef67750, type: 3}
+  secondarySound: {fileID: 8300000, guid: 747ad27cb2e61d74398cf04c421cb772, type: 3}
+  level: 1
+  isUnlocked: 1
+  shipSprite: {fileID: 21300000, guid: a97397e826902f444850d3548e16bd6b, type: 3}
+  shipImage: {fileID: 0}
+  maxHealth: 8
+  currentHealth: 6.2751513
+  minHealth: 10
+  fireRate: 0.1
+  firePoints:
+  - {fileID: 6526673161768483784, guid: a0a3353c6d3ddc24a8553a8ae08bdb1c, type: 3}
+  - {fileID: 7969078038693546977, guid: 92adcc92cf878014c9d24a6b7cfeda6c, type: 3}
+  range: 5
+  bulletsShot: 1
+  spread: 0.35
+  maxMoveSpeed: 3
+  damagePerBullet: 0.3
+  bulletPushBack: 0
+  bulletPrefab: {fileID: 0}
+  thrusters:
+  - {fileID: 8281418194294819521, guid: 3508afd9d09b09c4b9cba74733275016, type: 3}
+  - {fileID: 6751592509225952318, guid: 3bcb16697e0b78945a3df37cc0677b32, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 0
+  gun: {fileID: 11400000, guid: 4553a1dfc8a82c64c9ba437bc5b2894b, type: 2}
+  secondaryGun: {fileID: 11400000, guid: bfd48a32b35181c409cf7b0fcda433db, type: 2}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  alternateFirePoints: 0
+  shipName: Valiant
+  critChance: 25
+  critMultiplier: 2
+  selected: 0
+  orderNumber: 12
+  priceToUnlock: 7000
+  canBeBoughtWithGems: 1
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 0
+  unlockInstructions: 
+  signatureAbility: {fileID: 11400000, guid: 2315e4224093627449f9dcb90ae6a165, type: 2}
+  ability: {fileID: 11400000, guid: 2315e4224093627449f9dcb90ae6a165, type: 2}
+  attackUpgradeMultiplier: 1.2
+  defenseUpgradeMultiplier: 0.8
+  speedUpgradeMultiplier: 1.1
+  attackMultiplier: 12.5
+  defenseMultiplier: 17.5
+  regenAmount: 5
+  speedMultiplier: 20
+  damageReduction: 0
+  damageMultiplier: 0
+  bonusAttackStat: 2.5
+  bonusDefenseStat: 1
+  bonusSpeedStat: -2.5
+  audioIndex: 0
+  canExplode: 0
+  canPierce: 0
+  canBounce: 0
+  chanceToBlockAttack: 0
+  moveSpeedOnAbility: 0
+  moveSpeedIncrease: 0
+  pushBackOnAbility: 0
+  pushBackStrength: 0
+  moveSpeedOnEnemyKill: 0
+  moveSpeedAmount: 0
+  resetCdOnKill: 0
+  resetCdChance: 0
+  regenPerSecond: 0.2
+  constantRegenPerSecond: 0
+  increaseDamageOnKill: 0
+  damageIncreaseOnKill: 0
+  primaryGunSprite: {fileID: 21300000, guid: 92b2ac6547138d040a9e8a1b49dfe617, type: 3}
+  secondaryGunSprite: {fileID: 21300000, guid: c77bebe4d6e75264ba64375ce0f5731b, type: 3}
+  primaryGunDescription: Continuously shoots lightning bolts and slows the targeted
+    enemy, increasing the damage over time
+  secondaryGunDescription: Fires a lightning shuriken that shoots lightning bolts
+    at enemies nearby
+  playerUpgrades: []
+  upgradesIndex: 

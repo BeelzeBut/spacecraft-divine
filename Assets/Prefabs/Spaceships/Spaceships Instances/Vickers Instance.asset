@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
+  m_Name: Vickers Instance
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  shipSprite: {fileID: 21300000, guid: de7722bcea1db0142b92d9158bf85c53, type: 3}
+  shipImage: {fileID: 21300000, guid: ea1b5dc5bdd5c6d438495b72b6b0e56f, type: 3}
+  maxHealth: 12
+  currentHealth: 12
+  fireRate: 0.2
+  firePoints:
+  - {fileID: 1739115036008195036, guid: 8112eccc14e97954eb9609bc4a59d347, type: 3}
+  range: 4.5
+  bulletsShot: 1
+  spread: 0.45
+  maxMoveSpeed: 2.4
+  damagePerBullet: 1.25
+  bulletPushBack: 1.5
+  bulletPrefab: {fileID: 6257981571815040139, guid: 2ec65573e53203e4fb0478f10d0880f1,
+    type: 3}
+  thrusters:
+  - {fileID: 2916575786858147003, guid: 7a1b35d3e6b650741b3e67d5c9663f9e, type: 3}
+  isSmall: 1
+  hasDifferentAttack: 0
+  gun: {fileID: 0}
+  numberOfBursts: 1
+  waitTimeBetweenBursts: 0
+  shipName: Vickers
+  critChance: 10
+  selected: 0
+  orderNumber: 9
+  priceToUnlock: 0
+  canBeBoughtWithGems: 0
+  canBeBoughtWithCurrency: 0
+  canBeUnlockedInGame: 1
+  unlockInstructions: This ships blueprint is obtained by killing the first boss
+  ability: {fileID: 11400000, guid: 6114e91af499e674c9a13f0374bf5cd2, type: 2}
+  attackMultiplier: 40
+  defenseMultiplier: 20
+  regenAmount: 0
+  speedMultiplier: 30
+  audioIndex: 2

@@ -1,0 +1,990 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4115228968383761414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4115228968383761412}
+  - component: {fileID: 4115228968383761415}
+  - component: {fileID: 1646235632643024420}
+  - component: {fileID: 8861529107012093856}
+  - component: {fileID: 4115228966597629180}
+  - component: {fileID: 4115228966597629181}
+  m_Layer: 0
+  m_Name: Data Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4115228968383761412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115228968383761414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.0277395, y: 1.4887877, z: -2.82135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4115228968383761415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115228968383761414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921704abcb4101245824a674dfcb1082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerOn: 1
+  playerInput: {fileID: 1646235632643024420}
+  hasCompletedTutorial: 0
+  hasCompletedButtonsTutorial: 0
+  hasCompletedStoryMode: 0
+  abilities:
+  - {fileID: 11400000, guid: 5160e3a890c6c15439c1dceadf585580, type: 2}
+  - {fileID: 11400000, guid: c623bbb997b3f7648a792099dec917db, type: 2}
+  - {fileID: 11400000, guid: 2315e4224093627449f9dcb90ae6a165, type: 2}
+  - {fileID: 11400000, guid: 6114e91af499e674c9a13f0374bf5cd2, type: 2}
+  - {fileID: 11400000, guid: 940b00ff3db7abd46add1cb533784b37, type: 2}
+  - {fileID: 11400000, guid: 7cb2ea527b7d5334aaa7135ce389fde7, type: 2}
+  - {fileID: 11400000, guid: 3b834aa6c6b32b640bf3c075642e3266, type: 2}
+  - {fileID: 11400000, guid: 7867d42e77494f74d80d0323a6748421, type: 2}
+  - {fileID: 11400000, guid: 4af8c00a589782d44ae8a70a4a0d43ff, type: 2}
+  - {fileID: 11400000, guid: 27f2d7f5bb5b9d34ca3251eaadca0cae, type: 2}
+  - {fileID: 11400000, guid: 03ce6934456be904abe35a409be39fff, type: 2}
+  - {fileID: 11400000, guid: 8d6e8fa916cac9d428cc14dfe330d011, type: 2}
+  - {fileID: 11400000, guid: 9f6f6fae82db6a44ea085990ffe30edd, type: 2}
+  dataSaved:
+    hasCompletedTutorial: 0
+    hasCompletedButtonsTutorial: 0
+    level: 0000000000000000
+    gems: 0
+    goldCoins: 0
+    targetFps: 0
+    qualityIndex: 0
+    controllerOn: 0
+    isMusicMuted: 0
+    isSoundMuted: 0
+    isUnlocked: 0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    totalEnemiesKilled: 0
+    respawnsRemaining: 1
+    levelsPlayed: 
+    orderNumber: 0
+    maxHealth: 0
+    currentHealth: 0
+    minHealth: 0
+    fireRate: 0
+    bulletsShot: 0
+    spread: 0
+    maxMoveSpeed: 0
+    damagePerbullet: 0
+    numberOfBursts: 0
+    waitTimeBetweenBursts: 0
+    critChance: 0
+    critMultiplier: 0
+    gameHasEnded: 1
+    timeSinceGameStarted: 0
+    enemiesKilled: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    speedMultiplier: 0
+    damageReduction: 0
+    damageMultiplier: 0
+    abilityLevel: 0
+    abilityName: 
+    canBounce: 0
+    canPierce: 0
+    canExplode: 0
+    moveSpeedOnAbility: 0
+    pushBackOnAbility: 0
+    moveSpeedOnEnemyKill: 0
+    resetCdOnKill: 0
+    chanceToBlockAttack: 0
+    moveSpeedIncrease: 0
+    pushBackStrength: 0
+    moveSpeedAmount: 0
+    resetCdChance: 0
+    regenPerSecond: 0
+    constantRegenPerSecond: 0
+    gunMaxWidth: 0
+    shipLevel: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    priceToUnlock:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    damageMultipliers:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    maxHealths:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    spreads:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    maxMoveSpeeds:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    critChances:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    attackMultipliers:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    defenseMultipliers:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    speedMultipliers:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    damageReductions:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    numberOfShips: 0
+    hasBeenUnlocked: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    upgradesIndex: 0000000000000000000000000000000000000000
+    numberOfUpgrades: 0
+  mainMenu: {fileID: 0}
+  selectedShip: {fileID: 0}
+  level: 1
+  subLevel: 1
+  goldCoins: 0
+  gems: 0
+  loadGame: {fileID: 0}
+  isTestBuild: 0
+  gameHasEnded: 1
+  respawnsRemaining: 1
+  isInMenu: 1
+  videoRewardGems: 200
+  gameStartTime: 0
+  timeSinceGameStarted: 0
+  enemiesKilled: 0
+  coinsMultiplier: 2
+  enableSaving: 1
+  countToAd: 2
+  numberOfShips: 0
+  levelsPlayed: 
+  cameraSpeedLevel: 2
+  qualityText: {fileID: 0}
+  targetFps: 60
+  qualityIndex: 3
+  isMusicMuted: 0
+  isSoundMuted: 0
+  drops:
+  - {fileID: 5215118423472078788, guid: f2581e5ce4d56254fbeb2a051b84080e, type: 3}
+  killMilestones: c4090000
+  possibleUpgrades:
+  - {fileID: 11400000, guid: efbc90e686cab544bb2baae48d611c82, type: 2}
+  - {fileID: 11400000, guid: aaff40808f5596e46b66dae2282de0b2, type: 2}
+  - {fileID: 11400000, guid: 4ad2c6e0f7c9e76409a48de4eebc8ebb, type: 2}
+  - {fileID: 11400000, guid: b29b1c4a2f2bbb545a0ab4b9b532c0ba, type: 2}
+  - {fileID: 11400000, guid: b31d0278a6170b24eaa37fcab987f9ff, type: 2}
+  - {fileID: 11400000, guid: e54a0a3b63e84764eb71b6b01b11337c, type: 2}
+  - {fileID: 11400000, guid: a9a7efdd218df5a4fbf7298819ee0586, type: 2}
+  - {fileID: 11400000, guid: f3e4997366d78c146ad8fa996e6fe813, type: 2}
+  - {fileID: 11400000, guid: fe6e11871ada1fe47a0b0ca3bce625fa, type: 2}
+  - {fileID: 11400000, guid: c4964b0930b71b240991d4138774ed55, type: 2}
+  - {fileID: 11400000, guid: 6682a77888fd14e448b1a46b1398a8fe, type: 2}
+  - {fileID: 11400000, guid: 3ae1d145d1127b84a8fc4139c19f50f5, type: 2}
+  - {fileID: 11400000, guid: fbafa405b32874447b215d62b2a2255e, type: 2}
+  - {fileID: 11400000, guid: 40286df6de8c1124695ef8aca4273bd0, type: 2}
+  - {fileID: 11400000, guid: d88f6668f7ab10e488bc74683060ca6e, type: 2}
+  - {fileID: 11400000, guid: 725254bf22b4af149993c8f0389f43d1, type: 2}
+  - {fileID: 11400000, guid: fd193315f72d37c4abb84227d259055d, type: 2}
+  - {fileID: 11400000, guid: 4ccd38b2d3d84a4439c83778b3c4ecaf, type: 2}
+  - {fileID: 11400000, guid: ed58324f52ed3c145b4544c204c19377, type: 2}
+  - {fileID: 11400000, guid: a6ce906e9a5ea104ea52f0440c4c6395, type: 2}
+  - {fileID: 11400000, guid: 2cb8c5938f131484aa743bbf76576a0d, type: 2}
+  - {fileID: 11400000, guid: 9d64891c14585ac44ba96ba21af346f6, type: 2}
+  - {fileID: 11400000, guid: 0aa7123c153955543bbee83c1deb240c, type: 2}
+  - {fileID: 11400000, guid: f890c49667cf16449b556b7d21cd0010, type: 2}
+  - {fileID: 11400000, guid: bdd18e3b833e4b3449e8f2ed5666972d, type: 2}
+--- !u!114 &1646235632643024420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115228968383761414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0b9ba9daec1b97241adb2136b65e3b8d,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ac0021e1-f162-4f1b-968e-d0ce19791ca3
+    m_ActionName: Gameplay/Shooting Primary[/XInputControllerWindows/rightTrigger,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aa7aee0e-4238-4c23-ba2b-013f9d7d3550
+    m_ActionName: Gameplay/Shooting Secondary[/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4726f99b-e43b-4734-b09b-12de20631f77
+    m_ActionName: Gameplay/Ability[/XInputControllerWindows/rightShoulder,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9c30ea1a-9143-4b8a-8a51-59a6f186243c
+    m_ActionName: Gameplay/Interact[/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bbadd9d1-71ae-451f-a432-bd5d0df1bbd2
+    m_ActionName: Gameplay/Pause[/XInputControllerWindows/start,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bc64abd1-d7a9-4d7d-b389-11c98d873a0f
+    m_ActionName: Gameplay/Attack Power[/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 61a8e28e-5578-40b1-b98f-4112dd91da41
+    m_ActionName: Gameplay/Speed Power[/XInputControllerWindows/buttonNorth,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1c108105-429b-4284-8594-30339ff7b5f8
+    m_ActionName: Gameplay/Defense Power[/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f56c0f49-3d56-4cfa-85d6-683562b834ad
+    m_ActionName: Gameplay/Touchpress[/Touchscreen/press]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ea78ef6-eda8-4dbb-8081-45be8e3fdfc7
+    m_ActionName: Gameplay/Movement[/XInputControllerWindows/leftStick,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7f95b481-2f46-4010-bf4e-3e106c364f5e
+    m_ActionName: Menu/New action
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &8861529107012093856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115228968383761414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4167035855a2b428df38a7e2222361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalSounds:
+  - {fileID: 8300000, guid: 91964519f1df91d4cab1d6e95e857db5, type: 3}
+  shootSounds:
+  - {fileID: 8300000, guid: 05e6786bdbd9aa144b65f29ddf0a2103, type: 3}
+  - {fileID: 8300000, guid: 2882c961c38a3154f94c1ef67061ede3, type: 3}
+  - {fileID: 8300000, guid: 599af20b9b6b795408782de2785496c0, type: 3}
+  - {fileID: 8300000, guid: bd7894b44cda4354b97f94aeb11a2d12, type: 3}
+  - {fileID: 8300000, guid: 34ef712fd8723554a98cd504dba3ef27, type: 3}
+  abilitySounds:
+  - {fileID: 8300000, guid: e960c4c9f8cf1dd42abeefc5cb976c9b, type: 3}
+  - {fileID: 8300000, guid: 78a216e0df4bd63449aaf6a465e198d6, type: 3}
+  explosionSounds:
+  - {fileID: 8300000, guid: ef1b1ebdd40668544af3f9a708c879bf, type: 3}
+  - {fileID: 8300000, guid: 775986af32f88d54abe41838dd0f1131, type: 3}
+  UISounds:
+  - {fileID: 8300000, guid: 308c2b076e66ec440b5f10bcb945c1f3, type: 3}
+  enemyTeleport: {fileID: 8300000, guid: 041fd83844645a548b294eae959226fc, type: 3}
+  chestTeleport: {fileID: 8300000, guid: d091893dd2e6c7440bbb86e720d59293, type: 3}
+  soundSource: {fileID: 4115228966597629181}
+  musicSource: {fileID: 4115228966597629180}
+--- !u!82 &4115228966597629180
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115228968383761414}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 416f1600f128c8b43b6e915748077b8f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &4115228966597629181
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115228968383761414}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

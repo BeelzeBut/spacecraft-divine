@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc602ada734e1b344865a4c6ebdb92be, type: 3}
+  m_Name: Grey Byrd Secondary Gun
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  shootTimer: -0.0011810651
+  cooldown: 5
+  charge: {fileID: 0}
+  bulletPrefab: {fileID: -6201538481382060976, guid: f8ba16f148c8774408318c6632d6a692,
+    type: 3}
+  damage: 5.5

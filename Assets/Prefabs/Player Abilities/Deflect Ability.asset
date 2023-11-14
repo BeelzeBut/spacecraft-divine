@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa3fb4d043b578479911069c76c7282, type: 3}
+  m_Name: Deflect Ability
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 7
+  cooldown: 6
+  abilityName: Deflector Turret
+  abilitySprite: {fileID: 21300000, guid: 423e635a962d6f34287fc372065ee915, type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 1
+  level: 1
+  description: Deploy a static tactical turret that will shoot and deflect any enemy
+    bullets in range, increasing their damage
+  turret: {fileID: 8441388961614094384, guid: 0b1ee1e74438bf449957ea04714f25e5, type: 3}
+  turretExplosion: {fileID: 7797862308600837116, guid: e7d2fd95eb033e943914739ffd8749b4,
+    type: 3}
+  trail: {fileID: 8195708423299823764, guid: b0c5c3dfb77dc8f40b39fc0633ec7d19, type: 3}
+  damageMultiplier: 1.75
+  duration: 8
+  fireRate: 0.4

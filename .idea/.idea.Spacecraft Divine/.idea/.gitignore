@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.Spacecraft Divine.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\marco\Desktop\Game Dev\Spacecraft Divine\.idea\.idea.Spacecraft Divine\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1872314609227785894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872314609227785892}
+  - component: {fileID: 1872314609227785893}
+  m_Layer: 13
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1872314609227785892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872314609227785894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1872314609227785893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872314609227785894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcde539582f62c4d9721ecc1d1bc0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerMask:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  possibleEnemies:
+  - {fileID: 3938263271391828198, guid: e0343999c4422354eb414e1e1ff8d3b0, type: 3}
+  - {fileID: 5074694319520296230, guid: d161ebf53242a164fb13a7115e01ae30, type: 3}
+  - {fileID: 4955607954946086759, guid: 8b22fcdf247fce74784e0de91a5672cb, type: 3}
+  - {fileID: 9092812890631535939, guid: 232101d944595a9448040b6b996432f0, type: 3}
+  - {fileID: 1268741718602735997, guid: 346bb3139bd3e854b9c4d658974b2052, type: 3}
+  - {fileID: 8907799369701072440, guid: 1cbd34e0477ad9c49bd29c0020ab20fe, type: 3}
+  enemyTypes: []
+  boss: {fileID: 9155783811641506489, guid: e4278850bc65272488d39cfdb4db9699, type: 3}
+  maxEnemyTypes: 3
+  level: 1
+  subLevel: 1
+  goldCoins: 0
+  damagePopupPrefab: {fileID: 0}
+  criticalText: {fileID: 0}
+  immuneText: {fileID: 0}
+  chest: {fileID: 0}
+  levelText: {fileID: 0}
+  pauseMenuImage: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  shipImage: {fileID: 0}
+  attackText: {fileID: 0}
+  defenseText: {fileID: 0}
+  speedText: {fileID: 0}
+  settingsMenu: {fileID: 0}
+  settingsMenuBG: {fileID: 0}
+  qualityText: {fileID: 0}
+  respawnMenu: {fileID: 0}
+  gemsAmountToRevive: {fileID: 0}
+  gemsAmountToReviveValue: 0
+  gemShop: {fileID: 0}
+  gemsText: {fileID: 0}
+  coinText: {fileID: 0}
+  deathMenu: {fileID: 0}
+  deathMenuGoHomeButton: {fileID: 0}
+  playerArrow: {fileID: 0}
+  finalGems: {fileID: 0}
+  totalGems: {fileID: 0}
+  finalCoins: {fileID: 0}
+  timeSurvived: {fileID: 0}
+  enemiesKilledText: {fileID: 0}
+  levelCheckpoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  clearImage: {fileID: 0}

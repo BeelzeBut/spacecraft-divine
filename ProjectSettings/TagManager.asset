@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Teleporter
+  - RangeIndicator
+  - RocketTarget
+  - Cannon Bullet
+  - SelectedImage
+  - SelectedText
+  - Deflect
+  - charge
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Room Layout
+  - Units
+  - Player Bullets
+  - Enemy Bullets
+  - Player
+  - Rooms
+  - Walls
+  - Trigger Collider Enemies
+  - Obstacles
+  - Post Processing
+  - Collectibles
+  - Player Bullets Blocker
+  - Enemy Bullets Blocker
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Units
+    uniqueID: 4156644721
+    locked: 0
+  - name: Explosions
+    uniqueID: 1490828865
+    locked: 0
+  - name: Damage Popup
+    uniqueID: 1700325451
+    locked: 0
+  - name: UI
+    uniqueID: 398749843
+    locked: 0

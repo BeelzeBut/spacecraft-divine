@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188de30fea3949646b50f8864e67e35e, type: 3}
+  m_Name: Apollo Secondary Gun
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  shootTimer: 2.1685717
+  cooldown: 5.5
+  charge: {fileID: 0}
+  speedToTarget: 25
+  trailPrefab: {fileID: 8285886410690636295, guid: 4840699b2f8184c478f56537d4fc3d5b,
+    type: 3}
+  rangeAroundEnemy: 2
+  dashSound: {fileID: 8300000, guid: 19c94d06444375b4da8efc69e1133f94, type: 3}

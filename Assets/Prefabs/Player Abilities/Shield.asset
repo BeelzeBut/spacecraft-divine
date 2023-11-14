@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ace6c1db3f95c40a30bbfbaf22a153, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  p: {fileID: 0}
+  baseCooldown: 10
+  cooldown: 11
+  abilityName: Plasma Shield
+  abilitySprite: {fileID: -8471315569909655728, guid: 3db5aa0b8ef208348b2b931e3626be8d,
+    type: 3}
+  abilityManager: {fileID: 0}
+  abilityCoroutineManager: {fileID: 0}
+  isUpdate: 1
+  level: 1
+  description: Creates a shield that protects the spaceship from any form of damage
+    until it is destroyed or it exceeds its life time
+  duration: 5
+  shieldHealth: 1.75
+  shieldPrefab: {fileID: 6819677809425931920, guid: 6c94e54747cf42747a4cded8172bb6a2,
+    type: 3}
