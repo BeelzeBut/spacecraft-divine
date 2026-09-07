@@ -180,7 +180,7 @@ TextureImporter:
       213: -3147633480009098123
     second: Blas Radius_58
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -197,10 +197,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -209,9 +211,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -232,11 +234,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -248,6 +254,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -260,6 +267,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -272,6 +280,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -284,6 +293,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1538,9 +1561,68 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Blas Radius_0: 7240942781331267327
+      Blas Radius_1: -7860259618082179104
+      Blas Radius_10: 7586121581964270710
+      Blas Radius_11: -5589360946765115836
+      Blas Radius_12: 4350824735472836186
+      Blas Radius_13: -582176516878203728
+      Blas Radius_14: -7967462372928413051
+      Blas Radius_15: -5774650787383489764
+      Blas Radius_16: 1875254585569147812
+      Blas Radius_17: -4886756899313740534
+      Blas Radius_18: -7194849848547769441
+      Blas Radius_19: 8252711585378617049
+      Blas Radius_2: -2337378750980306769
+      Blas Radius_20: 3482005902396366240
+      Blas Radius_21: 8438806067388809011
+      Blas Radius_22: -506203736580553594
+      Blas Radius_23: 1365573490437817195
+      Blas Radius_24: -4545837463534880902
+      Blas Radius_25: -7145061633718958775
+      Blas Radius_26: -4093029371812310367
+      Blas Radius_27: 1116210865349674564
+      Blas Radius_28: 8091872284009314927
+      Blas Radius_29: 473427764046038440
+      Blas Radius_3: 2161560237399821685
+      Blas Radius_30: -1675018665417220363
+      Blas Radius_31: 1690254492437245924
+      Blas Radius_32: -8603191484594433169
+      Blas Radius_33: -5889504515805481670
+      Blas Radius_34: 1406745787287888935
+      Blas Radius_35: 5607274309414079780
+      Blas Radius_36: -7846157353128434269
+      Blas Radius_37: 3529833759237894428
+      Blas Radius_38: 2579475934636340508
+      Blas Radius_39: 6148130595299860445
+      Blas Radius_4: 2142710572641634493
+      Blas Radius_40: -1204229751747943934
+      Blas Radius_41: -2038671386590267019
+      Blas Radius_42: 3029967936783325401
+      Blas Radius_43: -7195230268007987987
+      Blas Radius_44: 5544623370035985582
+      Blas Radius_45: 5302910904986077797
+      Blas Radius_46: -5580284228348317818
+      Blas Radius_47: -4244079573807705671
+      Blas Radius_48: 5080023227374464779
+      Blas Radius_49: -5811386401571611675
+      Blas Radius_5: -8976627808735597419
+      Blas Radius_50: 3736907617275645395
+      Blas Radius_51: 8220637698576464468
+      Blas Radius_52: 4825524096762739461
+      Blas Radius_53: -6265981084355771335
+      Blas Radius_54: 8832268246737705024
+      Blas Radius_55: 2320063649366388498
+      Blas Radius_56: 5240630101602394308
+      Blas Radius_57: -557160529075770386
+      Blas Radius_58: -3147633480009098123
+      Blas Radius_6: -4601936401740643433
+      Blas Radius_7: 255403582700644731
+      Blas Radius_8: 8784407230142776851
+      Blas Radius_9: -9199313064290457297
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

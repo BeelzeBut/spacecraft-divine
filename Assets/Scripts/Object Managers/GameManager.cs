@@ -422,14 +422,14 @@ public class GameManager : MonoBehaviour
 
     public void DisplayRewardedAd()
     {
-        Monetization.instance.rewardedAction = 0;
-        Monetization.instance.DisplayRewardedAd();
+        //Monetization.instance.rewardedAction = 0;
+        //Monetization.instance.DisplayRewardedAd();
     }
 
     public void ReviveWithAd()
     {
-        Monetization.instance.rewardedAction = 1;
-        Monetization.instance.DisplayRewardedAd();
+        //Monetization.instance.rewardedAction = 1;
+        //Monetization.instance.DisplayRewardedAd();
     }
 
     public void RevivePlayer()

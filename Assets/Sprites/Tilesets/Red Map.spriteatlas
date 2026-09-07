@@ -31,6 +31,7 @@ SpriteAtlas:
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
+      m_IgnorePlatformSupport: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -40,14 +41,35 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}
-    totalSpriteSurfaceArea: 0
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 0775114431bd6624e9bedf72fef5ebc0: 5220866498541477858
+    - 0775114431bd6624e9bedf72fef5ebc0: 8689395772754522769
+    - 0775114431bd6624e9bedf72fef5ebc0: -8754509239346878287
+    - 0775114431bd6624e9bedf72fef5ebc0: 317143061396912832
+    - 0775114431bd6624e9bedf72fef5ebc0: 4976303721854377359
+    - 0775114431bd6624e9bedf72fef5ebc0: 647031953158273074
+    - 0775114431bd6624e9bedf72fef5ebc0: -3120532779388542561
+    - 0775114431bd6624e9bedf72fef5ebc0: 664850313241178283
+    - 0775114431bd6624e9bedf72fef5ebc0: 616815011481687824
+    - 0775114431bd6624e9bedf72fef5ebc0: 5914016359239118124
+    - 0775114431bd6624e9bedf72fef5ebc0: 4572331101916661394
+    - 0775114431bd6624e9bedf72fef5ebc0: -2231228373252997566
+    - 0775114431bd6624e9bedf72fef5ebc0: -8792121041879177820
+    - 0775114431bd6624e9bedf72fef5ebc0: -6403121615471796135
+    - 0775114431bd6624e9bedf72fef5ebc0: -3153867788814576393
+    - 0775114431bd6624e9bedf72fef5ebc0: -3161265716969382982
+    - 0775114431bd6624e9bedf72fef5ebc0: 7183215395720881195
+    - 0775114431bd6624e9bedf72fef5ebc0: -1873587472438208484
+    - 0775114431bd6624e9bedf72fef5ebc0: 3819506016515481066
+    - 0775114431bd6624e9bedf72fef5ebc0: -5041559311166145199
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 5220866498541477858, guid: 0775114431bd6624e9bedf72fef5ebc0, type: 3}

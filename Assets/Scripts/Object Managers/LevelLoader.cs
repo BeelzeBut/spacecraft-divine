@@ -70,7 +70,7 @@ public class LevelLoader : MonoBehaviour
             if (shouldDisplayAd)
             {
                 DataHolder.instance.countToAd = 3;
-                Monetization.instance.DisplayTempAd();
+                //Monetization.instance.DisplayTempAd();
             }
             SceneManager.LoadSceneAsync(sceneName);
         }

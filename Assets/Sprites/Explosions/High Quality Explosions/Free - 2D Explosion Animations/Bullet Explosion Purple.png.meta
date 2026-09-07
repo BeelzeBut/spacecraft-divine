@@ -189,7 +189,7 @@ TextureImporter:
       213: -8854833598698786992
     second: Bullet Explosion Purple_61
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -206,10 +206,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -219,8 +221,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -241,11 +243,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -257,6 +263,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -269,6 +276,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -281,6 +289,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -293,6 +302,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1610,9 +1633,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Bullet Explosion Purple_0: -4230772870170244370
+      Bullet Explosion Purple_1: -1471675400283972753
+      Bullet Explosion Purple_10: -5453999817207355114
+      Bullet Explosion Purple_11: -6264791028879240436
+      Bullet Explosion Purple_12: 2429461714770184653
+      Bullet Explosion Purple_13: 8811985552106281867
+      Bullet Explosion Purple_14: -4154333206879014089
+      Bullet Explosion Purple_15: 1080510103153941007
+      Bullet Explosion Purple_16: 4311402647713492278
+      Bullet Explosion Purple_17: 4647785755489549026
+      Bullet Explosion Purple_18: -8581357043149676550
+      Bullet Explosion Purple_19: -1002748201431835773
+      Bullet Explosion Purple_2: 3397916400752854689
+      Bullet Explosion Purple_20: -1693001506288586492
+      Bullet Explosion Purple_21: -8464994232227156752
+      Bullet Explosion Purple_22: -2064876833466672833
+      Bullet Explosion Purple_23: 8800967889869180181
+      Bullet Explosion Purple_24: 7467451218304555510
+      Bullet Explosion Purple_25: 610061835806593698
+      Bullet Explosion Purple_26: -2199225695185703905
+      Bullet Explosion Purple_27: 7653291308640759595
+      Bullet Explosion Purple_28: 2563590920924318852
+      Bullet Explosion Purple_29: -6220606386669593263
+      Bullet Explosion Purple_3: -8470598507002077955
+      Bullet Explosion Purple_30: -7130153815062429579
+      Bullet Explosion Purple_31: 1533992226449014175
+      Bullet Explosion Purple_32: 5393060672683741010
+      Bullet Explosion Purple_33: 1991587705177556316
+      Bullet Explosion Purple_34: 3221577490117294658
+      Bullet Explosion Purple_35: -3017947154618713296
+      Bullet Explosion Purple_36: 3945036981907007716
+      Bullet Explosion Purple_37: 9017344406310739069
+      Bullet Explosion Purple_38: -7659992838523889643
+      Bullet Explosion Purple_39: -3448482831444268621
+      Bullet Explosion Purple_4: -4922160020779961574
+      Bullet Explosion Purple_40: -7578952343194471704
+      Bullet Explosion Purple_41: 5395672063871002109
+      Bullet Explosion Purple_42: 8660609717251291863
+      Bullet Explosion Purple_43: -5612773955160408172
+      Bullet Explosion Purple_44: 7377688823296946413
+      Bullet Explosion Purple_45: -3075480692779466393
+      Bullet Explosion Purple_46: 8649315454638668929
+      Bullet Explosion Purple_47: -7728720660322192342
+      Bullet Explosion Purple_48: 6128939000505127532
+      Bullet Explosion Purple_49: 7606947775945348054
+      Bullet Explosion Purple_5: -2750966288765680737
+      Bullet Explosion Purple_50: -6021350766862785923
+      Bullet Explosion Purple_51: -1789312074512885719
+      Bullet Explosion Purple_52: 1848071167572241502
+      Bullet Explosion Purple_53: 2766901414220641976
+      Bullet Explosion Purple_54: -400040169053843731
+      Bullet Explosion Purple_55: 8290530831152894227
+      Bullet Explosion Purple_56: 1129947457283089710
+      Bullet Explosion Purple_57: -3846843188090308188
+      Bullet Explosion Purple_58: -7077811197254430800
+      Bullet Explosion Purple_59: 3284497559897967114
+      Bullet Explosion Purple_6: -6038545947354436838
+      Bullet Explosion Purple_60: 2214957994937254494
+      Bullet Explosion Purple_61: -8854833598698786992
+      Bullet Explosion Purple_7: 4144474945576714166
+      Bullet Explosion Purple_8: 166629466765108105
+      Bullet Explosion Purple_9: -2303062985874235500
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

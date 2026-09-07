@@ -51,6 +51,12 @@ public class PathRequestManager : MonoBehaviour
     IEnumerator CancelPathRequest()
     {
         yield return new WaitForSeconds(.2f);
+        // [benchmark] corutina nu este oprita niciodata (StopCoroutine de mai sus
+        // primeste un iterator nou, nu referinta pornita), deci acest punct este
+        // atins pentru FIECARE cerere, la 0,2 s dupa pornirea ei.
+        //   - isProcessingPath == true  -> abandoneaza o cerere ULTERIOARA, aflata in curs
+        //   - isProcessingPath == false -> fara efect, cererea se incheiase deja
+        if (isProcessingPath) Benchmark.PathCancelHitOther++; else Benchmark.PathCancelHarmless++;
         FinishedProcessingPath(null, false);
     }
     struct PathRequest

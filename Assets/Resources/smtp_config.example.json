@@ -1,0 +1,7 @@
+{
+  "senderAddress": "your-sender@example.com",
+  "senderPassword": "USE_AN_APP_PASSWORD_NOT_YOUR_REAL_ONE",
+  "receiverAddress": "your-inbox@example.com",
+  "host": "smtp.gmail.com",
+  "port": 587
+}

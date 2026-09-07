@@ -41,6 +41,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (shouldGenerateMap)
         {
+            Benchmark.GenAttempt(); // [benchmark]
             centers[0] = centerPrefabs.S;
             centers[1] = centerPrefabs.M;
             centers[2] = centerPrefabs.L;
@@ -89,6 +90,7 @@ public class LevelGenerator : MonoBehaviour
                     Destroy(endRoom);
                     Destroy(firstRoom);
                     rooms.Clear();
+                    Benchmark.GenRejected(); // [benchmark]
                     Start();
                     return;
                 }
@@ -102,6 +104,7 @@ public class LevelGenerator : MonoBehaviour
                     Destroy(endRoom);
                     Destroy(firstRoom);
                     rooms.Clear();
+                    Benchmark.GenRejected(); // [benchmark]
                     Start();
                     return;
                 }
@@ -115,10 +118,13 @@ public class LevelGenerator : MonoBehaviour
                     Destroy(endRoom);
                     Destroy(firstRoom);
                     rooms.Clear();
+                    Benchmark.GenRejected(); // [benchmark]
                     Start();
                     return;
                 }
             }
+
+            Benchmark.GenSucceeded(rooms.Count + 2); // [benchmark]
 
             //create room outlines
             CreateRoomOutline(Vector3.zero, 0, 0);

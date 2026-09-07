@@ -36,6 +36,7 @@ public class Pathfinding1 : MonoBehaviour
 
     IEnumerator FindPath(Vector2 startPos, Vector2 targetPos)
     {
+        var __benchSw = System.Diagnostics.Stopwatch.StartNew(); // [benchmark]
         Vector2[] waypoints = new Vector2[0];
         bool pathSuccess = false;
 
@@ -78,6 +79,7 @@ public class Pathfinding1 : MonoBehaviour
             {
                 Node currentNode = openSet.RemoveFirst();
                 closedSet.Add(currentNode);
+                Benchmark.PathNodesExpanded++; // [benchmark]
 
                 if (currentNode == targetNode)
                 {
@@ -107,12 +109,14 @@ public class Pathfinding1 : MonoBehaviour
                 }
             }
         }
+        __benchSw.Stop(); // [benchmark]
         yield return null;
         
         if (pathSuccess)
         {
             waypoints = RetracePath(startNode, targetNode);
         }
+        Benchmark.RecordSearch(__benchSw.Elapsed.TotalMilliseconds, pathSuccess, waypoints.Length); // [benchmark]
         requestManager.FinishedProcessingPath(waypoints, pathSuccess);
     }
 

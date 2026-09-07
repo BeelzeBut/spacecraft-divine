@@ -192,7 +192,7 @@ TextureImporter:
       213: 8355277186603133650
     second: Black Exp_62
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -209,10 +209,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -222,8 +224,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -251,6 +253,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -262,6 +266,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -274,6 +279,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -286,6 +292,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -298,6 +305,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1636,9 +1657,72 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Black Exp_0: -7266755872936000493
+      Black Exp_1: -7542775310120717614
+      Black Exp_10: 2178983554733458930
+      Black Exp_11: 7098685870328399633
+      Black Exp_12: 7583095629765468920
+      Black Exp_13: -3139751790674073388
+      Black Exp_14: -809006485341644399
+      Black Exp_15: -3312537708990864240
+      Black Exp_16: 256451672836877187
+      Black Exp_17: 71955430585239882
+      Black Exp_18: -2337234551582179601
+      Black Exp_19: 8093099751098584164
+      Black Exp_2: -9161377247537692138
+      Black Exp_20: -6062576233638954066
+      Black Exp_21: -2022891685040424996
+      Black Exp_22: 6692332162961932466
+      Black Exp_23: 1665395925137413695
+      Black Exp_24: -1077680701640433388
+      Black Exp_25: -6152894813996909337
+      Black Exp_26: -3237192727187570940
+      Black Exp_27: -8852633670878584536
+      Black Exp_28: -7337889218047253250
+      Black Exp_29: -6344441598377902230
+      Black Exp_3: -1071783969525715534
+      Black Exp_30: 8812388425301091726
+      Black Exp_31: -5106465741316129372
+      Black Exp_32: 6997140406813040024
+      Black Exp_33: 3152710135209819777
+      Black Exp_34: 2109251981679163429
+      Black Exp_35: 5945797260060070595
+      Black Exp_36: 1895082831176475332
+      Black Exp_37: 2819887039129315043
+      Black Exp_38: 6042206201669675379
+      Black Exp_39: -5860234617892671943
+      Black Exp_4: 5009688852903956042
+      Black Exp_40: -6542277387156675743
+      Black Exp_41: -8600207612818431145
+      Black Exp_42: 4623736085684923431
+      Black Exp_43: -3652273363175550371
+      Black Exp_44: -4696183627872913619
+      Black Exp_45: 4670957983258247565
+      Black Exp_46: -267897569529972970
+      Black Exp_47: 4339228596170414362
+      Black Exp_48: 4303556968431153281
+      Black Exp_49: -7065537724498703564
+      Black Exp_5: -6532292217907797213
+      Black Exp_50: 5932972127699666064
+      Black Exp_51: 7800516262300513248
+      Black Exp_52: -3267794311624795070
+      Black Exp_53: 3913539856161800327
+      Black Exp_54: -3699242447947340060
+      Black Exp_55: -6650272069969251484
+      Black Exp_56: -8929194229160485000
+      Black Exp_57: -5694750362072592374
+      Black Exp_58: -9103951087221710847
+      Black Exp_59: -3096865699225209001
+      Black Exp_6: -448821065383154738
+      Black Exp_60: 3371007167164213515
+      Black Exp_61: 7388550223190644033
+      Black Exp_62: 8355277186603133650
+      Black Exp_7: 1742931483875703107
+      Black Exp_8: -7886164009310604621
+      Black Exp_9: -2893768287909883385
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

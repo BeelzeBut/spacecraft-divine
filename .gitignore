@@ -1,0 +1,72 @@
+# ---------------------------------------------------------------------------
+# Unity generated folders
+# ---------------------------------------------------------------------------
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!/[Aa]ssets/**/*.meta
+
+# ---------------------------------------------------------------------------
+# Visual Studio / Rider / VS Code generated files
+# ---------------------------------------------------------------------------
+.vs/
+.vsconfig
+.idea/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# ---------------------------------------------------------------------------
+# OS generated files
+# ---------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Build artifacts — the enrollment rules require source WITHOUT compiled binaries
+# ---------------------------------------------------------------------------
+*.apk
+*.aab
+*.unitypackage
+*.app
+crashlytics-build.properties
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# ---------------------------------------------------------------------------
+# Secrets — never commit these
+# ---------------------------------------------------------------------------
+# Android signing keystore. Keep it outside the repository.
+*.keystore
+*.jks
+!*.keystore.example
+
+# SMTP credentials for the in-game feedback form.
+# Copy Assets/Resources/smtp_config.example.json -> smtp_config.json and fill it in locally.
+/[Aa]ssets/[Rr]esources/smtp_config.json
+/[Aa]ssets/[Rr]esources/smtp_config.json.meta

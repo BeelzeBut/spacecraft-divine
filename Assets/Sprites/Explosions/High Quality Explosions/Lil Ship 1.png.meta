@@ -192,7 +192,7 @@ TextureImporter:
       213: -2372364203317367721
     second: Lil Ship 1_62
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -209,10 +209,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -221,9 +223,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -244,11 +246,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -260,6 +266,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -272,6 +279,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -284,6 +292,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -296,6 +305,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1634,9 +1657,72 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Lil Ship 1_0: -9106516001854572373
+      Lil Ship 1_1: 7463436767053403623
+      Lil Ship 1_10: 7260182755014833829
+      Lil Ship 1_11: -6300640356526490097
+      Lil Ship 1_12: 7392533172560440987
+      Lil Ship 1_13: -4366457438989268461
+      Lil Ship 1_14: -3732165769576084543
+      Lil Ship 1_15: 6118299552710681960
+      Lil Ship 1_16: 5148139807988774716
+      Lil Ship 1_17: -7090323441179829997
+      Lil Ship 1_18: -3674825959217546551
+      Lil Ship 1_19: -103103706410135723
+      Lil Ship 1_2: 6132753649429177494
+      Lil Ship 1_20: -8124056676586623177
+      Lil Ship 1_21: -2052220253856285635
+      Lil Ship 1_22: -3621015131608735407
+      Lil Ship 1_23: 5376623749106530742
+      Lil Ship 1_24: 835091759250935494
+      Lil Ship 1_25: -5931743409417492597
+      Lil Ship 1_26: 3338698329368036391
+      Lil Ship 1_27: 4086774418607650360
+      Lil Ship 1_28: -4851781940261158015
+      Lil Ship 1_29: -6557143915363505168
+      Lil Ship 1_3: 39185099411704509
+      Lil Ship 1_30: -5386997403003226068
+      Lil Ship 1_31: 6899685287562001513
+      Lil Ship 1_32: 6072831911418229150
+      Lil Ship 1_33: 4181221415292591690
+      Lil Ship 1_34: -2059863970489344311
+      Lil Ship 1_35: -940880623661362099
+      Lil Ship 1_36: 6442010895122127283
+      Lil Ship 1_37: -8841304651496393174
+      Lil Ship 1_38: -2970261662075762676
+      Lil Ship 1_39: -5084209068510454591
+      Lil Ship 1_4: -7302350041037327531
+      Lil Ship 1_40: -1336460976360628124
+      Lil Ship 1_41: 6208709756952821656
+      Lil Ship 1_42: -5146135248099744770
+      Lil Ship 1_43: -5837979965581858533
+      Lil Ship 1_44: -3782978666740475993
+      Lil Ship 1_45: -4919880648730758978
+      Lil Ship 1_46: 2925038774161009841
+      Lil Ship 1_47: -7550359788143541619
+      Lil Ship 1_48: 3619232651689536704
+      Lil Ship 1_49: -2576851756339891770
+      Lil Ship 1_5: -1687707083126232517
+      Lil Ship 1_50: 4272005791090975062
+      Lil Ship 1_51: 3355286805534907889
+      Lil Ship 1_52: 3146391741797913265
+      Lil Ship 1_53: 7110817465476082271
+      Lil Ship 1_54: -6404959856588673969
+      Lil Ship 1_55: 1545221727834909220
+      Lil Ship 1_56: -2849369580206561250
+      Lil Ship 1_57: -5419461597893550712
+      Lil Ship 1_58: 1836685756811684627
+      Lil Ship 1_59: 8577932579149755330
+      Lil Ship 1_6: -3827971522354129440
+      Lil Ship 1_60: -3633530659521204135
+      Lil Ship 1_61: -5349298593589381377
+      Lil Ship 1_62: -2372364203317367721
+      Lil Ship 1_7: 6381052980400640692
+      Lil Ship 1_8: 5443341170596756376
+      Lil Ship 1_9: -8423057664772894733
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

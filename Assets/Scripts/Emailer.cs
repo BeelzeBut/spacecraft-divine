@@ -6,6 +6,11 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using TMPro;
 
+// Feedback form. Sending is only enabled when an SMTP config asset is present at
+// Resources/smtp_config.json (see smtp_config.example.json). That file is intentionally
+// git-ignored: shipping SMTP credentials inside a client build exposes them to anyone who
+// unpacks the APK, so they must never live in source control. When the config is absent the
+// form still opens and validates input, but sending is disabled.
 public class Emailer : MonoBehaviour
 {
     public TextMeshProUGUI errorMessage;
@@ -14,19 +19,38 @@ public class Emailer : MonoBehaviour
     [SerializeField] UnityEngine.UI.Button btnSubmit;
     [SerializeField] bool sendDirect;
 
-    const string kSenderEmailAddress = "gamefeedback07@gmail.com";
-    const string kSenderPassword = "Kodita0007";
-    const string kReceiverEmailAddress = "bugamarco07@gmail.com";
+    [System.Serializable]
+    private class SmtpConfig
+    {
+        public string senderAddress;
+        public string senderPassword;
+        public string receiverAddress;
+        public string host = "smtp.gmail.com";
+        public int port = 587;
+    }
+
+    private SmtpConfig config;
 
     void Start()
     {
+        LoadConfig();
         Reset();
+    }
+
+    private void LoadConfig()
+    {
+        TextAsset asset = Resources.Load<TextAsset>("smtp_config");
+        if (asset == null)
+            return;
+
+        SmtpConfig loaded = JsonUtility.FromJson<SmtpConfig>(asset.text);
+        if (loaded != null && !string.IsNullOrWhiteSpace(loaded.senderAddress))
+            config = loaded;
     }
 
     // Method 1: Direct message
     public void SendAnEmail()
     {
-        
         errorMessage.text = "";
         if (string.IsNullOrWhiteSpace(feedbackInput.text))
         {
@@ -38,23 +62,28 @@ public class Emailer : MonoBehaviour
             errorMessage.text = "Please fill in your name so I know who helps me make this game better!";
             return;
         }
+        if (config == null)
+        {
+            errorMessage.text = "Feedback sending is disabled in this build.";
+            return;
+        }
         else {
             btnSubmit.interactable = false;
             // Create mail
             MailMessage mail = new MailMessage();
-            mail.From = new MailAddress(kSenderEmailAddress);
-            mail.To.Add(kReceiverEmailAddress);
+            mail.From = new MailAddress(config.senderAddress);
+            mail.To.Add(config.receiverAddress);
             mail.Subject = "New game feedback!";
             mail.Body = feedbackName.text + " - " + feedbackInput.text;
 
-            // Setup server 
-            SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+            // Setup server
+            SmtpClient smtpServer = new SmtpClient(config.host);
             smtpServer.Timeout = 10000;
             smtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpServer.UseDefaultCredentials = false;
-            smtpServer.Port = 587;
+            smtpServer.Port = config.port;
             smtpServer.Credentials = new NetworkCredential(
-                kSenderEmailAddress, kSenderPassword) as ICredentialsByHost;
+                config.senderAddress, config.senderPassword) as ICredentialsByHost;
             smtpServer.EnableSsl = true;
             ServicePointManager.ServerCertificateValidationCallback =
                 delegate (object s, X509Certificate certificate,

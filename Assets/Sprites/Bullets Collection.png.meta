@@ -876,7 +876,7 @@ TextureImporter:
       213: -404790212779012475
     second: Bullets Collection_290
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -893,10 +893,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -906,8 +908,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -928,11 +930,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -944,6 +950,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -956,6 +963,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -968,6 +976,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -980,6 +989,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -7106,9 +7129,300 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Bullets Collection_0: -7438050418496185142
+      Bullets Collection_1: 4070902698664847295
+      Bullets Collection_10: 294917074422564082
+      Bullets Collection_100: 6312864517128591431
+      Bullets Collection_101: 2550456374352519327
+      Bullets Collection_102: 5926446810267683677
+      Bullets Collection_103: 2925285186303002283
+      Bullets Collection_104: 6729280314189181489
+      Bullets Collection_105: 1160207550801616191
+      Bullets Collection_106: 204000174047260287
+      Bullets Collection_107: -2323878896405438539
+      Bullets Collection_108: -1247323179535846228
+      Bullets Collection_109: 751759919982490081
+      Bullets Collection_11: -3643681647229730104
+      Bullets Collection_110: 6601809508555314518
+      Bullets Collection_111: -4522771494425963644
+      Bullets Collection_112: 4909056381005671940
+      Bullets Collection_113: -6104334354266476532
+      Bullets Collection_114: -2577098178102789258
+      Bullets Collection_115: -698898305509114091
+      Bullets Collection_116: 7160091820627274359
+      Bullets Collection_117: -8701047691270070032
+      Bullets Collection_118: -3241419100112069632
+      Bullets Collection_119: -2175996914882350846
+      Bullets Collection_12: 5712791234828386178
+      Bullets Collection_120: 544348402278982235
+      Bullets Collection_121: -7004355614458611477
+      Bullets Collection_122: -9039151607800730657
+      Bullets Collection_123: -9208806864340103342
+      Bullets Collection_124: 1645696022196136768
+      Bullets Collection_125: -562199014377494936
+      Bullets Collection_126: -1427012969295271088
+      Bullets Collection_127: -2033971504558784152
+      Bullets Collection_128: 6632299026937100223
+      Bullets Collection_129: 184998243283468805
+      Bullets Collection_13: -1664302964254802764
+      Bullets Collection_130: -3916751249593237726
+      Bullets Collection_131: 3911579173844064988
+      Bullets Collection_132: 8369413880918629767
+      Bullets Collection_133: -5534673362950471730
+      Bullets Collection_134: -1988306484449061854
+      Bullets Collection_135: 2764041305609265096
+      Bullets Collection_136: 2073732106494701241
+      Bullets Collection_137: -589994219150558974
+      Bullets Collection_138: -6843215321824082722
+      Bullets Collection_139: -8499819821484605715
+      Bullets Collection_14: -4384643302299162941
+      Bullets Collection_140: -822091508820701178
+      Bullets Collection_141: -5473209982957484623
+      Bullets Collection_142: -2351305484529297858
+      Bullets Collection_143: 8138067615450164137
+      Bullets Collection_144: 6303820192056322567
+      Bullets Collection_145: 5076381699006938470
+      Bullets Collection_146: -700433423013053466
+      Bullets Collection_147: -648817123916960835
+      Bullets Collection_148: 471947287143606586
+      Bullets Collection_149: -4071132610465712119
+      Bullets Collection_15: -8036152361119330623
+      Bullets Collection_150: -2291866936223111298
+      Bullets Collection_151: -5355021886926746006
+      Bullets Collection_152: -109256014244093121
+      Bullets Collection_153: 3220690178146196125
+      Bullets Collection_154: 8935676881336842006
+      Bullets Collection_155: -5123033099962045662
+      Bullets Collection_156: -4377857086564290456
+      Bullets Collection_157: 6545024538852665684
+      Bullets Collection_158: 7371528616076517505
+      Bullets Collection_159: 8499868083551455921
+      Bullets Collection_16: 2165205679908790408
+      Bullets Collection_160: 529264081562646129
+      Bullets Collection_161: 2662699640388999115
+      Bullets Collection_162: 5831484519681922157
+      Bullets Collection_163: -666963662588678021
+      Bullets Collection_164: 1197766963267925431
+      Bullets Collection_165: 8310369506883167231
+      Bullets Collection_166: 7378656525299897206
+      Bullets Collection_167: -3089054258988106888
+      Bullets Collection_168: 4771259005962705645
+      Bullets Collection_169: -1934975303745774212
+      Bullets Collection_17: -5674664588096220176
+      Bullets Collection_170: 3269047007841982760
+      Bullets Collection_171: -3440368515010502028
+      Bullets Collection_172: 7610539463229108103
+      Bullets Collection_173: 624275418845386178
+      Bullets Collection_174: 7004814941363926886
+      Bullets Collection_175: 7400070396417542000
+      Bullets Collection_176: -1949342404446963291
+      Bullets Collection_177: 5722370357359183614
+      Bullets Collection_178: 7936306682940497202
+      Bullets Collection_179: -5585416344907666400
+      Bullets Collection_18: 1931259097520487386
+      Bullets Collection_180: 6410115693225629378
+      Bullets Collection_181: 6805829072486894337
+      Bullets Collection_182: -6546943038209724900
+      Bullets Collection_183: -2819119025116526965
+      Bullets Collection_184: -3774038899235962433
+      Bullets Collection_185: -6952642071328097936
+      Bullets Collection_186: -6848331333608442270
+      Bullets Collection_187: -6698012354189895278
+      Bullets Collection_188: 7158960414176578964
+      Bullets Collection_189: -8686700129976385622
+      Bullets Collection_19: 5139457238526202209
+      Bullets Collection_190: 5321599327985016012
+      Bullets Collection_191: 4865323547512379708
+      Bullets Collection_192: 581490883959812730
+      Bullets Collection_193: -6558674463936909754
+      Bullets Collection_194: 4855551630123139075
+      Bullets Collection_195: 5642305219289471200
+      Bullets Collection_196: 997124361817695152
+      Bullets Collection_197: 4607254750955474228
+      Bullets Collection_198: 6688309270296729552
+      Bullets Collection_199: 5187568428614453809
+      Bullets Collection_2: 61600612792243806
+      Bullets Collection_20: -3917155460875941626
+      Bullets Collection_200: -7183171744292775071
+      Bullets Collection_201: -2087136483955578213
+      Bullets Collection_202: 4420457964495846319
+      Bullets Collection_203: 215986739047867598
+      Bullets Collection_204: 7157126805188023644
+      Bullets Collection_205: -6864642121240150198
+      Bullets Collection_206: -2792237574257758552
+      Bullets Collection_207: -7671620525376636357
+      Bullets Collection_208: -35158863779220428
+      Bullets Collection_209: -6380234014278913982
+      Bullets Collection_21: -7098682332079659172
+      Bullets Collection_210: -8583958391716965225
+      Bullets Collection_211: -6943025827192814496
+      Bullets Collection_212: -3640082978681591226
+      Bullets Collection_213: 5744169073417943583
+      Bullets Collection_214: -7975085857809740341
+      Bullets Collection_215: 5613518452988610866
+      Bullets Collection_216: 7054334104841007252
+      Bullets Collection_217: 1564634660896168668
+      Bullets Collection_218: -5769483465533855053
+      Bullets Collection_219: -2609449249600966008
+      Bullets Collection_22: 4665606261551882235
+      Bullets Collection_220: 3630011718997362622
+      Bullets Collection_221: -4097879930372469643
+      Bullets Collection_222: -4192202314167120300
+      Bullets Collection_223: 7442418315446189847
+      Bullets Collection_224: 2907000226615275949
+      Bullets Collection_225: 6600105717729778533
+      Bullets Collection_226: 4035560686517656946
+      Bullets Collection_227: -1212964061673356992
+      Bullets Collection_228: -5244876773047829251
+      Bullets Collection_229: 6058874285080023698
+      Bullets Collection_23: -8464385380771236939
+      Bullets Collection_230: 7773338130304619912
+      Bullets Collection_231: -6331477511158580482
+      Bullets Collection_232: -853565598984043612
+      Bullets Collection_233: 2538617985701737719
+      Bullets Collection_234: 8820810775520612092
+      Bullets Collection_235: -7272080647687208740
+      Bullets Collection_236: 3413138865980718410
+      Bullets Collection_237: 997487577029431121
+      Bullets Collection_238: -7514441050878162373
+      Bullets Collection_239: -1080467276934147322
+      Bullets Collection_24: -6289457849583561091
+      Bullets Collection_240: 7681301890283395002
+      Bullets Collection_241: -4083412246177298923
+      Bullets Collection_242: 8827788207580281817
+      Bullets Collection_243: -7384842053276826630
+      Bullets Collection_244: 6041109939176897257
+      Bullets Collection_245: -7710013596711313563
+      Bullets Collection_246: 5785268264537273562
+      Bullets Collection_247: -8963359073114034243
+      Bullets Collection_248: -2603705436705151478
+      Bullets Collection_249: -5535681091949695483
+      Bullets Collection_25: -2437850545796272322
+      Bullets Collection_250: 1410895021931943964
+      Bullets Collection_251: 1534982739048623904
+      Bullets Collection_252: 3444909496432656329
+      Bullets Collection_253: 5922525686140893659
+      Bullets Collection_254: 1433180393156507814
+      Bullets Collection_255: -8376978360270859394
+      Bullets Collection_256: 3180646972899873146
+      Bullets Collection_257: 7601694687845988622
+      Bullets Collection_258: 468617160088992607
+      Bullets Collection_259: 2895889513027701954
+      Bullets Collection_26: -5103247095039614221
+      Bullets Collection_260: -2162284443253909429
+      Bullets Collection_261: -7898984101101380046
+      Bullets Collection_262: -1979859629135004676
+      Bullets Collection_263: 5966317287205264948
+      Bullets Collection_264: 6585776580196452731
+      Bullets Collection_265: -4599893672330489852
+      Bullets Collection_266: 138739768622192545
+      Bullets Collection_267: -9090024984874969705
+      Bullets Collection_268: 6007519553977475857
+      Bullets Collection_269: 4648645928000030156
+      Bullets Collection_27: 7720157137075349038
+      Bullets Collection_270: 7762606309527173456
+      Bullets Collection_271: -6747269811931024366
+      Bullets Collection_272: 6153946160974952614
+      Bullets Collection_273: 1264254095652131433
+      Bullets Collection_274: 3783027040467153339
+      Bullets Collection_275: -8816215959395999761
+      Bullets Collection_276: 7739264245784776480
+      Bullets Collection_277: -9165846543221666046
+      Bullets Collection_278: -206416539271327848
+      Bullets Collection_279: -6234088587732080456
+      Bullets Collection_28: -6353705464984114856
+      Bullets Collection_280: 1032965913893478447
+      Bullets Collection_281: -7378098215879663438
+      Bullets Collection_282: 6244687613329198247
+      Bullets Collection_283: -1622217816659601076
+      Bullets Collection_284: -4528793470040827127
+      Bullets Collection_285: 258850567785591506
+      Bullets Collection_286: -2443662777668786420
+      Bullets Collection_287: -2993957533079822236
+      Bullets Collection_288: 6986837737214022113
+      Bullets Collection_289: 3470354095089347653
+      Bullets Collection_29: 3480058916492570927
+      Bullets Collection_290: -404790212779012475
+      Bullets Collection_3: 5469861247789370223
+      Bullets Collection_30: -6823493947913533417
+      Bullets Collection_31: -5870553680375007253
+      Bullets Collection_32: -5173027508862203176
+      Bullets Collection_33: -4864387496613342659
+      Bullets Collection_34: -4904694544319115917
+      Bullets Collection_35: 4446742066195212846
+      Bullets Collection_36: 2003648786364749525
+      Bullets Collection_37: 5438863334026282186
+      Bullets Collection_38: 5831278126623996257
+      Bullets Collection_39: 8292474323154445775
+      Bullets Collection_4: -8845655174493055337
+      Bullets Collection_40: -1608668080404639834
+      Bullets Collection_41: 3486657874715845307
+      Bullets Collection_42: -2269895074386492646
+      Bullets Collection_43: -5585070625019195428
+      Bullets Collection_44: 1165200435684811427
+      Bullets Collection_45: -1409579581420420551
+      Bullets Collection_46: -6234725840030576059
+      Bullets Collection_47: -6942618540088018258
+      Bullets Collection_48: 9116450891015396951
+      Bullets Collection_49: 6842840446909138866
+      Bullets Collection_5: 824876681541976376
+      Bullets Collection_50: 8873733704555785183
+      Bullets Collection_51: 2172941587098989678
+      Bullets Collection_52: -7510576501381174126
+      Bullets Collection_53: 6400115980533658017
+      Bullets Collection_54: 1174082129955075734
+      Bullets Collection_55: -5096243936150605468
+      Bullets Collection_56: -7516751464087453159
+      Bullets Collection_57: 3181683278053472661
+      Bullets Collection_58: -4764193342875927316
+      Bullets Collection_59: -6274957496451233147
+      Bullets Collection_6: -4262332231091938730
+      Bullets Collection_60: 7173020444078893368
+      Bullets Collection_61: 2429352356603365432
+      Bullets Collection_62: -2757562510597437539
+      Bullets Collection_63: -1899503645711770025
+      Bullets Collection_64: -7578114508395239634
+      Bullets Collection_65: -2307299516451405866
+      Bullets Collection_66: 7234840222003529737
+      Bullets Collection_67: -212067333610294854
+      Bullets Collection_68: 3284655959948339020
+      Bullets Collection_69: 6195593684098004771
+      Bullets Collection_7: -1928533292026800573
+      Bullets Collection_70: -2603677750362872467
+      Bullets Collection_71: 2975453366138021253
+      Bullets Collection_72: 9137254208249648545
+      Bullets Collection_73: -352082526541763609
+      Bullets Collection_74: 3805240340980027053
+      Bullets Collection_75: -5009501497186876669
+      Bullets Collection_76: -7569803880460777256
+      Bullets Collection_77: -4274171793243688249
+      Bullets Collection_78: -503021747405620630
+      Bullets Collection_79: 4865212043935059087
+      Bullets Collection_8: 8032050209712507417
+      Bullets Collection_80: -6983570829154827708
+      Bullets Collection_81: 8173685372556350122
+      Bullets Collection_82: 934204880824928554
+      Bullets Collection_83: 5839818504497791129
+      Bullets Collection_84: -3547393243094762070
+      Bullets Collection_85: 9824757444602404
+      Bullets Collection_86: 8414305023894472222
+      Bullets Collection_87: 3366331277907807126
+      Bullets Collection_88: -8762857292110488759
+      Bullets Collection_89: 2766848438749027421
+      Bullets Collection_9: -861057398803987392
+      Bullets Collection_90: 2677523145035587939
+      Bullets Collection_91: -8512063869972397805
+      Bullets Collection_92: -1919484673689858293
+      Bullets Collection_93: -1238030952372738143
+      Bullets Collection_94: 3562798150356401429
+      Bullets Collection_95: 8250543119761843250
+      Bullets Collection_96: -8471767971649384495
+      Bullets Collection_97: 6333060049880576973
+      Bullets Collection_98: -2706474709303701078
+      Bullets Collection_99: -4874550210722458363
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

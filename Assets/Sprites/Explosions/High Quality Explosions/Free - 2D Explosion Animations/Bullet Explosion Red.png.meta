@@ -189,7 +189,7 @@ TextureImporter:
       213: -2618686692033540294
     second: Bullet Explosion Red_61
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -206,10 +206,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -219,8 +221,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -241,11 +243,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -257,6 +263,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -269,6 +276,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -281,6 +289,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -293,6 +302,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1610,9 +1633,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Bullet Explosion Red_0: -8259271893374067178
+      Bullet Explosion Red_1: -7176657280891700678
+      Bullet Explosion Red_10: -214949649624868142
+      Bullet Explosion Red_11: 617096683165977783
+      Bullet Explosion Red_12: -6808969151618891389
+      Bullet Explosion Red_13: -6478742004039474062
+      Bullet Explosion Red_14: 9013318229325926134
+      Bullet Explosion Red_15: 7820267906804116273
+      Bullet Explosion Red_16: -5601475929252886799
+      Bullet Explosion Red_17: -6540593588424884353
+      Bullet Explosion Red_18: 7635282525917784276
+      Bullet Explosion Red_19: -3948273084886722014
+      Bullet Explosion Red_2: 7159891592836174575
+      Bullet Explosion Red_20: -3405518123896338695
+      Bullet Explosion Red_21: 2341418744115074840
+      Bullet Explosion Red_22: -537300373111932105
+      Bullet Explosion Red_23: -7226076943852790970
+      Bullet Explosion Red_24: 7453290678589775055
+      Bullet Explosion Red_25: 3078352729649569521
+      Bullet Explosion Red_26: -3640254117320396208
+      Bullet Explosion Red_27: 4094735112584892026
+      Bullet Explosion Red_28: 7216501356136192016
+      Bullet Explosion Red_29: 7121425923023149112
+      Bullet Explosion Red_3: -3132311035026444405
+      Bullet Explosion Red_30: -4869758313849552964
+      Bullet Explosion Red_31: 8271296715875167070
+      Bullet Explosion Red_32: 4534934497245164147
+      Bullet Explosion Red_33: -4804449408856259338
+      Bullet Explosion Red_34: -1086547037123597739
+      Bullet Explosion Red_35: 2761304159684904870
+      Bullet Explosion Red_36: -2573837163730057433
+      Bullet Explosion Red_37: -2150989442430689967
+      Bullet Explosion Red_38: 6620259156751664718
+      Bullet Explosion Red_39: -8544686975704660035
+      Bullet Explosion Red_4: -1672711647599671827
+      Bullet Explosion Red_40: 8450259531745638084
+      Bullet Explosion Red_41: -28664323048424329
+      Bullet Explosion Red_42: -9037222438638635182
+      Bullet Explosion Red_43: -7680187796399769308
+      Bullet Explosion Red_44: 397782229928397911
+      Bullet Explosion Red_45: -1143845042485849618
+      Bullet Explosion Red_46: 5250674059058848852
+      Bullet Explosion Red_47: -4383634895200411462
+      Bullet Explosion Red_48: 3656086202782483693
+      Bullet Explosion Red_49: -2528802517419229018
+      Bullet Explosion Red_5: -3864343057653412543
+      Bullet Explosion Red_50: 1971962151889017299
+      Bullet Explosion Red_51: 5543063098763892384
+      Bullet Explosion Red_52: 3400753958445923207
+      Bullet Explosion Red_53: -6434212427176482351
+      Bullet Explosion Red_54: -5740934704414770051
+      Bullet Explosion Red_55: -6883648513934267085
+      Bullet Explosion Red_56: 7123021227994745513
+      Bullet Explosion Red_57: 1230487953051670067
+      Bullet Explosion Red_58: -1623938091950964677
+      Bullet Explosion Red_59: -8375128875399944548
+      Bullet Explosion Red_6: 5473721563446478203
+      Bullet Explosion Red_60: 17473691064891634
+      Bullet Explosion Red_61: -2618686692033540294
+      Bullet Explosion Red_7: -3671138978425976781
+      Bullet Explosion Red_8: 1335300780721557495
+      Bullet Explosion Red_9: 9179633926452597900
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

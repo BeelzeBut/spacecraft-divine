@@ -687,8 +687,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayRewardedAd()
     {
-        Monetization.instance.rewardedAction = 0;
-        Monetization.instance.DisplayRewardedAd();
+        //Monetization.instance.rewardedAction = 0;
+        //Monetization.instance.DisplayRewardedAd();
     }
 
     public void FpsSettings()

@@ -141,7 +141,7 @@ TextureImporter:
       213: 1736427291851736249
     second: hiclipart.com_45
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -158,10 +158,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -171,8 +173,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -193,11 +195,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -209,6 +215,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -221,6 +228,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -233,6 +241,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -245,6 +254,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1226,9 +1249,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      hiclipart.com_0: -4848640753749312117
+      hiclipart.com_1: -1438897376738555470
+      hiclipart.com_10: -5765042486197667397
+      hiclipart.com_11: 8852898655901281376
+      hiclipart.com_12: -6195617645508619133
+      hiclipart.com_13: -1503868848301044417
+      hiclipart.com_14: 2732535476182167641
+      hiclipart.com_15: -4303668296277180254
+      hiclipart.com_16: 8084156564213710169
+      hiclipart.com_17: 204351625114385465
+      hiclipart.com_18: -8559693563019326584
+      hiclipart.com_19: -7613543980724455279
+      hiclipart.com_2: -8292495619121418442
+      hiclipart.com_20: -9150991616873735287
+      hiclipart.com_21: 2603008843023152546
+      hiclipart.com_22: -989600370826626088
+      hiclipart.com_23: -5401544360311445623
+      hiclipart.com_24: 510782323881651404
+      hiclipart.com_25: 3260628226666638522
+      hiclipart.com_26: 8086684068054036551
+      hiclipart.com_27: 4028203282689506892
+      hiclipart.com_28: -1907112535384228382
+      hiclipart.com_29: 7041374774327569452
+      hiclipart.com_3: 7664726627201700364
+      hiclipart.com_30: -6161068010431613363
+      hiclipart.com_31: -4229517051609114497
+      hiclipart.com_32: -7357496226801699723
+      hiclipart.com_33: 199899598396717440
+      hiclipart.com_34: -6047276778666437122
+      hiclipart.com_35: 1937481176074342845
+      hiclipart.com_36: -4184796230974786476
+      hiclipart.com_37: -3997427144733020338
+      hiclipart.com_38: 41396845988122727
+      hiclipart.com_39: -3636364248206188067
+      hiclipart.com_4: -5042554494409634194
+      hiclipart.com_40: -3028368892859077656
+      hiclipart.com_41: 2368931751019855404
+      hiclipart.com_42: -1405045849551903394
+      hiclipart.com_43: 9105590502816371917
+      hiclipart.com_44: -1028038481678961714
+      hiclipart.com_45: 1736427291851736249
+      hiclipart.com_5: -7133161326709455817
+      hiclipart.com_6: -6489398562499320085
+      hiclipart.com_7: -8597578898581656330
+      hiclipart.com_8: -1324372868889471535
+      hiclipart.com_9: 2859829973177693659
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

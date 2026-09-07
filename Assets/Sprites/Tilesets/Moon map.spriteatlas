@@ -31,6 +31,7 @@ SpriteAtlas:
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
+      m_IgnorePlatformSupport: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -40,14 +41,36 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
-    totalSpriteSurfaceArea: 0
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - a9609086d5698bc4e9e5fa9dfd562259: 5620067327767594302
+    - a9609086d5698bc4e9e5fa9dfd562259: 2161735204562997532
+    - a9609086d5698bc4e9e5fa9dfd562259: 5409701705698531971
+    - a9609086d5698bc4e9e5fa9dfd562259: 3691748823133878384
+    - a9609086d5698bc4e9e5fa9dfd562259: -7847750845473725383
+    - a9609086d5698bc4e9e5fa9dfd562259: -2451382291531520888
+    - a9609086d5698bc4e9e5fa9dfd562259: -8321295320150623356
+    - a9609086d5698bc4e9e5fa9dfd562259: 4602113109210517554
+    - a9609086d5698bc4e9e5fa9dfd562259: 3302496152091220258
+    - a9609086d5698bc4e9e5fa9dfd562259: -88729021422929979
+    - a9609086d5698bc4e9e5fa9dfd562259: 5027282802205149413
+    - a9609086d5698bc4e9e5fa9dfd562259: 3849803057581329484
+    - a9609086d5698bc4e9e5fa9dfd562259: 8614460776525825096
+    - a9609086d5698bc4e9e5fa9dfd562259: -2314338103995636671
+    - a9609086d5698bc4e9e5fa9dfd562259: 4900707452328982788
+    - a9609086d5698bc4e9e5fa9dfd562259: 6798571673368334751
+    - a9609086d5698bc4e9e5fa9dfd562259: -5359536628590334575
+    - a9609086d5698bc4e9e5fa9dfd562259: -2909089027860699478
+    - a9609086d5698bc4e9e5fa9dfd562259: -1588397523147317959
+    - a9609086d5698bc4e9e5fa9dfd562259: -8956392525319036126
+    - a9609086d5698bc4e9e5fa9dfd562259: -2318968148567798316
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 5620067327767594302, guid: a9609086d5698bc4e9e5fa9dfd562259, type: 3}
