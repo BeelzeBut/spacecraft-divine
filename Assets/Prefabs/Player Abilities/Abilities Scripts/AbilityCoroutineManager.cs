@@ -264,9 +264,19 @@ public class AbilityCoroutineManager : MonoBehaviour
             yield return null;
         }
     }
+    private Coroutine goInvisCoroutine;
     public void GoInvis(Material mat)
     {
-        StartCoroutine(GoInvisC(mat));
+        StopGoInvis();
+        goInvisCoroutine = StartCoroutine(GoInvisC(mat));
+    }
+    public void StopGoInvis()
+    {
+        if (goInvisCoroutine != null)
+        {
+            StopCoroutine(goInvisCoroutine);
+            goInvisCoroutine = null;
+        }
     }
     
     public void LeaveInvis(Material mat)
@@ -301,7 +311,7 @@ public class AbilityCoroutineManager : MonoBehaviour
     }
     public IEnumerator LeaveInvisC(Material mat)
     {
-        StopCoroutine("GoInvisC");
+        StopGoInvis();
         p.shouldBeAttacked = true;
         mat = p.spriteRenderer.material;
         p.thrusters[0].GetComponent<SpriteRenderer>().enabled = true;
