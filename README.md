@@ -21,12 +21,12 @@ Aplicația a fost publicată în Google Play în 2021 și a rămas disponibilă 
 |---|---|
 | Generare procedurală | Algoritm în două etape: schelet topologic prin plimbare aleatorie, apoi instanțierea camerelor |
 | Navigație | Implementare proprie a algoritmului A\*, cu heap binar și planificator de cereri |
-| Inteligență artificială | 38 de tipuri de inamici, dintre care 6 confruntări finale, derivate dintr-o clasă de bază comună |
-| Sisteme de joc | 14 nave, 20 de abilități, 24 de îmbunătățiri, 23 de tipuri de proiectile |
+| Inteligență artificială | 30 de tipuri de inamici, dintre care 6 confruntări finale, derivate dintr-o clasă de bază comună |
+| Sisteme de joc | 13 nave, 20 de abilități, 25 de îmbunătățiri, 20 de tipuri de proiectile |
 | Progresie | Îmbunătățiri în cadrul parcurgerii și progresie persistentă între parcurgeri |
 | Integrare mobilă | Control tactil, suport pentru controler, achiziții din aplicație, compilare și semnare |
 
-Volum: aproximativ **25.000 de linii de cod C#**, în peste 200 de clase scrise de autor.
+Volum: **22.442 de linii de cod C#**, în 212 clase scrise de autor.
 
 Detaliile de proiectare și de implementare sunt prezentate în lucrarea de diplomă care însoțește acest git repository.
 
@@ -67,8 +67,8 @@ Assets/
     Grid1.cs, Node.cs, Heap.cs, Pathfinding1.cs, PathRequestManager.cs
                               sistemul de navigație A* (implementare proprie)
     Object Managers/          managerii de stare, generarea nivelului, jucătorul
-    Enemies/                  clasa Enemy și cele 37 de specializări
-    Bullets/                  clasa Bullet și cele 22 de specializări
+    Enemies/                  clasa Enemy și cele 29 de specializări
+    Bullets/                  clasa Bullet și cele 19 specializări
     Spaceships/               modelul navei și armamentul
     Upgrades/                 sistemul de îmbunătățiri
     Collectibles/             obiecte colectabile, planuri de construcție
@@ -76,8 +76,8 @@ Assets/
     Main Menu/                meniul principal și magazinul
   Prefabs/                    prefabricate și resurse de configurare
     Player Abilities/         implementările celor 20 de abilități
-    Upgrades Objects/         implementările celor 24 de îmbunătățiri
-    Spaceships/               resursele celor 14 nave și armamentul lor
+    Upgrades Objects/         implementările celor 25 de îmbunătățiri
+    Spaceships/               resursele celor 13 nave și armamentul lor
   Scenes/                     cele 7 scene incluse în versiunea finală
   Sprites/, Sounds/, Animations/, Shaders/, Tilesets/
                               conținut grafic și sonor
@@ -98,7 +98,7 @@ cd spacecraft-divine
 
 1. Se deschide Unity Hub → **Add** → se selectează directorul clonat.
 2. Se deschide proiectul cu Unity **2022.3.14f1**.
-3. **Prima deschidere durează 10–20 de minute.** Motorul importă peste 700 de prefabricate și aproximativ 570 de imagini și reconstruiește directorul `Library/`, care nu este inclus în repository. Acest comportament este normal.
+3. **Prima deschidere durează 10–20 de minute.** Motorul importă peste 850 de prefabricate și peste 860 de imagini și reconstruiește directorul `Library/`, care nu este inclus în repository. Acest comportament este normal.
 4. Se verifică platforma țintă: **File → Build Settings → Android → Switch Platform**.
 
 ### Rulare în editor
