@@ -157,6 +157,15 @@ public class PlayerController : MonoBehaviour
         abilityButton = GameObject.Find("Ability Button").GetComponent<ButtonScript>();
         SetupHealthbar();
         controllerOn = data.controllerOn;
+#if UNITY_EDITOR || UNITY_STANDALONE
+        // [tastatura] Pe desktop intrarea vine de la schema fizica de control, nu de la
+        // maneta virtuala. Fara aceasta linie, FixedUpdate ar suprascrie in fiecare cadru
+        // directia de deplasare cu valoarea (nula) a manetei de pe ecran, iar tastele WASD
+        // nu ar avea niciun efect. Se modifica doar starea locala, nu si preferinta salvata,
+        // deci comutatorul din meniul de optiuni continua sa functioneze normal.
+        if (UnityEngine.InputSystem.Keyboard.current != null)
+            controllerOn = true;
+#endif
 
         controls = data.controls;
 

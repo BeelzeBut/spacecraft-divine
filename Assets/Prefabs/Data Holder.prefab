@@ -784,6 +784,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 599af20b9b6b795408782de2785496c0, type: 3}
   - {fileID: 8300000, guid: bd7894b44cda4354b97f94aeb11a2d12, type: 3}
   - {fileID: 8300000, guid: 34ef712fd8723554a98cd504dba3ef27, type: 3}
+  - {fileID: 8300000, guid: bb5de1dd60ba20546baa56c6c2bb33b0, type: 3}
+  - {fileID: 8300000, guid: ee4c39a3e72699243b69d3bf63924c75, type: 3}
   abilitySounds:
   - {fileID: 8300000, guid: e960c4c9f8cf1dd42abeefc5cb976c9b, type: 3}
   - {fileID: 8300000, guid: 78a216e0df4bd63449aaf6a465e198d6, type: 3}

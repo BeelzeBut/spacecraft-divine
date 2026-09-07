@@ -184,6 +184,9 @@ public class TrainingManager : MonoBehaviour
     public IEnumerator ResetMenu(float time)
     {
         startedGame = false;
+        if (activeBoss != null)
+            activeBoss.HideBossHealthbar();
+        UIManager.instance.bossName.SetActive(false);
         if(activeWaveCoroutine != null)
             StopCoroutine(activeWaveCoroutine);
         foreach (Enemy enemy in FindObjectsOfType<Enemy>())
@@ -387,6 +390,7 @@ public class TrainingManager : MonoBehaviour
         {
             bossesButtons[i].SetActive(true);
             bossesButtons[i].GetComponentsInChildren<Image>()[2].sprite = bosses[(int)selectedMap][i].shipSprite.sprite;
+            bossesButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = bosses[(int)selectedMap][i].enemyName;
         }
     }
 
@@ -599,6 +603,7 @@ public class TrainingManager : MonoBehaviour
             CameraMovement.instance.enabled = true;
             startedGame = true;
             canBeCleared = true;
+            activeBoss.StartCoroutine(activeBoss.BossHealthbar(activeBoss.hasArmor));
         }
     }
 

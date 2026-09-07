@@ -20,9 +20,18 @@ public class CameraMovement : MonoBehaviour
     float zoomVel;
 
 
+    private void Awake()
+    {
+        // Referinta statica se stabileste in Awake, nu in Start. Unity nu garanteaza
+        // ordinea de executie a metodelor Start intre componente, iar TrainingManager.Start
+        // citeste CameraMovement.instance. Cand initializarea se facea in Start, referinta
+        // ramanea, in functie de ordine, cea a camerei din scena anterioara — deja distrusa —
+        // ceea ce arunca o exceptie si intrerupea initializarea modului de antrenament.
+        instance = this;
+    }
+
     void Start()
     {
-        instance = this;
         p = PlayerController.instance;
         cam = Camera.main;
         originalOrtographicSize = cam.orthographicSize;

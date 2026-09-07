@@ -242,13 +242,19 @@ public class AbilityCoroutineManager : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
     }
+    private Coroutine cannonOnPlayerCoroutine;
     public void CannonOnPlayer(Transform cannon, Vector3 cannonInitialPos)
     {
-        StartCoroutine(CannonOnPlayerC(cannon, cannonInitialPos));
+        StopCannonOnPlayer();
+        cannonOnPlayerCoroutine = StartCoroutine(CannonOnPlayerC(cannon, cannonInitialPos));
     }
     public void StopCannonOnPlayer()
     {
-        StopCoroutine("CannonOnPlayerC");
+        if (cannonOnPlayerCoroutine != null)
+        {
+            StopCoroutine(cannonOnPlayerCoroutine);
+            cannonOnPlayerCoroutine = null;
+        }
     }
     public IEnumerator CannonOnPlayerC(Transform cannon, Vector3 cannonInitialPos)
     {

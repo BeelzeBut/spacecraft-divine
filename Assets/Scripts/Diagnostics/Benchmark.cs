@@ -6,8 +6,10 @@
 //  deci nu este necesara nicio modificare a scenelor.
 //
 //  Comenzi (tastatura, in editor):
-//     F9   — afiseaza raportul curent
-//     F10  — reseteaza contoarele
+//     B    — afiseaza raportul curent  (F9 pe Windows)
+//     N    — reseteaza contoarele    (F10 pe Windows)
+//     R    — reincarca scena curenta (o generare noua de fiecare data)
+//  Pe macOS F9/F10 sunt capturate de sistem si nu ajung la aplicatie.
 //
 //  Acest fisier si apelurile marcate cu "// [benchmark]" in Pathfinding1.cs,
 //  PathRequestManager.cs si LevelGenerator.cs sunt exclusiv pentru masuratori
@@ -146,7 +148,7 @@ public static class Benchmark
         var go = new GameObject("[Benchmark]");
         go.AddComponent<BenchmarkReporter>();
         Object.DontDestroyOnLoad(go);
-        Debug.Log("[Benchmark] activ — F9 = raport, F10 = reset");
+        Debug.Log("[Benchmark] activ — B = raport, N = reset, R = regenereaza nivelul");
     }
 }
 
@@ -156,8 +158,22 @@ public class BenchmarkReporter : MonoBehaviour
     {
         var kb = UnityEngine.InputSystem.Keyboard.current;
         if (kb == null) return;
-        if (kb.f9Key.wasPressedThisFrame)  Debug.Log("\n" + Benchmark.Report());
-        if (kb.f10Key.wasPressedThisFrame) Benchmark.Reset();
+        // B / N sunt tastele principale: pe macOS, F9 si F10 sunt preluate de sistem
+        // (Mission Control), deci nu ajung niciodata la aplicatie.
+        if (kb.bKey.wasPressedThisFrame || kb.f9Key.wasPressedThisFrame)
+            Debug.Log("\n" + Benchmark.Report());
+        if (kb.nKey.wasPressedThisFrame || kb.f10Key.wasPressedThisFrame)
+            Benchmark.Reset();
+
+        // R — reincarca scena curenta. Fiecare reincarcare executa o generare noua,
+        // ceea ce permite acumularea rapida a unui esantion pentru rata de respingere.
+        // Contoarele sunt statice, deci se pastreaza intre reincarcari.
+        if (kb.rKey.wasPressedThisFrame)
+        {
+            var sc = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            Debug.Log($"[Benchmark] reincarc '{sc.name}' — generari pana acum: {Benchmark.GenAttempts}");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sc.name);
+        }
     }
 
     void OnApplicationQuit()

@@ -18,6 +18,7 @@ public class LaserSniper : Gun
     public override void Initialize()
     {
         p = PlayerController.instance;
+        chargeCircles = Charge.instance;
         pSource = p.GetComponent<AudioSource>();
         pSource.clip = chargeSound;
         pSource.loop = false;
