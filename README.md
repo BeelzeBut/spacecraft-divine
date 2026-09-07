@@ -28,7 +28,7 @@ Aplicația a fost publicată în Google Play în 2021 și a rămas disponibilă 
 
 Volum: aproximativ **25.000 de linii de cod C#**, în peste 200 de clase scrise de autor.
 
-Detaliile de proiectare și de implementare sunt prezentate în lucrarea de diplomă care însoțește acest depozit.
+Detaliile de proiectare și de implementare sunt prezentate în lucrarea de diplomă care însoțește acest git repository.
 
 ---
 
@@ -38,7 +38,7 @@ Detaliile de proiectare și de implementare sunt prezentate în lucrarea de dipl
 
 - **Unity 2022.3.14f1** (versiune cu suport pe termen lung). Se instalează prin Unity Hub, din arhiva de versiuni.
   Se recomandă exact această versiune; alte versiuni pot declanșa o migrare automată a proiectului.
-- **Git** pentru clonarea depozitului.
+- **Git** pentru clonarea repository-ului.
 
 ### Pentru compilarea pe Android
 
@@ -59,7 +59,7 @@ Detaliile de proiectare și de implementare sunt prezentate în lucrarea de dipl
 
 ---
 
-## Structura depozitului
+## Structura repository-ului
 
 ```
 Assets/
@@ -85,20 +85,20 @@ Packages/                     dependențele gestionate de motor
 ProjectSettings/              configurația proiectului
 ```
 
-Depozitul conține **exclusiv cod sursă și resurse**. Directoarele generate de motor (`Library/`, `Temp/`, `obj/`, `Logs/`) și fișierele binare compilate (`.apk`, `.aab`) sunt excluse prin `.gitignore`, conform cerințelor de predare.
+Repository-ul este **public** și conține **exclusiv cod sursă și resurse**. Directoarele generate de motor (`Library/`, `Temp/`, `obj/`, `Logs/`) și fișierele binare compilate (`.apk`, `.aab`) sunt excluse prin `.gitignore`, conform cerințelor de predare.
 
 ---
 
 ## Deschiderea proiectului
 
 ```bash
-git clone <adresa-depozitului>
+git clone https://github.com/BeelzeBut/spacecraft-divine.git
 cd spacecraft-divine
 ```
 
 1. Se deschide Unity Hub → **Add** → se selectează directorul clonat.
 2. Se deschide proiectul cu Unity **2022.3.14f1**.
-3. **Prima deschidere durează 10–20 de minute.** Motorul importă peste 700 de prefabricate și aproximativ 570 de imagini și reconstruiește directorul `Library/`, care nu este inclus în depozit. Acest comportament este normal.
+3. **Prima deschidere durează 10–20 de minute.** Motorul importă peste 700 de prefabricate și aproximativ 570 de imagini și reconstruiește directorul `Library/`, care nu este inclus în repository. Acest comportament este normal.
 4. Se verifică platforma țintă: **File → Build Settings → Android → Switch Platform**.
 
 ### Rulare în editor
@@ -168,7 +168,7 @@ Traseele calculate de algoritmul A\* și grila de navigație pot fi inspectate d
 
 4. **Build** → se generează un fișier `.apk`
 
-> **Semnare.** Certificatul de semnare (`user.keystore`) **nu este inclus în depozit**, din motive de securitate. Pentru o compilare de test nu este necesar: se dezactivează *Custom Keystore* din **Player Settings → Publishing Settings**, iar motorul va folosi certificatul implicit de depanare.
+> **Semnare.** Certificatul de semnare (`user.keystore`) **nu este inclus în repository**, din motive de securitate. Pentru o compilare de test nu este necesar: se dezactivează *Custom Keystore* din **Player Settings → Publishing Settings**, iar motorul va folosi certificatul implicit de depanare.
 
 ---
 
@@ -223,7 +223,7 @@ Toate celelalte sisteme — generarea procedurală, navigația, inteligența art
 
 ## Note și limitări cunoscute
 
-- **Formularul de reacții** (`Assets/Scripts/Emailer.cs`) necesită un fișier de configurare `Assets/Resources/smtp_config.json`, care nu este inclus în depozit. În absența lui, formularul se deschide și validează datele introduse, dar nu trimite mesajul. Un model se află în `smtp_config.example.json`.
+- **Formularul de reacții** (`Assets/Scripts/Emailer.cs`) necesită un fișier de configurare `Assets/Resources/smtp_config.json`, care nu este inclus în repository. În absența lui, formularul se deschide și validează datele introduse, dar nu trimite mesajul. Un model se află în `smtp_config.example.json`.
 - **Reclamele sunt dezactivate** în versiunea curentă a codului, ca urmare a modificărilor de interfață apărute la actualizarea bibliotecii.
 - **Achizițiile din aplicație** sunt implementate, dar necesită produse configurate în consola magazinului pentru a funcționa.
 - Aplicația **nu mai este disponibilă în Google Play**; a fost retrasă în aprilie 2024 pentru neactualizarea versiunii țintă a interfeței de programare Android.
