@@ -1378,22 +1378,26 @@ namespace SpaceshipDivine.Save
     /// </summary>
     public static class LegacyShipIdMap
     {
+        // VERIFIED against Assets/Scenes/Main Menu.unity by resolving each GUID in the
+        // MainMenu.shipPrefabs list against Assets/Prefabs/Spaceships/*.asset.meta.
+        // The list has THIRTEEN entries. "Grey Byrd Tutorial" is NOT among them — the tutorial
+        // ship is wired separately via MainMenu.tutorialSpaceship and never had a legacy
+        // unlock slot, so it must not occupy an index here.
         private static readonly string[] Ids =
         {
-            "grey_byrd_tutorial",  // 0
-            "grey_byrd",           // 1
-            "apollo",              // 2
-            "the_argon",           // 3
-            "razor",               // 4
-            "hot_talon",           // 5
-            "white_ripper",        // 6
-            "the_reaper",          // 7
-            "lunar_hunter",        // 8
-            "valiant",             // 9
-            "bat_oh_no",           // 10
-            "vickers",             // 11
-            "warspite",            // 12
-            "bubu"                 // 13
+            "grey_byrd",     // 0  27c0263b4d59ef2489cb62da820c9f33
+            "bubu",          // 1  00dd20958b9497147a306918719b3ade
+            "apollo",        // 2  4297aeb2bf96181479f04cc36288c229
+            "the_argon",     // 3  45559cab4220c264b9aedd8466983f84
+            "razor",         // 4  d366614ab075f4a41b2d09d802ad20aa
+            "the_reaper",    // 5  4991013b8b1c3d44fa765fbf01df26c3
+            "white_ripper",  // 6  def49075bb8b58c45a94a8a59cabcbd6
+            "hot_talon",     // 7  2ad70c9b0559d3d41b38be7a1049e1e6
+            "bat_oh_no",     // 8  9260bbe633176f444a7505ebb80d6f2e
+            "vickers",       // 9  9944449e84daae44386148c4777a88d7
+            "lunar_hunter",  // 10 176a5860253b5e64fae305a41696c024
+            "warspite",      // 11 1d770370d0a8cc54e8c0e8c7c06c3fae
+            "valiant"        // 12 ebb4091916dade740ad50925ec0f42aa
         };
 
         public static int Count => Ids.Length;
@@ -2192,10 +2196,12 @@ with:
                 // player who cannot select it is soft-locked.
                 for (int i = 0; i < mainMenu.shipPrefabs.Count; i++)
                 {
+                    // Note: "grey_byrd_tutorial" is deliberately absent from shipPrefabs —
+                    // the tutorial ship is wired via MainMenu.tutorialSpaceship, so it needs
+                    // no entry here and cannot soft-lock a new player.
                     string id = mainMenu.shipPrefabs[i].shipId;
-                    dataSaved.isUnlocked[i] = System.Array.IndexOf(
-                        SpaceshipDivine.Save.PlayerProfile.StarterShipIds, id) >= 0
-                        || id == "grey_byrd_tutorial";
+                    dataSaved.isUnlocked[i] =
+                        SpaceshipDivine.Save.PlayerProfile.IsStarterShip(id);
                 }
 ```
 
