@@ -1761,19 +1761,29 @@ git commit -m "Salvare: fatada SaveService cu migrare unica la prima pornire"
 
 ---
 
-### Task 7: Stable ship IDs on the ScriptableObjects
+### Task 7: Headless asset automation harness + stable ship IDs
+
+Every ship-data change in this plan goes through a Unity Editor script run headless, not through
+`sed` on the `.asset` YAML. `SerializedObject` cannot emit malformed YAML, each entry point
+verifies its own result, and a mismatch exits non-zero so the step can be trusted from a script.
 
 **Files:**
+- Create: `Assets/Editor/SdAutomation.cs`
 - Modify: `Assets/Scripts/Spaceships/Spaceship.cs`
-- Modify: all 14 files in `Assets/Prefabs/Spaceships/*.asset`
+- Modify (via the tool, not by hand): all 14 files in `Assets/Prefabs/Spaceships/*.asset`
 
 **Interfaces:**
-- Consumes: `LegacyShipIdMap` (Task 5) for the ID vocabulary.
-- Produces: `Spaceship.shipId` — a `public string` matching the IDs in `LegacyShipIdMap`.
+- Consumes: the ID vocabulary from `LegacyShipIdMap` (Task 5).
+- Produces:
+  - `Spaceship.shipId` — `public string`
+  - `SdAutomation.Ships` — the single source of truth table (id, price, unlocked) for Tasks 8 and 9
+  - `SdAutomation.AssignShipIds()` — batchmode entry point
+  - `SdAutomation.VerifyShipIds()` — batchmode entry point, exits 1 on any mismatch
+  - `SdAutomation.LoadAllShips()` — helper reused by later entry points
 
-- [ ] **Step 1: Add the field**
+- [ ] **Step 1: Add the shipId field**
 
-In `Assets/Scripts/Spaceships/Spaceship.cs`, immediately after the `[Header("General")]` block's opening, add:
+In `Assets/Scripts/Spaceships/Spaceship.cs`, directly under the `[Header("General")]` line, add:
 
 ```csharp
     [Tooltip("Stable identifier used by the save system. NEVER change this for a shipped " +
@@ -1781,114 +1791,303 @@ In `Assets/Scripts/Spaceships/Spaceship.cs`, immediately after the `[Header("Gen
     public string shipId;
 ```
 
-- [ ] **Step 2: Populate every ship asset**
+- [ ] **Step 2: Write the automation harness**
 
-```bash
-cd "Assets/Prefabs/Spaceships"
-# BSD sed (macOS) does not expand \n in a replacement, so use perl for the insert.
-set_id() { grep -q "^  shipId:" "$1.asset" || perl -0pi -e "s/^  level: /  shipId: $2\n  level: /m" "$1.asset"; }
-set_id "Grey Byrd Tutorial" grey_byrd_tutorial
-set_id "Grey Byrd"          grey_byrd
-set_id "Apollo"             apollo
-set_id "The Argon"          the_argon
-set_id "Razor"              razor
-set_id "Hot Talon"          hot_talon
-set_id "White Ripper"       white_ripper
-set_id "The Reaper"         the_reaper
-set_id "Lunar Hunter"       lunar_hunter
-set_id "Valiant"            valiant
-set_id "Bat-Oh-No"          bat_oh_no
-set_id "Vickers"            vickers
-set_id "Warspite"           warspite
-set_id "Bubu"               bubu
-cd -
+`Assets/Editor/SdAutomation.cs`:
+
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+
+/// <summary>
+/// Headless asset surgery for ship ScriptableObjects.
+///
+/// Run:
+///   Unity -batchmode -quit -projectPath . -executeMethod SdAutomation.AssignShipIds -logFile -
+///
+/// Every entry point verifies its own result and calls EditorApplication.Exit with a non-zero
+/// code on mismatch, so a caller can trust the exit status. Editing the YAML directly with sed
+/// is forbidden: it cannot validate, and a bad replacement silently corrupts an asset.
+/// </summary>
+public static class SdAutomation
+{
+    public class ShipSpec
+    {
+        public string assetName;
+        public string shipId;
+        public float price;     // priceToUnlock
+        public bool unlocked;   // isUnlocked on a fresh install
+    }
+
+    /// <summary>
+    /// Single source of truth for ship data. Order matches MainMenu.shipPrefabs, which is also
+    /// the order LegacyShipIdMap depends on for save migration — do not reorder.
+    ///
+    /// price for grey_byrd_tutorial / grey_byrd is a real price of 0 (free starters).
+    /// price for vickers / warspite / bubu is NOT a price: priceToUnlock is overloaded as a
+    /// "blueprint collected" boolean for in-game unlock ships, so 0 means "not yet collected",
+    /// which is the only correct value for a shipped asset.
+    /// price for bat_oh_no is a real-money price in EUR, not gems.
+    /// </summary>
+    public static readonly ShipSpec[] Ships =
+    {
+        new ShipSpec { assetName = "Grey Byrd Tutorial", shipId = "grey_byrd_tutorial", price = 0f,    unlocked = true  },
+        new ShipSpec { assetName = "Grey Byrd",          shipId = "grey_byrd",          price = 0f,    unlocked = true  },
+        new ShipSpec { assetName = "Apollo",             shipId = "apollo",             price = 500f,  unlocked = true  },
+        new ShipSpec { assetName = "The Argon",          shipId = "the_argon",          price = 650f,  unlocked = true  },
+        new ShipSpec { assetName = "Razor",              shipId = "razor",              price = 1000f, unlocked = false },
+        new ShipSpec { assetName = "Hot Talon",          shipId = "hot_talon",          price = 2000f, unlocked = false },
+        new ShipSpec { assetName = "White Ripper",       shipId = "white_ripper",       price = 2250f, unlocked = false },
+        new ShipSpec { assetName = "The Reaper",         shipId = "the_reaper",         price = 2600f, unlocked = false },
+        new ShipSpec { assetName = "Lunar Hunter",       shipId = "lunar_hunter",       price = 3900f, unlocked = false },
+        new ShipSpec { assetName = "Valiant",            shipId = "valiant",            price = 4500f, unlocked = false },
+        new ShipSpec { assetName = "Bat-Oh-No",          shipId = "bat_oh_no",          price = 9.99f, unlocked = false },
+        new ShipSpec { assetName = "Vickers",            shipId = "vickers",            price = 0f,    unlocked = false },
+        new ShipSpec { assetName = "Warspite",           shipId = "warspite",           price = 0f,    unlocked = false },
+        new ShipSpec { assetName = "Bubu",               shipId = "bubu",               price = 0f,    unlocked = false },
+    };
+
+    /// <summary>Loads every Spaceship asset, keyed by asset file name.</summary>
+    public static Dictionary<string, Spaceship> LoadAllShips()
+    {
+        var byName = new Dictionary<string, Spaceship>();
+        foreach (string guid in AssetDatabase.FindAssets("t:Spaceship"))
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            if (!path.StartsWith("Assets/Prefabs/Spaceships/")) continue;
+
+            var ship = AssetDatabase.LoadAssetAtPath<Spaceship>(path);
+            if (ship == null) continue;
+
+            string name = System.IO.Path.GetFileNameWithoutExtension(path);
+            byName[name] = ship;
+        }
+        return byName;
+    }
+
+    /// <summary>Resolves the spec table against the assets on disk, reporting anything missing.</summary>
+    private static bool Resolve(out Dictionary<string, Spaceship> ships, out List<string> problems)
+    {
+        ships = LoadAllShips();
+        problems = new List<string>();
+
+        foreach (ShipSpec spec in Ships)
+            if (!ships.ContainsKey(spec.assetName))
+                problems.Add("MISSING ASSET: " + spec.assetName);
+
+        var known = new HashSet<string>(Ships.Select(s => s.assetName));
+        foreach (string name in ships.Keys)
+            if (!known.Contains(name))
+                problems.Add("UNKNOWN ASSET not in spec table: " + name);
+
+        return problems.Count == 0;
+    }
+
+    private static void Finish(string label, List<string> problems)
+    {
+        if (problems.Count == 0)
+        {
+            Debug.Log(label + ": OK");
+            EditorApplication.Exit(0);
+            return;
+        }
+        foreach (string p in problems) Debug.LogError(label + ": " + p);
+        EditorApplication.Exit(1);
+    }
+
+    // ---- Task 7 -----------------------------------------------------------------
+
+    public static void AssignShipIds()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("AssignShipIds", problems); return; }
+
+        foreach (ShipSpec spec in Ships)
+        {
+            var so = new SerializedObject(ships[spec.assetName]);
+            so.FindProperty("shipId").stringValue = spec.shipId;
+            so.ApplyModifiedPropertiesWithoutUndo();
+        }
+        AssetDatabase.SaveAssets();
+
+        VerifyIdsInto(problems, LoadAllShips());
+        Finish("AssignShipIds", problems);
+    }
+
+    public static void VerifyShipIds()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("VerifyShipIds", problems); return; }
+        VerifyIdsInto(problems, ships);
+        Finish("VerifyShipIds", problems);
+    }
+
+    private static void VerifyIdsInto(List<string> problems, Dictionary<string, Spaceship> ships)
+    {
+        var seen = new HashSet<string>();
+        foreach (ShipSpec spec in Ships)
+        {
+            if (!ships.TryGetValue(spec.assetName, out Spaceship ship)) continue;
+
+            if (ship.shipId != spec.shipId)
+                problems.Add(spec.assetName + ": shipId is '" + ship.shipId + "', expected '" + spec.shipId + "'");
+            else if (!seen.Add(ship.shipId))
+                problems.Add(spec.assetName + ": duplicate shipId '" + ship.shipId + "'");
+
+            Debug.Log(spec.assetName.PadRight(22) + " shipId=" + ship.shipId);
+        }
+    }
+}
 ```
 
-- [ ] **Step 3: Verify every ship got an ID**
+- [ ] **Step 3: Assign the IDs headlessly**
+
+```bash
+cd /Users/bugamarco/Documents/GitHub/spacecraft-divine
+pgrep -fl "Unity.app/Contents/MacOS/Unity" && echo "KILL THE EDITOR FIRST" && exit 1
+"/Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity" \
+  -batchmode -quit -projectPath "$(pwd)" \
+  -executeMethod SdAutomation.AssignShipIds -logFile - 2>&1 | tail -30
+echo "EXIT=$?"
+```
+
+Expected: 14 lines each showing a non-empty `shipId`, then `AssignShipIds: OK`, `EXIT=0`.
+
+- [ ] **Step 4: Verify independently**
+
+```bash
+"/Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity" \
+  -batchmode -quit -projectPath "$(pwd)" \
+  -executeMethod SdAutomation.VerifyShipIds -logFile - 2>&1 | tail -20
+echo "EXIT=$?"
+```
+
+Expected: `VerifyShipIds: OK`, `EXIT=0`.
+
+Also confirm the YAML is well-formed — this is what the old `sed` approach could silently break:
 
 ```bash
 cd "Assets/Prefabs/Spaceships"
 for f in *.asset; do printf "%-22s" "${f%.asset}"; grep -m1 "^  shipId:" "$f" || echo "*** MISSING ***"; done
+grep -l '\\n' *.asset && echo "*** LITERAL BACKSLASH-N FOUND — CORRUPT ***" || echo "no literal \\n — YAML clean"
 cd -
 ```
 
-Expected: 14 lines, each with a non-empty `shipId`, no `MISSING`.
-
-- [ ] **Step 4: Confirm the project still compiles**
+- [ ] **Step 5: Confirm the test suite still passes**
 
 Run: `./run-tests.sh`
-Expected: `=== total=34 passed=34 failed=0 ===` (no new tests; this confirms nothing broke)
+Expected: `=== total=34 passed=34 failed=0 ===`
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
-git add Assets/Scripts/Spaceships/Spaceship.cs "Assets/Prefabs/Spaceships"
-git commit -m "Nave: identificator stabil shipId pe fiecare resursa de nava"
+git add Assets/Editor/SdAutomation.cs Assets/Editor/SdAutomation.cs.meta \
+        Assets/Scripts/Spaceships/Spaceship.cs "Assets/Prefabs/Spaceships"
+git commit -m "Nave: unealta de automatizare in editor si identificator stabil shipId"
 ```
 
 ---
 
 ### Task 8: Ship pricing — 35% reduction
 
-Done before the gate is switched on, so the gate is never live at the old prices.
+Applied before the gate is switched on, so the gate is never live at the old prices.
 
 **Files:**
-- Modify: 8 files in `Assets/Prefabs/Spaceships/*.asset`
+- Modify: `Assets/Editor/SdAutomation.cs` (add one entry point)
+- Modify (via the tool): 9 files in `Assets/Prefabs/Spaceships/*.asset`
 
 **Interfaces:**
-- Consumes: nothing.
-- Produces: nothing consumed by later tasks — these are data values.
+- Consumes: `SdAutomation.Ships`, `SdAutomation.LoadAllShips()`, `Resolve`, `Finish` (Task 7).
+- Produces: `SdAutomation.ApplyShipPrices()`, `SdAutomation.VerifyShipPrices()`.
 
-- [ ] **Step 1: Apply the new prices**
+The prices are already in the `Ships` table from Task 7. This task applies them.
 
-```bash
-cd "Assets/Prefabs/Spaceships"
-setprice() { sed -i '' "s/^  priceToUnlock: .*/  priceToUnlock: $2/" "$1.asset"; }
-setprice "Apollo"        500
-setprice "The Argon"     650
-setprice "Razor"         1000
-setprice "Hot Talon"     2000
-setprice "White Ripper"  2250
-setprice "The Reaper"    2600
-setprice "Lunar Hunter"  3900
-setprice "Valiant"       4500
-cd -
+| Ship | Old | New | Cut |
+|---|---:|---:|---:|
+| Apollo | 750 | **500** | 33.3% |
+| The Argon | 1000 | **650** | 35.0% |
+| Razor | 1500 | **1000** | 33.3% |
+| Hot Talon | 3000 | **2000** | 33.3% |
+| White Ripper | 3500 | **2250** | 35.7% |
+| The Reaper | 4000 | **2600** | 35.0% |
+| Lunar Hunter | 6000 | **3900** | 35.0% |
+| Valiant | 7000 | **4500** | 35.7% |
+
+Mean reduction 34.6%. `Bat-Oh-No` stays at 9.99 (real money, not gems).
+
+**Bubu also changes here, and it is not a price change.** `Bubu.asset` ships with
+`priceToUnlock: 1`, which in this codebase means "blueprint already collected" — so Bubu is
+claimable free from a brand-new save without ever finding its rare chest drop. The table sets it
+to 0, matching Vickers and Warspite.
+
+- [ ] **Step 1: Add the price entry points**
+
+Append inside the `SdAutomation` class, after `VerifyIdsInto`:
+
+```csharp
+    // ---- Task 8 -----------------------------------------------------------------
+
+    public static void ApplyShipPrices()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("ApplyShipPrices", problems); return; }
+
+        foreach (ShipSpec spec in Ships)
+        {
+            var so = new SerializedObject(ships[spec.assetName]);
+            so.FindProperty("priceToUnlock").floatValue = spec.price;
+            so.ApplyModifiedPropertiesWithoutUndo();
+        }
+        AssetDatabase.SaveAssets();
+
+        VerifyPricesInto(problems, LoadAllShips());
+        Finish("ApplyShipPrices", problems);
+    }
+
+    public static void VerifyShipPrices()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("VerifyShipPrices", problems); return; }
+        VerifyPricesInto(problems, ships);
+        Finish("VerifyShipPrices", problems);
+    }
+
+    private static void VerifyPricesInto(List<string> problems, Dictionary<string, Spaceship> ships)
+    {
+        foreach (ShipSpec spec in Ships)
+        {
+            if (!ships.TryGetValue(spec.assetName, out Spaceship ship)) continue;
+
+            if (Mathf.Abs(ship.priceToUnlock - spec.price) > 0.001f)
+                problems.Add(spec.assetName + ": priceToUnlock is " + ship.priceToUnlock +
+                             ", expected " + spec.price);
+
+            Debug.Log(spec.assetName.PadRight(22) + " priceToUnlock=" + ship.priceToUnlock);
+        }
+    }
 ```
 
-`Bat-Oh-No` (€9.99, real money) and the three in-game unlock ships are deliberately untouched.
-
-- [ ] **Step 2: Verify the new prices**
+- [ ] **Step 2: Apply and verify**
 
 ```bash
-cd "Assets/Prefabs/Spaceships"
-for f in *.asset; do printf "%-22s" "${f%.asset}"; grep -m1 "^  priceToUnlock:" "$f"; done
-cd -
+cd /Users/bugamarco/Documents/GitHub/spacecraft-divine
+U="/Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity"
+"$U" -batchmode -quit -projectPath "$(pwd)" -executeMethod SdAutomation.ApplyShipPrices -logFile - 2>&1 | tail -25
+echo "EXIT=$?"
+"$U" -batchmode -quit -projectPath "$(pwd)" -executeMethod SdAutomation.VerifyShipPrices -logFile - 2>&1 | tail -20
+echo "EXIT=$?"
 ```
 
-Expected, exactly:
+Expected: both `OK` with `EXIT=0`, and the logged table matching the table above with Bubu at 0.
 
-| Ship | priceToUnlock |
-|---|---|
-| Apollo | 500 |
-| Bat-Oh-No | 9.99 |
-| Bubu | 1 |
-| Grey Byrd | 0 |
-| Grey Byrd Tutorial | 0 |
-| Hot Talon | 2000 |
-| Lunar Hunter | 3900 |
-| Razor | 1000 |
-| The Argon | 650 |
-| The Reaper | 2600 |
-| Valiant | 4500 |
-| Vickers | 0 |
-| Warspite | 0 |
-| White Ripper | 2250 |
+- [ ] **Step 3: Confirm the test suite still passes**
 
-- [ ] **Step 3: Commit**
+Run: `./run-tests.sh`
+Expected: `=== total=34 passed=34 failed=0 ===`
+
+- [ ] **Step 4: Commit**
 
 ```bash
-git add "Assets/Prefabs/Spaceships"
-git commit -m "Economie: preturi de deblocare reduse cu aproximativ 35%"
+git add Assets/Editor/SdAutomation.cs "Assets/Prefabs/Spaceships"
+git commit -m "Economie: preturi de deblocare reduse cu aproximativ 35%; Bubu fara plan precolectat"
 ```
 
 ---
@@ -1896,35 +2095,82 @@ git commit -m "Economie: preturi de deblocare reduse cu aproximativ 35%"
 ### Task 9: Activate the progression gate
 
 **Files:**
-- Modify: 11 files in `Assets/Prefabs/Spaceships/*.asset` (`isUnlocked: 1` → `0`)
-- Modify: `Assets/Scripts/Object Managers/DataHolder.cs:113-116`
+- Modify: `Assets/Editor/SdAutomation.cs` (add one entry point)
+- Modify (via the tool): 10 files in `Assets/Prefabs/Spaceships/*.asset`
+- Modify: `Assets/Scripts/Object Managers/DataHolder.cs` (the `Load()` blanket-unlock loop)
 
 **Interfaces:**
-- Consumes: `PlayerProfile.StarterShipIds` (Task 3); `Spaceship.shipId` (Task 7).
-- Produces: nothing consumed by later tasks.
+- Consumes: `SdAutomation.Ships` (Task 7); `Spaceship.shipId` (Task 7); `PlayerProfile.StarterShipIds` (Task 3).
+- Produces: `SdAutomation.ApplyUnlockGate()`, `SdAutomation.VerifyUnlockGate()`.
 
-- [ ] **Step 1: Lock every non-starter ship asset**
+Exactly four assets stay unlocked: `Grey Byrd`, `Grey Byrd Tutorial`, `Apollo`, `The Argon`.
+The tutorial ship is included because the tutorial forces it; a new player who cannot select it
+is soft-locked. It is deliberately not in `PlayerProfile.StarterShipIds`, which means "ships a
+player may choose".
 
-```bash
-cd "Assets/Prefabs/Spaceships"
-lock() { sed -i '' "s/^  isUnlocked: 1/  isUnlocked: 0/" "$1.asset"; }
-lock "Razor"; lock "Hot Talon"; lock "White Ripper"; lock "The Reaper"
-lock "Lunar Hunter"; lock "Valiant"; lock "Bat-Oh-No"
-lock "Vickers"; lock "Warspite"; lock "Bubu"
-cd -
+- [ ] **Step 1: Add the gate entry points**
+
+Append inside the `SdAutomation` class:
+
+```csharp
+    // ---- Task 9 -----------------------------------------------------------------
+
+    public static void ApplyUnlockGate()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("ApplyUnlockGate", problems); return; }
+
+        foreach (ShipSpec spec in Ships)
+        {
+            var so = new SerializedObject(ships[spec.assetName]);
+            so.FindProperty("isUnlocked").boolValue = spec.unlocked;
+            so.ApplyModifiedPropertiesWithoutUndo();
+        }
+        AssetDatabase.SaveAssets();
+
+        VerifyGateInto(problems, LoadAllShips());
+        Finish("ApplyUnlockGate", problems);
+    }
+
+    public static void VerifyUnlockGate()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("VerifyUnlockGate", problems); return; }
+        VerifyGateInto(problems, ships);
+        Finish("VerifyUnlockGate", problems);
+    }
+
+    private static void VerifyGateInto(List<string> problems, Dictionary<string, Spaceship> ships)
+    {
+        int unlockedCount = 0;
+        foreach (ShipSpec spec in Ships)
+        {
+            if (!ships.TryGetValue(spec.assetName, out Spaceship ship)) continue;
+
+            if (ship.isUnlocked != spec.unlocked)
+                problems.Add(spec.assetName + ": isUnlocked is " + ship.isUnlocked +
+                             ", expected " + spec.unlocked);
+            if (ship.isUnlocked) unlockedCount++;
+
+            Debug.Log(spec.assetName.PadRight(22) + " isUnlocked=" + ship.isUnlocked);
+        }
+
+        if (unlockedCount != 4)
+            problems.Add("expected exactly 4 unlocked ships on a fresh install, found " + unlockedCount);
+    }
 ```
 
-`Grey Byrd`, `Apollo` and `The Argon` stay `isUnlocked: 1`. `Grey Byrd Tutorial` also stays unlocked — the tutorial forces it and would soft-lock a new player otherwise.
-
-- [ ] **Step 2: Verify exactly four assets remain unlocked**
+- [ ] **Step 2: Apply and verify**
 
 ```bash
-cd "Assets/Prefabs/Spaceships"
-for f in *.asset; do printf "%-22s" "${f%.asset}"; grep -m1 "^  isUnlocked:" "$f"; done
-cd -
+cd /Users/bugamarco/Documents/GitHub/spacecraft-divine
+U="/Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity"
+"$U" -batchmode -quit -projectPath "$(pwd)" -executeMethod SdAutomation.ApplyUnlockGate -logFile - 2>&1 | tail -25
+echo "EXIT=$?"
+"$U" -batchmode -quit -projectPath "$(pwd)" -executeMethod SdAutomation.VerifyUnlockGate -logFile - 2>&1 | tail -20
+echo "EXIT=$?"
 ```
 
-Expected: `isUnlocked: 1` on exactly `Apollo`, `Grey Byrd`, `Grey Byrd Tutorial`, `The Argon`. All ten others `isUnlocked: 0`.
+Expected: both `OK` with `EXIT=0`; `isUnlocked=True` on exactly Grey Byrd, Grey Byrd Tutorial,
+Apollo and The Argon.
 
 - [ ] **Step 3: Remove the blanket unlock loop**
 
@@ -1942,6 +2188,8 @@ with:
                 dataSaved = new SaveData();
                 // Only the starter ships begin unlocked. Everything else is earned or bought.
                 // Existing players keep what they had — see MigrationV0ToV1.
+                // grey_byrd_tutorial is included because the tutorial forces that ship; a new
+                // player who cannot select it is soft-locked.
                 for (int i = 0; i < mainMenu.shipPrefabs.Count; i++)
                 {
                     string id = mainMenu.shipPrefabs[i].shipId;
@@ -1951,7 +2199,7 @@ with:
                 }
 ```
 
-- [ ] **Step 4: Confirm compilation and that tests still pass**
+- [ ] **Step 4: Confirm the test suite still passes**
 
 Run: `./run-tests.sh`
 Expected: `=== total=34 passed=34 failed=0 ===`
@@ -1959,7 +2207,7 @@ Expected: `=== total=34 passed=34 failed=0 ===`
 - [ ] **Step 5: Commit**
 
 ```bash
-git add "Assets/Prefabs/Spaceships" "Assets/Scripts/Object Managers/DataHolder.cs"
+git add Assets/Editor/SdAutomation.cs "Assets/Prefabs/Spaceships" "Assets/Scripts/Object Managers/DataHolder.cs"
 git commit -m "Progresie: activarea blocarii navelor, doar cele initiale deblocate"
 ```
 
@@ -2070,10 +2318,11 @@ git commit -m "Achizitii: navele contra cost nu se mai acorda gratuit la apasare
 
 ---
 
-### Task 11: Correct the blueprint flags and document the overloading
+### Task 11: Verify the blueprint path and document the overloading
 
-The in-game unlock system already works end to end. This task fixes the one asset that
-ships with a blueprint pre-collected, and leaves a note so the `priceToUnlock` overloading
+The in-game unlock system already works end to end. Bubu's pre-collected blueprint flag is
+fixed in Task 8 (it lives in the `SdAutomation.Ships` table). This task confirms the three
+unlock conditions are actually reachable, and leaves a note so the `priceToUnlock` overloading
 is retired deliberately rather than discovered again.
 
 **Vickers** (`This blueprint is obtained by destroying the first boss`) — `Enemy.cs:384`
@@ -2085,7 +2334,6 @@ sets `GameManager.shouldDropBossBlueprint`, `RoomChest` spawns `bossBlueprint`. 
 No tracker is needed and none should be written.
 
 **Files:**
-- Modify: `Assets/Prefabs/Spaceships/Bubu.asset`
 - Modify: `Assets/Scripts/Collectibles/Blueprint.cs`
 
 **Interfaces:**
@@ -2105,23 +2353,7 @@ Expected: boss-blueprint flag set in `Enemy.cs` and consumed in `RoomChest.cs`; 
 drop loop present; random drop lists present. If any is missing, stop and report — the
 instruction text would then be promising something the game cannot deliver.
 
-- [ ] **Step 2: Clear Bubu's pre-collected blueprint flag**
-
-`Bubu.asset` ships with `priceToUnlock: 1`, which in this codebase means "blueprint already
-collected". That makes Bubu claimable for free from a brand-new save, bypassing its rare
-chest drop entirely. The other two in-game ships correctly ship at `0`.
-
-```bash
-cd /Users/bugamarco/Documents/GitHub/spacecraft-divine
-sed -i '' "s/^  priceToUnlock: 1$/  priceToUnlock: 0/" "Assets/Prefabs/Spaceships/Bubu.asset"
-for f in Bubu Vickers Warspite; do
-  printf "%-10s" "$f"; grep -m1 "^  priceToUnlock:" "Assets/Prefabs/Spaceships/$f.asset"
-done
-```
-
-Expected: all three report `priceToUnlock: 0`.
-
-- [ ] **Step 3: Document the overloading at its source**
+- [ ] **Step 2: Document the overloading at its source**
 
 In `Assets/Scripts/Collectibles/Blueprint.cs`, replace the body of `UnlockCollectible()`:
 
@@ -2152,16 +2384,27 @@ with:
     }
 ```
 
-- [ ] **Step 4: Confirm nothing broke**
+- [ ] **Step 3: Confirm nothing broke**
 
 Run: `./run-tests.sh`
 Expected: `=== total=34 passed=34 failed=0 ===`
 
+- [ ] **Step 4: Verify Bubu's flag was already corrected in Task 8**
+
+```bash
+cd "Assets/Prefabs/Spaceships"
+for f in Bubu Vickers Warspite; do printf "%-10s" "$f"; grep -m1 "^  priceToUnlock:" "$f.asset"; done
+cd -
+```
+
+Expected: all three report `priceToUnlock: 0`. If Bubu is not 0, Task 8 did not apply — stop
+and report rather than fixing it here.
+
 - [ ] **Step 5: Commit**
 
 ```bash
-git add "Assets/Prefabs/Spaceships/Bubu.asset" Assets/Scripts/Collectibles/Blueprint.cs
-git commit -m "Progresie: Bubu nu mai porneste cu planul deja colectat"
+git add Assets/Scripts/Collectibles/Blueprint.cs
+git commit -m "Documentare: priceToUnlock folosit ca indicator de plan colectat"
 ```
 
 ---
