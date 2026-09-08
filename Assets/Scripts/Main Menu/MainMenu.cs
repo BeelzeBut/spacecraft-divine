@@ -593,11 +593,16 @@ public class MainMenu : MonoBehaviour
             }
         } else if(shipPrefabs[infoMenuTrackedShip].canBeBoughtWithCurrency)
         {
-            SoundManager.instance.soundSource.PlayOneShot(SoundManager.instance.UISounds[0]);
-            shipPrefabs[infoMenuTrackedShip].isUnlocked = true;
-            data.dataSaved.isUnlocked[infoMenuTrackedShip] = true;
-            data.Save();
-            data.Load();
+            // Real-money ship. The grant happens only in GrantShipAfterPurchase, called from
+            // IAPManager.ProcessPurchase once the store confirms. Never grant here.
+            if (IAPManager.instance == null)
+            {
+                Debug.LogWarning("UnlockShip: IAPManager.instance is null, cannot start purchase.");
+            }
+            else
+            {
+                IAPManager.instance.BuyShip(shipPrefabs[infoMenuTrackedShip].shipId);
+            }
         } else if(shipPrefabs[infoMenuTrackedShip].canBeUnlockedInGame)
         {
             if(shipPrefabs[infoMenuTrackedShip].priceToUnlock == 0)
@@ -616,6 +621,27 @@ public class MainMenu : MonoBehaviour
         }
         RefreshData();
         ShipsInformation(infoMenuTrackedShip);
+    }
+
+    /// <summary>
+    /// Called by IAPManager once a store purchase is confirmed. This is the ONLY path that
+    /// may grant a real-money ship.
+    /// </summary>
+    public void GrantShipAfterPurchase(string shipId)
+    {
+        for (int i = 0; i < shipPrefabs.Count; i++)
+        {
+            if (shipPrefabs[i].shipId != shipId) continue;
+
+            SoundManager.instance.soundSource.PlayOneShot(SoundManager.instance.UISounds[0]);
+            data.dataSaved.isUnlocked[i] = true;
+            data.Save();
+            data.Load();
+            RefreshData();
+            ShipsInformation(i);
+            return;
+        }
+        Debug.LogWarning("GrantShipAfterPurchase: unknown shipId " + shipId);
     }
 
     public void UpgradeShip()

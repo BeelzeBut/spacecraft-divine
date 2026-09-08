@@ -61,6 +61,15 @@ public class IAPManager : MonoBehaviour, IStoreListener
         BuyProductID(gems5000);
     }
 
+    /// <summary>
+    /// Starts a real-money ship purchase. Wired to store products in the IAP hardening plan;
+    /// until then it fails closed and grants nothing.
+    /// </summary>
+    public void BuyShip(string shipId)
+    {
+        Debug.LogWarning("BuyShip not yet wired to a store product: " + shipId);
+    }
+
 
     //Step 4 modify purchasing
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
