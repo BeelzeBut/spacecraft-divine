@@ -136,5 +136,61 @@ namespace SpaceshipDivine.Save.Tests
             foreach (bool f in flags) if (f) legacyCount++;
             Assert.GreaterOrEqual(p.unlockedShipIds.Count, legacyCount);
         }
+
+        [Test]
+        public void RunFromXmlReturnsNullWhenGameHasEnded()
+        {
+            var d = new LegacySaveDataV0 { gameHasEnded = true };
+            Assert.IsNull(MigrationV0ToV1.RunFromXml(LegacyXmlSerializer.ToXml(d)));
+        }
+
+        [Test]
+        public void RunFromXmlCarriesForwardLevelSubLevelAndRespawns()
+        {
+            int razorIndex = -1;
+            for (int i = 0; i < LegacyShipIdMap.Count; i++)
+                if (LegacyShipIdMap.IndexToId(i) == "razor") razorIndex = i;
+            Assert.AreNotEqual(-1, razorIndex, "razor missing from LegacyShipIdMap");
+
+            var d = new LegacySaveDataV0
+            {
+                gameHasEnded = false,
+                level = new[] { 2, 3 },
+                respawnsRemaining = 1,
+                orderNumber = razorIndex
+            };
+
+            RunState r = MigrationV0ToV1.RunFromXml(LegacyXmlSerializer.ToXml(d));
+
+            Assert.IsNotNull(r);
+            Assert.AreEqual(2, r.level);
+            Assert.AreEqual(3, r.subLevel);
+            Assert.AreEqual(1, r.respawnsRemaining);
+            Assert.AreEqual("razor", r.selectedShipId);
+            Assert.IsTrue(r.runInProgress);
+        }
+
+        [Test]
+        public void RunFromXmlYieldsEmptyShipIdForOutOfRangeOrderNumber()
+        {
+            var d = new LegacySaveDataV0
+            {
+                gameHasEnded = false,
+                orderNumber = 9999
+            };
+
+            RunState r = MigrationV0ToV1.RunFromXml(LegacyXmlSerializer.ToXml(d));
+
+            Assert.IsNotNull(r);
+            Assert.AreEqual("", r.selectedShipId);
+        }
+
+        [Test]
+        public void RunFromXmlOnGarbageOrNullReturnsNullRatherThanThrowing()
+        {
+            Assert.IsNull(MigrationV0ToV1.RunFromXml("not xml at all"));
+            Assert.IsNull(MigrationV0ToV1.RunFromXml(""));
+            Assert.IsNull(MigrationV0ToV1.RunFromXml(null));
+        }
     }
 }

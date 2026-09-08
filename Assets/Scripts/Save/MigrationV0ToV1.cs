@@ -86,6 +86,34 @@ namespace SpaceshipDivine.Save
             return p;
         }
 
+        /// <summary>
+        /// Migrates the in-progress run from a legacy save. Separate from FromXml because run
+        /// state and profile have different lifetimes: the profile persists, the run does not.
+        /// Returns null if the legacy save has no run in progress or cannot be read.
+        /// </summary>
+        public static RunState RunFromXml(string xml)
+        {
+            LegacySaveDataV0 legacy = Deserialize(xml);
+            if (legacy == null) return null;
+            if (legacy.gameHasEnded) return null;   // nothing in progress to carry
+
+            return new RunState
+            {
+                // selectedShipId resolves the legacy orderNumber (an index into
+                // MainMenu.shipPrefabs) via LegacyShipIdMap. An out-of-range index yields null
+                // from IndexToId, coalesced to "" rather than throwing.
+                selectedShipId = LegacyShipIdMap.IndexToId(legacy.orderNumber) ?? "",
+                level = legacy.level != null && legacy.level.Length > 0 ? legacy.level[0] : 1,
+                subLevel = legacy.level != null && legacy.level.Length > 1 ? legacy.level[1] : 1,
+                respawnsRemaining = legacy.respawnsRemaining,
+                enemiesKilled = legacy.enemiesKilled,
+                timeSinceGameStarted = legacy.timeSinceGameStarted,
+                abilityName = legacy.abilityName ?? "",
+                abilityLevel = legacy.abilityLevel,
+                runInProgress = true
+            };
+        }
+
         private static LegacySaveDataV0 Deserialize(string xml)
         {
             if (string.IsNullOrEmpty(xml)) return null;
