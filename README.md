@@ -215,7 +215,7 @@ Următoarele componente **nu** aparțin autorului și sunt utilizate ca dependen
 
 O parte din materialul grafic a fost achiziționată sau comandată unor ilustratori externi; biblioteca de dale din care sunt compuse camerele a fost realizată la comandă. Coloana sonoră a fost compusă de un membru al comunității de testare.
 
-**A\* Pathfinding Project** a fost utilizat experimental într-o etapă intermediară a dezvoltării și a fost **eliminat complet** din versiunea finală, fiind înlocuit de implementarea proprie din `Assets/Scripts/`.
+**A\* Pathfinding Project** a fost importat și evaluat într-o etapă intermediară a dezvoltării, dar **nu a fost niciodată folosit în joc**, și a fost eliminat complet din versiunea finală. Navigația este implementată integral în `Assets/Scripts/`.
 
 Toate celelalte sisteme — generarea procedurală, navigația, inteligența artificială a inamicilor, mecanicile de joc, progresia, interfața — sunt scrise integral de autor.
 
