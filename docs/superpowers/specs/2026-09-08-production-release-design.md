@@ -88,8 +88,9 @@ Two landmines in the commented code must not be reproduced:
 - `MainMenu.UnlockShip()`, `canBeBoughtWithCurrency` branch (line 594): sets
   `isUnlocked = true` and saves, **with no purchase call at all**. `Bat-Oh-No` is priced at
   €9.99 and is granted on tap.
-- Same function, `canBeUnlockedInGame` branch (line 601): when `priceToUnlock != 0` it also
-  grants the ship free. This affects `Bubu` (`priceToUnlock: 1`).
+- Same function, `canBeUnlockedInGame` branch (line 601): grants the ship free when
+  `priceToUnlock != 0`. This reads as the same bug but **is correct** — see §2.3. It is
+  blueprint redemption, and `priceToUnlock` is being used as a boolean there.
 - `IAPManager.InitPrices()` loops `for (i = 1; ...)` over `products.all` and hard-indexes
   `shop.priceTexts[i]`. It skips product 0 and depends on store return order.
 - `GooglePlayProductCatalog.csv` publishes a `gems10000` SKU that `ProcessPurchase` does not
@@ -115,8 +116,17 @@ The economy underneath is designed and intact: gem price tiers, star upgrades at
 `500 * 2^(level-1)` capped at level 5, three in-game unlock ships with instruction text,
 coins converted to gems at `coinsMultiplier = 3`, and 350 starting gems.
 
-However, the three in-game unlock ships (`Vickers`, `Warspite`, `Bubu`) only **display**
-instruction text. There is no condition tracking behind them — no code awards them.
+The three in-game unlock ships (`Vickers`, `Warspite`, `Bubu`) are served by a blueprint
+system that already works end to end: `Enemy.cs:384` flags a boss blueprint drop (Vickers),
+`Enemy.cs:396` drops blueprints at `DataHolder.killMilestones` (Warspite, at 1500 kills),
+and `RoomChest.randomDrops` handles rare drops (Bubu). `Blueprint.UnlockCollectible()`
+records the pickup in `hasBeenUnlocked[dropIndex]` and marks the ship claimable by setting
+`priceToUnlock = 1` — an overloading of a price field as a boolean, which the menu's
+`canBeUnlockedInGame` branch then redeems.
+
+Two defects sit on top of a working system: `Bubu.asset` ships with `priceToUnlock: 1`, so
+its blueprint counts as pre-collected on a brand-new save, and the overloading itself is
+undocumented at every site that touches it.
 
 ### 2.4 Save system: the largest structural problem
 
@@ -282,12 +292,16 @@ grandfather path), tamper rejection, backup fallback, and atomic-write-under-pro
   `DefaultProfile` factory that marks exactly the three starters unlocked.
 - `UnlockShip()`'s `canBeBoughtWithCurrency` branch calls IAP and grants the ship only on a
   successful purchase callback.
-- `UnlockShip()`'s `canBeUnlockedInGame` branch never grants the ship directly; it only
-  displays the condition.
-- **`UnlockConditionTracker`** — new. Reads lifetime stats from `PlayerProfile` and awards
-  `Vickers`, `Warspite` and `Bubu` when their conditions are met. Each condition is a small
-  serialisable descriptor (stat key, comparison, threshold) authored on the ship SO, so
-  conditions are data rather than code.
+- `UnlockShip()`'s `canBeUnlockedInGame` branch is **left exactly as it is**. It reads as the
+  same free-grant bug and is not one: it is blueprint redemption, and removing it would
+  strand every blueprint a player has earned.
+- `Bubu.asset`'s `priceToUnlock` corrected from `1` to `0`, so its blueprint must actually be
+  found.
+- The `priceToUnlock`-as-boolean overloading is documented at `Blueprint.UnlockCollectible()`.
+  `PlayerProfile.MarkBlueprintRedeemable()` replaces it when `DataHolder` is cut over to
+  `SaveService`; until then both representations must be kept in agreement.
+- Blueprint progress — both `hasBeenUnlocked[]` and the `priceToUnlock == 1` redemption flags
+  — is preserved by the v0→v1 migration. Discarding either would revoke earned content.
 
 ### 4.5 Ship pricing
 
@@ -388,7 +402,7 @@ Ordered by dependency. Phases 3–6 are largely independent of one another once 
 | 0 | Editor upgrade and dead-code removal | — | Blocks everything. Highest schedule risk; done first to surface surprises early |
 | 1 | Save rearchitecture and migration | 0 | Blocks the economy |
 | 2 | Analytics and crash reporting | 0 | Cheap; must precede tuning |
-| 3 | Progression gate and pricing | 1 | Includes `UnlockConditionTracker` |
+| 3 | Progression gate and pricing | 1 | Blueprint system already works; only the gate, prices and Bubu's flag change |
 | 4 | IAP hardening | 1 | |
 | 5 | Ads and consent | 0 | UMP gates SDK init |
 | 6 | Haptics and UI feedback | 0 | Fully independent — good work to interleave |
