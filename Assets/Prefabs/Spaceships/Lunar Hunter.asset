@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Lunar Hunter
   m_EditorClassIdentifier: 
+  shipId: lunar_hunter
   primarySound: {fileID: 8300000, guid: 9c3da6c27be362a419cbdfad4e730d43, type: 3}
   secondarySound: {fileID: 8300000, guid: 7f0bbb8785258c04c97c39e58ac2e68f, type: 3}
   level: 1

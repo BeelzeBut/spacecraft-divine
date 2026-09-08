@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Bat-Oh-No
   m_EditorClassIdentifier: 
+  shipId: bat_oh_no
   primarySound: {fileID: 8300000, guid: 72212e2a57ac3e643894e1653a8a3f18, type: 3}
   secondarySound: {fileID: 8300000, guid: 664825ccb671dd5499318f550955986a, type: 3}
   level: 1

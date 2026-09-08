@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Vickers
   m_EditorClassIdentifier: 
+  shipId: vickers
   primarySound: {fileID: 8300000, guid: 1af2c7d0ee712764d9a3eed54ee7b599, type: 3}
   secondarySound: {fileID: 8300000, guid: f69fc8df57decb04c9cc71dad5aef61b, type: 3}
   level: 1

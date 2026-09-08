@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Grey Byrd
   m_EditorClassIdentifier: 
+  shipId: grey_byrd
   primarySound: {fileID: 8300000, guid: 26117dace103d0341bcd5378afef2cc3, type: 3}
   secondarySound: {fileID: 8300000, guid: 01f2028585f8814478742db1ff9620c2, type: 3}
   level: 1

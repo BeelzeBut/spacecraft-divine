@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: The Reaper
   m_EditorClassIdentifier: 
+  shipId: the_reaper
   primarySound: {fileID: 8300000, guid: 9514e7e29d1802e4ebc16d97273349cf, type: 3}
   secondarySound: {fileID: 8300000, guid: b8dd626742b923b4fafea336c1e79f50, type: 3}
   level: 1

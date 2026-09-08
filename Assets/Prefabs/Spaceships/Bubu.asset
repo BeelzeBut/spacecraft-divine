@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Bubu
   m_EditorClassIdentifier: 
+  shipId: bubu
   primarySound: {fileID: 8300000, guid: 06b5703f86f9cb54baed0962a4fa99e0, type: 3}
   secondarySound: {fileID: 8300000, guid: 6d54ac62614abf94896196b444e09fcc, type: 3}
   level: 1

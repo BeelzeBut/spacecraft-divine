@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Hot Talon
   m_EditorClassIdentifier: 
+  shipId: hot_talon
   primarySound: {fileID: 8300000, guid: c3dc35022fa6ba14aa62447ffc1d4b8e, type: 3}
   secondarySound: {fileID: 8300000, guid: be2feafc5731f2f4292e11d4255fddd9, type: 3}
   level: 1

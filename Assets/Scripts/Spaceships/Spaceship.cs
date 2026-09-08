@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class Spaceship : ScriptableObject
 {
     [Header("General")]
+    [Tooltip("Stable identifier used by the save system. NEVER change this for a shipped " +
+             "ship — the save file references it, and changing it revokes the unlock.")]
+    public string shipId;
     public AudioClip primarySound;
     public AudioClip secondarySound;
     public int level = 1;

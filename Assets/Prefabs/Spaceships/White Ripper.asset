@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: White Ripper
   m_EditorClassIdentifier: 
+  shipId: white_ripper
   primarySound: {fileID: 8300000, guid: b9908c70e7a77bc4ea10b53edbb66de6, type: 3}
   secondarySound: {fileID: 8300000, guid: 928279548a1b3644c957af6f341fbcbe, type: 3}
   level: 1

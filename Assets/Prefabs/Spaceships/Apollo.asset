@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Apollo
   m_EditorClassIdentifier: 
+  shipId: apollo
   primarySound: {fileID: 8300000, guid: 4777af9b13eaf0644a69dd3d6a219808, type: 3}
   secondarySound: {fileID: 8300000, guid: 3f73124cce6ef2443abe44d75f431f23, type: 3}
   level: 1

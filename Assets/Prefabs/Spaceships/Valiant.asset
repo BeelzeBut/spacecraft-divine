@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Valiant
   m_EditorClassIdentifier: 
+  shipId: valiant
   primarySound: {fileID: 8300000, guid: 2c0c15eb0608d9c44b6095d60ef67750, type: 3}
   secondarySound: {fileID: 8300000, guid: 747ad27cb2e61d74398cf04c421cb772, type: 3}
   level: 1

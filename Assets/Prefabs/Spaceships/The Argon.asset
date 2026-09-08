@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: The Argon
   m_EditorClassIdentifier: 
+  shipId: the_argon
   primarySound: {fileID: 8300000, guid: c676b4f8a57b7584a862e2fba0658812, type: 3}
   secondarySound: {fileID: 8300000, guid: 20fa833e398f8d942a74b9f87fa5278d, type: 3}
   level: 1

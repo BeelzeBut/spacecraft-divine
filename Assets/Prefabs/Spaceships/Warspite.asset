@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d96c3b9a38e184fa03314955030388, type: 3}
   m_Name: Warspite
   m_EditorClassIdentifier: 
+  shipId: warspite
   primarySound: {fileID: 8300000, guid: 8d6f05d1261ed214ea87a756465e55d7, type: 3}
   secondarySound: {fileID: 8300000, guid: 2b2881c8e5cf2ac4ebccc2a4a0c1932a, type: 3}
   level: 1
