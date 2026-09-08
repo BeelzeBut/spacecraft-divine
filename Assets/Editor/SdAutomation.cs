@@ -24,8 +24,14 @@ public static class SdAutomation
     }
 
     /// <summary>
-    /// Single source of truth for ship data. Order matches MainMenu.shipPrefabs, which is also
-    /// the order LegacyShipIdMap depends on for save migration — do not reorder.
+    /// Single source of truth for ship data, keyed by ASSET FILE NAME. The order of this table
+    /// is arbitrary and behaviourally irrelevant — lookups are by name, never by index.
+    ///
+    /// It deliberately does NOT match LegacyShipIdMap, and must never be reconciled to it.
+    /// LegacyShipIdMap is 13 entries in MainMenu.shipPrefabs scene order and maps a 2021 save's
+    /// isUnlocked[] indices to ships; this table is 14 entries (it also covers the tutorial ship,
+    /// which is absent from shipPrefabs) and carries authoring values. Reordering LegacyShipIdMap
+    /// to match this table would silently hand returning players the wrong ships.
     ///
     /// price for grey_byrd_tutorial / grey_byrd is a real price of 0 (free starters).
     /// price for vickers / warspite / bubu is NOT a price: priceToUnlock is overloaded as a
