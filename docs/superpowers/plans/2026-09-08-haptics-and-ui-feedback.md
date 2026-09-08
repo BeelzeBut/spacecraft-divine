@@ -612,9 +612,15 @@ git commit -m "Haptica: implementare iOS prin UIFeedbackGenerator"
 This is the task that avoids editing ~220 onClick bindings, and it fixes the ~216 silent buttons.
 
 **Files:**
-- Create: `Assets/Scripts/Haptics/Haptics.cs` (the MonoBehaviour facade + backend selection)
-- Create: `Assets/Scripts/Haptics/UIFeedback.cs`
-- Create: `Assets/Scripts/Haptics/UIFeedbackInstaller.cs`
+- Create: `Assets/Scripts/UI Feedback/Haptics.cs` (static facade + backend selection)
+- Create: `Assets/Scripts/UI Feedback/UIFeedback.cs`
+- Create: `Assets/Scripts/UI Feedback/UIFeedbackInstaller.cs`
+
+**These MUST NOT go under `Assets/Scripts/Haptics/`.** That folder is claimed by the
+`SpaceshipDivine.Haptics` asmdef, which has `references: []` — files placed there could not see
+`SoundManager` (Assembly-CSharp) or `UnityEngine.UI.Selectable`, and would fail to compile.
+`Assets/Scripts/UI Feedback/` has no asmdef, so these land in Assembly-CSharp and can reach both,
+plus the Haptics assembly via its `autoReferenced: true`.
 
 **Interfaces:**
 - Consumes: `HapticService`, `IHapticBackend`, `Haptic` (Tasks 1-3).
@@ -628,7 +634,7 @@ These live in `Assembly-CSharp`, not the Haptics assembly, because they touch uG
 
 - [ ] **Step 1: Write the facade**
 
-`Assets/Scripts/Haptics/Haptics.cs`:
+`Assets/Scripts/UI Feedback/Haptics.cs`:
 
 ```csharp
 using UnityEngine;
@@ -674,7 +680,7 @@ public static class Haptics
 
 - [ ] **Step 2: Write the per-button component**
 
-`Assets/Scripts/Haptics/UIFeedback.cs`:
+`Assets/Scripts/UI Feedback/UIFeedback.cs`:
 
 ```csharp
 using UnityEngine;
@@ -708,7 +714,7 @@ public class UIFeedback : MonoBehaviour, IPointerDownHandler
 
 - [ ] **Step 3: Write the installer**
 
-`Assets/Scripts/Haptics/UIFeedbackInstaller.cs`:
+`Assets/Scripts/UI Feedback/UIFeedbackInstaller.cs`:
 
 ```csharp
 using System.Collections.Generic;
@@ -839,7 +845,7 @@ Run: `./run-tests.sh`
 - [ ] **Step 6: Commit**
 
 ```bash
-git add Assets/Scripts/Haptics Assets/Editor/SdAutomation.cs "Assets/Scenes/Main Menu.unity"
+git add "Assets/Scripts/UI Feedback" Assets/Editor/SdAutomation.cs "Assets/Scenes/Main Menu.unity"
 git commit -m "Haptica: instalator in timp de rulare pentru feedback pe toate butoanele"
 ```
 
