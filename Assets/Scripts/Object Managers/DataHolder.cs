@@ -253,9 +253,20 @@ public class DataHolder : MonoBehaviour
     {
         if (isInMenu)
         {
-            for (int i = 0; i < dataSaved.numberOfShips; i++)
-            {
+            // Unlock state is restored across the FULL current ship list, not just
+            // dataSaved.numberOfShips. isUnlocked is a fixed bool[50] in the save and is always
+            // present, whereas numberOfShips is whatever the build that last saved happened to
+            // write. Since the ship assets now default to isUnlocked: 0, any index beyond that
+            // bound would silently keep the locked default and strand a returning player's
+            // ships — including ones they paid for. Also guards against a save from a later
+            // build with more ships (rollback), which would otherwise index out of range.
+            int unlockCount = Mathf.Min(mainMenu.shipPrefabs.Count, dataSaved.isUnlocked.Length);
+            for (int i = 0; i < unlockCount; i++)
                 mainMenu.shipPrefabs[i].isUnlocked = dataSaved.isUnlocked[i];
+
+            int designCount = Mathf.Min(dataSaved.numberOfShips, mainMenu.shipPrefabs.Count);
+            for (int i = 0; i < designCount; i++)
+            {
                 mainMenu.shipPrefabs[i].maxHealth = dataSaved.maxHealths[i];
                 mainMenu.shipPrefabs[i].spread = dataSaved.spreads[i];
                 mainMenu.shipPrefabs[i].damageMultiplier = dataSaved.damageMultipliers[i];
