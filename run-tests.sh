@@ -6,14 +6,19 @@ set -uo pipefail
 UNITY="/Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity"
 PROJECT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESULTS="$PROJECT/Temp/editmode-results.xml"
-LOG="/tmp/spaceship-divine-run-tests.log"
 # On this machine, Unity's batchmode process deletes its own project Temp/ directory
 # (results file included) as part of its normal exit cleanup, before this script gets
 # control back. Copy the results out from under it (see poll loop below) rather than
-# reading $RESULTS directly once Unity has exited.
-SAFE_RESULTS="/tmp/spaceship-divine-editmode-results.xml"
-
+# reading $RESULTS directly once Unity has exited. Unique per invocation (mktemp) so
+# overlapping runs never cross-report each other's results.
+LOG="$(mktemp /tmp/spaceship-divine-run-tests.log.XXXXXX)"
+SAFE_RESULTS="$(mktemp /tmp/spaceship-divine-editmode-results.xml.XXXXXX)"
 rm -f "$SAFE_RESULTS"
+
+# Clear any stale results left at $RESULTS from a prior run that crashed or was killed
+# before Unity's own cleanup fired — otherwise the poll loop's first iteration below
+# would copy that stale file out as if it were this run's outcome.
+rm -f "$RESULTS"
 
 "$UNITY" \
   -runTests \
@@ -29,11 +34,12 @@ while kill -0 "$UNITY_PID" 2>/dev/null; do
   sleep 0.2
 done
 wait "$UNITY_PID"
+UNITY_EXIT=$?
 [ -f "$RESULTS" ] && cp "$RESULTS" "$SAFE_RESULTS" 2>/dev/null
 
 tail -40 "$LOG" 2>/dev/null
 
-if [ ! -f "$SAFE_RESULTS" ]; then
+if [ ! -f "$SAFE_RESULTS" ] || [ ! -s "$SAFE_RESULTS" ]; then
   echo "NO RESULTS FILE — Unity failed to start or compile. See log above."
   exit 1
 fi
@@ -53,3 +59,11 @@ for tc in r.iter('test-case'):
             print(f"      {f.text.strip()[:400]}")
 sys.exit(1 if failed != '0' or total == '0' else 0)
 PY
+PY_EXIT=$?
+
+if [ "$UNITY_EXIT" -ne 0 ]; then
+  echo "UNITY EXITED WITH CODE $UNITY_EXIT — treating run as failed regardless of results file content."
+  exit 1
+fi
+
+exit "$PY_EXIT"
