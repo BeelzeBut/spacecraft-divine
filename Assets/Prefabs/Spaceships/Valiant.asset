@@ -48,7 +48,7 @@ MonoBehaviour:
   critMultiplier: 2
   selected: 0
   orderNumber: 12
-  priceToUnlock: 7000
+  priceToUnlock: 4500
   canBeBoughtWithGems: 1
   canBeBoughtWithCurrency: 0
   canBeUnlockedInGame: 0

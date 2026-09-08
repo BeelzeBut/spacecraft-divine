@@ -147,4 +147,43 @@ public static class SdAutomation
             Debug.Log(spec.assetName.PadRight(22) + " shipId=" + ship.shipId);
         }
     }
+
+    // ---- Task 8 -----------------------------------------------------------------
+
+    public static void ApplyShipPrices()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("ApplyShipPrices", problems); return; }
+
+        foreach (ShipSpec spec in Ships)
+        {
+            var so = new SerializedObject(ships[spec.assetName]);
+            so.FindProperty("priceToUnlock").floatValue = spec.price;
+            so.ApplyModifiedPropertiesWithoutUndo();
+        }
+        AssetDatabase.SaveAssets();
+
+        VerifyPricesInto(problems, LoadAllShips());
+        Finish("ApplyShipPrices", problems);
+    }
+
+    public static void VerifyShipPrices()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("VerifyShipPrices", problems); return; }
+        VerifyPricesInto(problems, ships);
+        Finish("VerifyShipPrices", problems);
+    }
+
+    private static void VerifyPricesInto(List<string> problems, Dictionary<string, Spaceship> ships)
+    {
+        foreach (ShipSpec spec in Ships)
+        {
+            if (!ships.TryGetValue(spec.assetName, out Spaceship ship)) continue;
+
+            if (Mathf.Abs(ship.priceToUnlock - spec.price) > 0.001f)
+                problems.Add(spec.assetName + ": priceToUnlock is " + ship.priceToUnlock +
+                             ", expected " + spec.price);
+
+            Debug.Log(spec.assetName.PadRight(22) + " priceToUnlock=" + ship.priceToUnlock);
+        }
+    }
 }
