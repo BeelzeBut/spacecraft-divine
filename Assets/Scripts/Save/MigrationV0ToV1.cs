@@ -55,9 +55,20 @@ namespace SpaceshipDivine.Save
                     p.CollectBlueprint(i);
 
             // The legacy build overloaded priceToUnlock[i] == 1 to mean "blueprint collected,
-            // this ship is now claimable for free in the menu". That is earned progress, so
-            // it migrates to an explicit flag. Only in-game-unlockable ships used this; gem
-            // ships carry a real price here, which is why the comparison is exact.
+            // this ship is now claimable for free in the menu". That is earned progress, so it
+            // migrates to an explicit flag.
+            //
+            // NOTE: this sentinel is not exclusive to blueprint pickups. Bubu.asset ships with
+            // priceToUnlock: 1 as its own default (Vickers and Warspite both default to 0), and
+            // DataHolder persisted that default verbatim — so this matches Bubu for essentially
+            // every 2021 save. That is deliberate and correct: in the shipped 2021 build
+            // MainMenu.UnlockShip() granted any canBeUnlockedInGame ship on one tap whenever
+            // priceToUnlock was nonzero, so Bubu was already a one-tap freebie for those
+            // players. Marking it redeemable preserves what they had; excluding it would take
+            // something away, which grandfathering forbids.
+            //
+            // The comparison stays exact. Real gem prices (500, 650, 1000, 2000, 2250, 2600,
+            // 3900, 4500) and the 9.99 real-money price are all far from 1.
             for (int i = 0; i < LegacyShipIdMap.Count && i < legacy.priceToUnlock.Length; i++)
             {
                 if (Math.Abs(legacy.priceToUnlock[i] - 1f) > 0.0001f) continue;
