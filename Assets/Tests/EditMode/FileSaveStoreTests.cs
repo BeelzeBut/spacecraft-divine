@@ -89,18 +89,33 @@ namespace SpaceshipDivine.Save.Tests
         }
 
         [Test]
-        public void PartialTempFileIsIgnoredAndLiveSaveSurvives()
+        public void ValidTempFileIsNeverPreferredOverTheLiveSave()
         {
             var store = new FileSaveStore(dir);
-            var p = PlayerProfile.CreateDefault();
-            p.gems = 777;
-            store.Write(p);
+            var live = PlayerProfile.CreateDefault();
+            live.gems = 777;
+            store.Write(live);
 
-            // Simulate a write killed midway: a temp file left behind.
-            File.WriteAllText(Path.Combine(dir, FileSaveStore.TempFileName), "{\"version\":1,\"pay");
+            // A fully valid, correctly signed envelope left at the temp path by a write that
+            // was killed after serialising but before the rename. Read() must ignore it:
+            // only the live file and the backup are authoritative.
+            var orphan = PlayerProfile.CreateDefault();
+            orphan.gems = 999999;
+            string payload = JsonUtility.ToJson(orphan);
+            var envelope = new SaveEnvelope
+            {
+                version = SaveEnvelope.CurrentVersion,
+                payload = payload,
+                signature = SaveIntegrity.Sign(payload)
+            };
+            File.WriteAllText(Path.Combine(dir, FileSaveStore.TempFileName),
+                              JsonUtility.ToJson(envelope));
 
-            PlayerProfile back = new FileSaveStore(dir).Read();
-            Assert.AreEqual(777, back.gems);
+            var reader = new FileSaveStore(dir);
+            PlayerProfile back = reader.Read();
+
+            Assert.AreEqual(ReadOutcome.Loaded, reader.LastReadOutcome);
+            Assert.AreEqual(777, back.gems, "a valid temp file must never win over the live save");
         }
 
         [Test]

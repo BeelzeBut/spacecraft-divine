@@ -64,11 +64,17 @@ namespace SpaceshipDivine.Save
                     stream.Flush(true);
                 }
 
-                // Demote the current live file to backup before replacing it.
+                // Demote the current live file to backup before replacing it. A copy with
+                // overwrite has no window where the backup is missing; the previous
+                // delete-then-move sequence did. File.Move below does not overwrite an
+                // existing destination on this runtime, so the now-backed-up live file is
+                // removed to make way for it; if that removal or the move itself throws,
+                // the catch below leaves the original live file and its fresh backup intact
+                // and only discards the temp file.
                 if (File.Exists(LivePath))
                 {
-                    SafeDelete(BackupPath);
-                    File.Move(LivePath, BackupPath);
+                    File.Copy(LivePath, BackupPath, true);
+                    File.Delete(LivePath);
                 }
 
                 File.Move(TempPath, LivePath);
