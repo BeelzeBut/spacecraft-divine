@@ -599,6 +599,9 @@ namespace SpaceshipDivine.Save
     {
         public const int StartingGems = 350;
 
+        // The three ships a brand-new player can select. "grey_byrd_tutorial" is NOT here:
+        // it is forced by the tutorial rather than chosen, and is handled separately in
+        // DataHolder so it can never be the reason a new player is soft-locked.
         public static readonly string[] StarterShipIds = { "grey_byrd", "apollo", "the_argon" };
 
         public int gems;
@@ -1140,17 +1143,23 @@ namespace SpaceshipDivine.Save.Tests
         }
 
         [Test]
-        public void PartialUnlocksMigrateExactlyAndDoNotGainExtras()
+        public void PartialUnlocksMigrateAndStartersAreAddedAsAFloor()
         {
             var flags = new bool[LegacyShipIdMap.Count];
             flags[0] = true;   // grey_byrd_tutorial
-            flags[3] = true;
+            flags[3] = true;   // the_argon (also a starter)
 
             PlayerProfile p = MigrationV0ToV1.FromXml(LegacyXml(flags, 500));
 
-            Assert.IsTrue(p.IsUnlocked(LegacyShipIdMap.IndexToId(0)));
-            Assert.IsTrue(p.IsUnlocked(LegacyShipIdMap.IndexToId(3)));
-            Assert.AreEqual(2, p.unlockedShipIds.Count);
+            // What the legacy save had.
+            Assert.IsTrue(p.IsUnlocked("grey_byrd_tutorial"));
+            Assert.IsTrue(p.IsUnlocked("the_argon"));
+            // Plus the starter floor, so a migrated player is never worse off than a new one.
+            Assert.IsTrue(p.IsUnlocked("grey_byrd"));
+            Assert.IsTrue(p.IsUnlocked("apollo"));
+            // And nothing beyond that.
+            Assert.AreEqual(4, p.unlockedShipIds.Count);
+            Assert.IsFalse(p.IsUnlocked("valiant"));
         }
 
         [Test]
@@ -1202,9 +1211,10 @@ namespace SpaceshipDivine.Save.Tests
             // The legacy build overloaded priceToUnlock[i] == 1 to mean "blueprint collected,
             // ship now claimable". Discarding it would revoke a ship the player earned.
             var d = new LegacySaveDataV0 { gems = 0 };
-            int vickers = System.Array.IndexOf(new[] { "vickers" }, "vickers"); // readability only
+            int vickers = -1;
             for (int i = 0; i < LegacyShipIdMap.Count; i++)
                 if (LegacyShipIdMap.IndexToId(i) == "vickers") vickers = i;
+            Assert.AreNotEqual(-1, vickers, "vickers missing from LegacyShipIdMap");
             d.priceToUnlock[vickers] = 1f;
 
             PlayerProfile p = MigrationV0ToV1.FromXml(LegacyXmlSerializer.ToXml(d));
@@ -1775,7 +1785,8 @@ In `Assets/Scripts/Spaceships/Spaceship.cs`, immediately after the `[Header("Gen
 
 ```bash
 cd "Assets/Prefabs/Spaceships"
-set_id() { grep -q "^  shipId:" "$1.asset" || sed -i '' "s/^  level: /  shipId: $2\n  level: /" "$1.asset"; }
+# BSD sed (macOS) does not expand \n in a replacement, so use perl for the insert.
+set_id() { grep -q "^  shipId:" "$1.asset" || perl -0pi -e "s/^  level: /  shipId: $2\n  level: /m" "$1.asset"; }
 set_id "Grey Byrd Tutorial" grey_byrd_tutorial
 set_id "Grey Byrd"          grey_byrd
 set_id "Apollo"             apollo
