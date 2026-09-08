@@ -45,6 +45,11 @@ public class Blueprint : Collectible
         PlayerController.instance.interactButton.gameObject.SetActive(false);
     }
 
+    // NOTE: priceToUnlock is overloaded here as a boolean. Setting it to 1 does not mean the
+    // ship costs 1 gem — it means "blueprint collected, this ship is now claimable for free
+    // in the menu", which MainMenu.UnlockShip() reads in its canBeUnlockedInGame branch.
+    // PlayerProfile.MarkBlueprintRedeemable() replaces this once DataHolder is cut over to
+    // SaveService; until then the two must agree, so do not change one without the other.
     public override void UnlockCollectible()
     {
         DataHolder.instance.dataSaved.priceToUnlock[unlockableShip.orderNumber] = 1;
