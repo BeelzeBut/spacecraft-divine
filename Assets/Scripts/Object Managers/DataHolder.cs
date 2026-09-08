@@ -120,14 +120,22 @@ public class DataHolder : MonoBehaviour
             {
                 dataSaved = new SaveData();
                 // Only the starter ships begin unlocked. Everything else is earned or bought.
-                // Existing players keep what they had — see MigrationV0ToV1.
-                // grey_byrd_tutorial is included because the tutorial forces that ship; a new
-                // player who cannot select it is soft-locked.
+                //
+                // This branch runs ONLY when there is no existing save. A returning 2021 player
+                // has PlayerPrefs key "save" set (the legacy build used the same key), so they
+                // take the deserialize branch above and never reach this loop — that branch
+                // structure is what preserves their unlocks today.
+                //
+                // NOTE: SpaceshipDivine.Save.MigrationV0ToV1 and SaveService are built and
+                // tested but are NOT yet called from any live code path. Do not restructure
+                // this branch on the assumption that migration already runs — it does not.
+                // Wiring DataHolder over to SaveService is a separate, later piece of work,
+                // and whoever does it must re-verify this exact branch behaviour first.
+                //
+                // grey_byrd_tutorial is deliberately absent from shipPrefabs — the tutorial
+                // ship is wired via MainMenu.tutorialSpaceship, so it needs no entry here.
                 for (int i = 0; i < mainMenu.shipPrefabs.Count; i++)
                 {
-                    // Note: "grey_byrd_tutorial" is deliberately absent from shipPrefabs —
-                    // the tutorial ship is wired via MainMenu.tutorialSpaceship, so it needs
-                    // no entry here and cannot soft-lock a new player.
                     string id = mainMenu.shipPrefabs[i].shipId;
                     dataSaved.isUnlocked[i] =
                         SpaceshipDivine.Save.PlayerProfile.IsStarterShip(id);
