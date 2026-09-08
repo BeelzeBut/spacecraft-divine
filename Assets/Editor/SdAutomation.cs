@@ -233,7 +233,10 @@ public static class SdAutomation
             Debug.Log(spec.assetName.PadRight(22) + " isUnlocked=" + ship.isUnlocked);
         }
 
-        if (unlockedCount != 4)
-            problems.Add("expected exactly 4 unlocked ships on a fresh install, found " + unlockedCount);
+        int expectedUnlocked = 0;
+        foreach (ShipSpec s in Ships) if (s.unlocked) expectedUnlocked++;
+        if (unlockedCount != expectedUnlocked)
+            problems.Add("expected exactly " + expectedUnlocked +
+                         " unlocked ships on a fresh install, found " + unlockedCount);
     }
 }

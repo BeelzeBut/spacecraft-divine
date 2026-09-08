@@ -634,6 +634,7 @@ public class MainMenu : MonoBehaviour
             if (shipPrefabs[i].shipId != shipId) continue;
 
             SoundManager.instance.soundSource.PlayOneShot(SoundManager.instance.UISounds[0]);
+            shipPrefabs[i].isUnlocked = true;
             data.dataSaved.isUnlocked[i] = true;
             data.Save();
             data.Load();

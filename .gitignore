@@ -11,6 +11,13 @@
 /[Mm]emoryCaptures/
 /[Rr]ecordings/
 
+# Platform build output dirs produced by Assets/Editor/BuildAndroid.cs and BuildIOS.cs
+# (e.g. "Build Android/", "Build IOS/"), plus a stray Windows-style build path some
+# invocations create at the repo root. Not covered by /[Bb]uild/ or /[Bb]uilds/ above,
+# which only match those two exact names.
+/[Bb]uild */
+/C:/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
