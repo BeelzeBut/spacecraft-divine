@@ -44,7 +44,12 @@ namespace SpaceshipDivine.Save
         // The three ships a brand-new player can select. "grey_byrd_tutorial" is NOT here:
         // it is forced by the tutorial rather than chosen, and is handled separately in
         // DataHolder so it can never be the reason a new player is soft-locked.
-        public static readonly string[] StarterShipIds = { "grey_byrd", "apollo", "the_argon" };
+        private static readonly string[] starterShipIds = { "grey_byrd", "apollo", "the_argon" };
+
+        // Array.AsReadOnly wraps (not clones) the backing array, so this stays allocation-cheap
+        // while returning an object whose runtime type is ReadOnlyCollection<string>, not
+        // string[] — that is what keeps the public surface un-mutable from outside the class.
+        public static IReadOnlyList<string> StarterShipIds => Array.AsReadOnly(starterShipIds);
 
         public int gems;
         public int goldCoins;
@@ -69,9 +74,18 @@ namespace SpaceshipDivine.Save
         public static PlayerProfile CreateDefault()
         {
             var p = new PlayerProfile { gems = StartingGems };
-            foreach (string id in StarterShipIds)
+            foreach (string id in starterShipIds)
                 p.Unlock(id);
             return p;
+        }
+
+        public static bool IsStarterShip(string shipId)
+        {
+            if (string.IsNullOrEmpty(shipId)) return false;
+            for (int i = 0; i < starterShipIds.Length; i++)
+                if (starterShipIds[i] == shipId)
+                    return true;
+            return false;
         }
 
         public bool IsUnlocked(string shipId)

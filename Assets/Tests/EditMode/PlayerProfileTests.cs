@@ -104,6 +104,43 @@ namespace SpaceshipDivine.Save.Tests
         }
 
         [Test]
+        public void StarterShipIdsCannotBeMutatedThroughThePublicSurface()
+        {
+            // The public surface is IReadOnlyList<string>, not string[], so callers cannot
+            // reach in and mutate the backing array via indexer assignment.
+            Assert.IsFalse(PlayerProfile.StarterShipIds is string[]);
+        }
+
+        [Test]
+        public void IsStarterShipRecognisesExactlyTheThreeStarters()
+        {
+            Assert.IsTrue(PlayerProfile.IsStarterShip("grey_byrd"));
+            Assert.IsTrue(PlayerProfile.IsStarterShip("apollo"));
+            Assert.IsTrue(PlayerProfile.IsStarterShip("the_argon"));
+            Assert.IsFalse(PlayerProfile.IsStarterShip("valiant"));
+            Assert.IsFalse(PlayerProfile.IsStarterShip("grey_byrd_tutorial"));
+            Assert.IsFalse(PlayerProfile.IsStarterShip(null));
+            Assert.IsFalse(PlayerProfile.IsStarterShip(""));
+        }
+
+        [Test]
+        public void ProfileCarriesNoShipDesignData()
+        {
+            // The old SaveData copied ship design values out of the ScriptableObjects and wrote them
+            // back on load, freezing v1.0 balance onto every device. PlayerProfile must never do that.
+            string[] forbidden = {
+                "maxHealth", "maxHealths", "spread", "spreads", "damageMultiplier", "damageMultipliers",
+                "priceToUnlock", "critChance", "critChances", "attackMultiplier", "attackMultipliers",
+                "defenseMultiplier", "defenseMultipliers", "speedMultiplier", "speedMultipliers",
+                "damageReduction", "damageReductions", "maxMoveSpeed", "maxMoveSpeeds", "fireRate",
+                "damagePerbullet", "bulletsShot", "numberOfBursts"
+            };
+            foreach (string name in forbidden)
+                Assert.IsNull(typeof(PlayerProfile).GetField(name),
+                    "PlayerProfile must not carry ship design data, but has a field named " + name);
+        }
+
+        [Test]
         public void RunStateSurvivesJsonRoundTrip()
         {
             var r = new RunState
