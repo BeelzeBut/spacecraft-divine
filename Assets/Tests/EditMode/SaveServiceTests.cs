@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using NUnit.Framework;
 
@@ -92,11 +93,44 @@ namespace SpaceshipDivine.Save.Tests
             var svc = new SaveService(new FileSaveStore(dir), () => null, _ => { });
             svc.Load();
             svc.Run.selectedShipId = "razor";
+            svc.Run.level = 5;
+            svc.Run.subLevel = 2;
+            svc.Run.respawnsRemaining = 0;
             svc.Run.runInProgress = true;
+            svc.Run.enemiesKilled = 42;
+            svc.Run.timeSinceGameStarted = 123.4f;
+            svc.Run.abilityName = "overdrive";
+            svc.Run.abilityLevel = 3;
+            svc.Run.upgradeIndices.Add(7);
+
             svc.Run.Clear();
 
-            Assert.IsFalse(svc.Run.runInProgress);
             Assert.AreEqual("", svc.Run.selectedShipId);
+            Assert.AreEqual(1, svc.Run.level);
+            Assert.AreEqual(1, svc.Run.subLevel);
+            Assert.AreEqual(1, svc.Run.respawnsRemaining);
+            Assert.IsFalse(svc.Run.runInProgress);
+            Assert.AreEqual(0, svc.Run.enemiesKilled);
+            Assert.AreEqual(0f, svc.Run.timeSinceGameStarted);
+            Assert.AreEqual("", svc.Run.abilityName);
+            Assert.AreEqual(0, svc.Run.abilityLevel);
+            Assert.IsEmpty(svc.Run.upgradeIndices);
+        }
+
+        [Test]
+        public void ConstructorThrowsOnNullStore()
+        {
+            Assert.Throws<ArgumentNullException>(() => new SaveService(null, () => null, _ => { }));
+        }
+
+        [Test]
+        public void NullLegacyProviderAndCallbackAreToleratedWithARealStore()
+        {
+            var svc = new SaveService(new FileSaveStore(dir), null, null);
+            svc.Load();
+
+            Assert.AreEqual(350, svc.Profile.gems);
+            Assert.AreEqual(3, svc.Profile.unlockedShipIds.Count);
         }
     }
 }

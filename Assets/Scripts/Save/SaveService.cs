@@ -19,9 +19,13 @@ namespace SpaceshipDivine.Save
 
         public SaveService(ISaveStore store, Func<string> legacyXmlProvider, Action<string> legacyCleared)
         {
-            this.store = store;
-            this.legacyXmlProvider = legacyXmlProvider;
-            this.legacyCleared = legacyCleared;
+            // A null store is a wiring bug, not a runtime condition. Tolerating it would mean
+            // the game runs with saves silently not persisting — the worst possible failure
+            // mode for a save system, and one nobody notices until a player loses progress.
+            // Bad DATA must never crash the game; bad WIRING must be loud and immediate.
+            this.store = store ?? throw new ArgumentNullException(nameof(store));
+            this.legacyXmlProvider = legacyXmlProvider;   // genuinely optional
+            this.legacyCleared = legacyCleared;           // genuinely optional
         }
 
         public void Load()
