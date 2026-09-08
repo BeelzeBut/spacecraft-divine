@@ -16,7 +16,7 @@ MonoBehaviour:
   primarySound: {fileID: 8300000, guid: 9514e7e29d1802e4ebc16d97273349cf, type: 3}
   secondarySound: {fileID: 8300000, guid: b8dd626742b923b4fafea336c1e79f50, type: 3}
   level: 1
-  isUnlocked: 1
+  isUnlocked: 0
   shipSprite: {fileID: 21300000, guid: 931a22d3052442040961c89f577bdf24, type: 3}
   shipImage: {fileID: 0}
   maxHealth: 10

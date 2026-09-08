@@ -186,4 +186,48 @@ public static class SdAutomation
             Debug.Log(spec.assetName.PadRight(22) + " priceToUnlock=" + ship.priceToUnlock);
         }
     }
+
+    // ---- Task 9 -----------------------------------------------------------------
+
+    public static void ApplyUnlockGate()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("ApplyUnlockGate", problems); return; }
+
+        foreach (ShipSpec spec in Ships)
+        {
+            var so = new SerializedObject(ships[spec.assetName]);
+            so.FindProperty("isUnlocked").boolValue = spec.unlocked;
+            so.ApplyModifiedPropertiesWithoutUndo();
+        }
+        AssetDatabase.SaveAssets();
+
+        VerifyGateInto(problems, LoadAllShips());
+        Finish("ApplyUnlockGate", problems);
+    }
+
+    public static void VerifyUnlockGate()
+    {
+        if (!Resolve(out var ships, out var problems)) { Finish("VerifyUnlockGate", problems); return; }
+        VerifyGateInto(problems, ships);
+        Finish("VerifyUnlockGate", problems);
+    }
+
+    private static void VerifyGateInto(List<string> problems, Dictionary<string, Spaceship> ships)
+    {
+        int unlockedCount = 0;
+        foreach (ShipSpec spec in Ships)
+        {
+            if (!ships.TryGetValue(spec.assetName, out Spaceship ship)) continue;
+
+            if (ship.isUnlocked != spec.unlocked)
+                problems.Add(spec.assetName + ": isUnlocked is " + ship.isUnlocked +
+                             ", expected " + spec.unlocked);
+            if (ship.isUnlocked) unlockedCount++;
+
+            Debug.Log(spec.assetName.PadRight(22) + " isUnlocked=" + ship.isUnlocked);
+        }
+
+        if (unlockedCount != 4)
+            problems.Add("expected exactly 4 unlocked ships on a fresh install, found " + unlockedCount);
+    }
 }

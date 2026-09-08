@@ -119,8 +119,19 @@ public class DataHolder : MonoBehaviour
             else
             {
                 dataSaved = new SaveData();
-                for(int i = 0; i < mainMenu.shipPrefabs.Count; i++)
-                    dataSaved.isUnlocked[i] = true;
+                // Only the starter ships begin unlocked. Everything else is earned or bought.
+                // Existing players keep what they had — see MigrationV0ToV1.
+                // grey_byrd_tutorial is included because the tutorial forces that ship; a new
+                // player who cannot select it is soft-locked.
+                for (int i = 0; i < mainMenu.shipPrefabs.Count; i++)
+                {
+                    // Note: "grey_byrd_tutorial" is deliberately absent from shipPrefabs —
+                    // the tutorial ship is wired via MainMenu.tutorialSpaceship, so it needs
+                    // no entry here and cannot soft-lock a new player.
+                    string id = mainMenu.shipPrefabs[i].shipId;
+                    dataSaved.isUnlocked[i] =
+                        SpaceshipDivine.Save.PlayerProfile.IsStarterShip(id);
+                }
 
                 dataSaved.orderNumber = -1;
                 hasCompletedTutorial = false;
