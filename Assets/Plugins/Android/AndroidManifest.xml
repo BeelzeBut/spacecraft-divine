@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Declares ONLY the VIBRATE permission. Unity's manifest merger folds this into the manifest it
+    generates, leaving the <application> and <activity> nodes it produces completely untouched.
+
+    Do NOT add an <activity> declaration here. An earlier draft did, and inspecting the shipped
+    Build Android/SpaceshipDivine.apk showed why that is dangerous: Unity's generated manifest
+    carries attributes and nodes a hand-written one omits — android:resizeableActivity="false",
+    a LEANBACK_LAUNCHER intent category, and SDK-injected activities such as
+    com.unity3d.services.ads.adunit.AdUnitActivity plus the com.google.android.gms.permission.AD_ID
+    permission. Overriding the application node risks losing those, and a wrong activity
+    declaration means the app does not launch at all — a black screen on every device, which no
+    test in this project would catch.
+
+    When the ads plan adds AdMob, its own manifest entries arrive the same way: via the merger,
+    not by editing this file.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.VIBRATE" />
+</manifest>
