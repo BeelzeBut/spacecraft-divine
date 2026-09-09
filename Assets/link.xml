@@ -1,0 +1,24 @@
+<!--
+  IL2CPP managed stripping is on (managedStrippingLevel Android: 1). Reflection-driven
+  serialization is invisible to the static analyser: XmlSerializer discovers SaveData's fields
+  at runtime, and JsonUtility does the same for PlayerProfile, so the stripper sees no caller
+  and is free to remove them.
+
+  A stripped field does not throw. It deserializes as default(T) — every unlock false, every
+  gem count zero — which is why this file matters more than its size suggests, and why EditMode
+  tests can never catch what it prevents: they run on Mono in the Editor, unstripped.
+
+  Assembly names here are the asmdef "name" values, not file names.
+-->
+<linker>
+  <assembly fullname="SpaceshipDivine.Save" preserve="all"/>
+  <assembly fullname="SpaceshipDivine.Levels" preserve="all"/>
+  <assembly fullname="SpaceshipDivine.Haptics" preserve="all"/>
+  <assembly fullname="Assembly-CSharp">
+    <type fullname="SaveData" preserve="all"/>
+    <type fullname="Helper" preserve="all"/>
+  </assembly>
+  <assembly fullname="System.Xml">
+    <type fullname="System.Xml.Serialization.XmlSerializer" preserve="all"/>
+  </assembly>
+</linker>
