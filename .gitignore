@@ -16,6 +16,8 @@
 # invocations create at the repo root. Not covered by /[Bb]uild/ or /[Bb]uilds/ above,
 # which only match those two exact names.
 /[Bb]uild */
+# Jurnalele tintelor din Makefile.
+/build-logs/
 /C:/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
