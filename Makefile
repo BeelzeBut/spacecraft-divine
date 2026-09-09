@@ -1,4 +1,6 @@
-UNITY := /Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity
+# Overridable: make android-apk UNITY=/path/to/Unity
+# Kept in step with run-tests.sh, which reads the same variable from the environment.
+UNITY ?= /Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity
 PROJECT := $(shell pwd)
 LOGDIR := build-logs
 
@@ -12,7 +14,7 @@ guard:
 	@mkdir -p $(LOGDIR)
 
 test: guard
-	./run-tests.sh
+	UNITY="$(UNITY)" ./run-tests.sh
 
 # Codul de iesire este al lui Unity, nu al lui tail. Un "| tail" simplu ar raporta
 # starea lui tail si ar transforma orice compilare esuata in succes aparent - exact

@@ -3,7 +3,17 @@
 # No Unity editor instance may be open — batchmode needs the project lock.
 set -uo pipefail
 
-UNITY="/Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity"
+# Overridable so an editor upgrade does not need this file edited, and so the same
+# harness can gate a migration by running against the OLD and NEW editor in turn:
+#   UNITY=/Applications/Unity/Hub/Editor/2022.3.62f3/Unity.app/Contents/MacOS/Unity ./run-tests.sh
+UNITY="${UNITY:-/Applications/Unity/Hub/Editor/2022.3.14f1/Unity.app/Contents/MacOS/Unity}"
+
+if [ ! -x "$UNITY" ]; then
+  echo "Unity not found or not executable: $UNITY"
+  echo "Set UNITY=/path/to/Unity.app/Contents/MacOS/Unity"
+  exit 1
+fi
+echo "Using editor: $UNITY"
 PROJECT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESULTS="$PROJECT/Temp/editmode-results.xml"
 # On this machine, Unity's batchmode process deletes its own project Temp/ directory

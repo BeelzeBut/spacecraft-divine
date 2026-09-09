@@ -85,8 +85,9 @@ Measured, not recalled: this editor builds `targetSdkVersion: 32`, and every nat
 
 `libunity.so` ships prebuilt inside the editor, so no project setting can fix the alignment.
 
-**Install the newest 2022.3 patch — at least `2022.3.65f1`, which is where Unity backported the
-16 KB fix. Not Unity 6.** Staying in the 2022.3 line keeps URP 14, the Input System and
+**Install `2022.3.62f3` — the newest and last release in the 2022.3 LTS line. Not Unity 6.**
+(An earlier version of this note said `2022.3.65f1`; that version does not exist. See the
+correction in the editor-upgrade note.) Staying in the 2022.3 line keeps URP 14, the Input System and
 TextMeshPro on the versions this project already resolves. Full reasoning and the verification
 sequence: `docs/superpowers/notes/2026-09-08-editor-upgrade-decision.md`.
 
