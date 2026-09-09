@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using SpaceshipDivine.Haptics;
 
 public class MainMenu : MonoBehaviour
 {
@@ -50,8 +51,9 @@ public class MainMenu : MonoBehaviour
     public Image primaryGunImage, secondaryGunImage;
     public TextMeshProUGUI primaryGunCooldown, secondaryGunCooldown, primaryGunDescription, secondaryGunDescription;
 
-    public Image musicImage, soundImage;
+    public Image musicImage, soundImage, hapticsImage;
     public Sprite musicSprite, musicMuteSprite, soundSprite, soundMuteSprite;
+    public Sprite hapticsSprite, hapticsMuteSprite;
     public AudioClip mainMenuMusic;
 
     void Awake()
@@ -90,10 +92,20 @@ public class MainMenu : MonoBehaviour
         else
             checkboxX.enabled = false;
 
+        // These used to set only the icon, so a player who muted saw a muted icon and still
+        // heard the game — and the next press then unmuted the icon while muting the audio.
         if (data.isMusicMuted)
+        {
             musicImage.sprite = musicMuteSprite;
+            SoundManager.instance.musicSource.mute = true;
+        }
         if (data.isSoundMuted)
+        {
             soundImage.sprite = soundMuteSprite;
+            SoundManager.instance.soundSource.mute = true;
+        }
+        if (hapticsImage != null && hapticsMuteSprite != null && data.isHapticsMuted)
+            hapticsImage.sprite = hapticsMuteSprite;
 
         SoundManager.instance.musicSource.clip = mainMenuMusic;
         SoundManager.instance.musicSource.Play();
@@ -793,6 +805,24 @@ public class MainMenu : MonoBehaviour
             soundImage.sprite = soundMuteSprite;
             data.isSoundMuted = true;
         }
+    }
+
+    /// <summary>
+    /// Third settings toggle, same shape as MusicOnOff/SoundOnOff. The icon fields are optional
+    /// so the toggle can be wired into the settings menu later without a null reference here.
+    /// </summary>
+    public void HapticsOnOff()
+    {
+        bool nowMuted = !Haptics.Muted;
+        Haptics.Muted = nowMuted;
+        data.isHapticsMuted = nowMuted;
+
+        if (hapticsImage != null && hapticsSprite != null && hapticsMuteSprite != null)
+            hapticsImage.sprite = nowMuted ? hapticsMuteSprite : hapticsSprite;
+
+        // Confirm by feel that it is back on. Nothing to play when switching off.
+        if (!nowMuted)
+            Haptics.Play(Haptic.Selection);
     }
 
     //public enum PurchaseType { removeAds, gems1000, gems2250, gems5000, gems10000};

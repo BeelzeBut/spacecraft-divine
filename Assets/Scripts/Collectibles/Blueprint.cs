@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using SpaceshipDivine.Haptics;
 
 public class Blueprint : Collectible
 {
@@ -55,6 +56,7 @@ public class Blueprint : Collectible
         DataHolder.instance.dataSaved.priceToUnlock[unlockableShip.orderNumber] = 1;
         unlockableShip.priceToUnlock = 1;
         DataHolder.instance.dataSaved.hasBeenUnlocked[dropIndex] = true;
+        Haptics.Play(Haptic.Reward);
         gameObject.SetActive(false);
     }
 }

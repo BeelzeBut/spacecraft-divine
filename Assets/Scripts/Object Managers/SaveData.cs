@@ -14,6 +14,9 @@ public class SaveData
     //public bool hasCompletedStoryMode = false;
     public bool isMusicMuted;
     public bool isSoundMuted;
+    // Appended, never reordered: XmlSerializer matches on element name, and a save
+    // written before this field existed simply leaves it at false (haptics on).
+    public bool isHapticsMuted;
 
     public bool[] isUnlocked = new bool[50];
     public int totalEnemiesKilled;

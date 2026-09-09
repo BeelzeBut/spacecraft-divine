@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using SpaceshipDivine.Haptics;
 
 public class PlayerController : MonoBehaviour
 {
@@ -465,6 +466,9 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(CameraShake.instance.Shake(Mathf.Clamp(damage / 10f, 1/12.5f, 100), 1 / 10f));
                 SoundManager.instance.soundSource.PlayOneShot(playerHitSound);
+                // Here, not in TakeDamage: an attack that was blocked or absorbed by a
+                // shield reaches neither this branch nor the player's health.
+                Haptics.Play(Haptic.ImpactHeavy);
                 health -= damage;
                 data.selectedShip.currentHealth = health;
                 lastTakenDamage = Time.time;
@@ -490,6 +494,9 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator KillPlayer()
     {
+        // Above the branch: the player dies in normal levels, in the tutorial and in
+        // training mode, and each of those returns down a different path below.
+        Haptics.Play(Haptic.Death);
         if (SceneManager.GetActiveScene().buildIndex != 1 && SceneManager.GetActiveScene().buildIndex != 2)
         {
             data.gameHasEnded = true;

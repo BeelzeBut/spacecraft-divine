@@ -49,6 +49,7 @@ public class DataHolder : MonoBehaviour
     public int qualityIndex = 3;
     public bool isMusicMuted = false;
     public bool isSoundMuted = false;
+    public bool isHapticsMuted = false;
 
     [Header("Drops Settings")]
     public List<Collectible> drops = new List<Collectible>();
@@ -247,6 +248,10 @@ public class DataHolder : MonoBehaviour
         dataSaved.levelsPlayed = levelsPlayed;
         //dataSaved.hasCompletedStoryMode = hasCompletedStoryMode;
         dataSaved.isMusicMuted = isMusicMuted;
+        // isSoundMuted was read in LoadPlayerData but never written here, so muting
+        // sound never survived a relaunch.
+        dataSaved.isSoundMuted = isSoundMuted;
+        dataSaved.isHapticsMuted = isHapticsMuted;
     }
 
     public void LoadPlayerData()
@@ -355,6 +360,8 @@ public class DataHolder : MonoBehaviour
         //hasCompletedStoryMode = dataSaved.hasCompletedStoryMode;
         isMusicMuted = dataSaved.isMusicMuted;
         isSoundMuted = dataSaved.isSoundMuted;
+        isHapticsMuted = dataSaved.isHapticsMuted;
+        Haptics.Muted = isHapticsMuted;
     }
     public void FpsSettings()
     {

@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using SpaceshipDivine.Haptics;
 
 public class Enemy : MonoBehaviour
 {
@@ -379,6 +380,8 @@ public class Enemy : MonoBehaviour
                 Instantiate(deathEffect, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 if (isBoss)
                 {
+                    // Every boss kill, not only the one that drops the Vickers blueprint.
+                    Haptics.Play(Haptic.BossRumble);
                     if (DataHolder.instance.dataSaved.priceToUnlock[GameManager.instance.chest.bossBlueprint.dropIndex] == 0 && DataHolder.instance.level == 4)
                     {
                         GameManager.instance.shouldDropBossBlueprint = true;
