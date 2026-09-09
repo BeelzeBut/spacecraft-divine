@@ -239,4 +239,43 @@ public static class SdAutomation
             problems.Add("expected exactly " + expectedUnlocked +
                          " unlocked ships on a fresh install, found " + unlockedCount);
     }
+
+    // ---- Haptics: UI feedback coverage -------------------------------------------
+
+    /// <summary>
+    /// Reports what the installer would attach to, per scene, without modifying anything.
+    /// The device check in the haptics plan says "if N is far below ~120 for the main menu,
+    /// the installer is not finding the buttons" — this answers that here, before a build.
+    /// </summary>
+    public static void ReportUIFeedbackCoverage()
+    {
+        var problems = new List<string>();
+        string[] scenePaths = System.IO.Directory
+            .GetFiles("Assets/Scenes", "*.unity", System.IO.SearchOption.AllDirectories)
+            .OrderBy(p => p).ToArray();
+
+        foreach (string path in scenePaths)
+        {
+            UnityEngine.SceneManagement.Scene scene =
+                UnityEditor.SceneManagement.EditorSceneManager.OpenScene(path);
+
+            var counts = new Dictionary<string, int>();
+            int total = 0;
+            foreach (GameObject root in scene.GetRootGameObjects())
+            {
+                foreach (UnityEngine.UI.Selectable s in root.GetComponentsInChildren<UnityEngine.UI.Selectable>(true))
+                {
+                    total++;
+                    string key = s.GetType().Name;
+                    counts[key] = counts.TryGetValue(key, out int c) ? c + 1 : 1;
+                }
+            }
+
+            string breakdown = string.Join(", ", counts.OrderBy(kv => kv.Key).Select(kv => kv.Key + "=" + kv.Value));
+            Debug.Log("COVERAGE " + System.IO.Path.GetFileNameWithoutExtension(path)
+                      + ": selectables=" + total + (breakdown.Length > 0 ? " (" + breakdown + ")" : ""));
+        }
+
+        Finish("ReportUIFeedbackCoverage", problems);
+    }
 }
