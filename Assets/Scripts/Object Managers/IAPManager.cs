@@ -11,11 +11,8 @@ public class IAPManager : MonoBehaviour, IStoreListener
     private static IStoreController m_StoreController;
     private static IExtensionProvider m_StoreExtensionProvider;
 
-    //Step 1 create your products
-    private string removeAds = "removeads";
-    private string gems1000 = "com.kodagames.spaceshipdivine.gems1000";
-    private string gems2250 = "com.kodagames.spaceshipdivine.gems2250";
-    private string gems5000 = "com.kodagames.spaceshipdivine.gems5000";
+    // Product ids live in ProductIds, which is pinned against the store catalogs by tests.
+    // They used to be private fields here, and the "removeads" one did not match any catalog.
 
 
     //************************** Adjust these methods **************************************
@@ -24,11 +21,13 @@ public class IAPManager : MonoBehaviour, IStoreListener
         if (IsInitialized()) { return; }
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
-        //Step 2 choose if your product is a consumable or non consumable
-        builder.AddProduct(removeAds, ProductType.NonConsumable);
-        builder.AddProduct(gems1000, ProductType.Consumable);
-        builder.AddProduct(gems2250, ProductType.Consumable);
-        builder.AddProduct(gems5000, ProductType.Consumable);
+        // Registered from the one list, so a SKU cannot be published and then quietly never
+        // offered - which is exactly what happened to gems10000.
+        builder.AddProduct(ProductIds.RemoveAds, ProductType.NonConsumable);
+        builder.AddProduct(ProductIds.Gems1000, ProductType.Consumable);
+        builder.AddProduct(ProductIds.Gems2250, ProductType.Consumable);
+        builder.AddProduct(ProductIds.Gems5000, ProductType.Consumable);
+        builder.AddProduct(ProductIds.Gems10000, ProductType.Consumable);
 
         UnityPurchasing.Initialize(this, builder);
     }
@@ -43,22 +42,22 @@ public class IAPManager : MonoBehaviour, IStoreListener
     //Step 3 Create methods
     public void BuyRemoveAds()
     {
-        //Remove ads + free revive
+        BuyProductID(ProductIds.RemoveAds);
     }
 
     public void SmallGems()
     {
-        BuyProductID(gems1000);
+        BuyProductID(ProductIds.Gems1000);
     }
 
     public void MediumGems()
     {
-        BuyProductID(gems2250);
+        BuyProductID(ProductIds.Gems2250);
     }
 
     public void LargeGems()
     {
-        BuyProductID(gems5000);
+        BuyProductID(ProductIds.Gems5000);
     }
 
     /// <summary>
@@ -74,17 +73,32 @@ public class IAPManager : MonoBehaviour, IStoreListener
     //Step 4 modify purchasing
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
     {
-        if (String.Equals(args.purchasedProduct.definition.id, gems1000, StringComparison.Ordinal))
+        string purchasedId = args.purchasedProduct.definition.id;
+
+        // One lookup instead of a chain of string comparisons. A new gem SKU now only has to
+        // be added to ProductIds; previously it also had to be remembered here, and gems10000
+        // proves that step gets forgotten.
+        int gemsGranted = ProductIds.GemsFor(purchasedId);
+        if (gemsGranted > 0)
         {
-            DataHolder.instance.gems += 1000;
+            DataHolder.instance.gems += gemsGranted;
         }
-        else if (String.Equals(args.purchasedProduct.definition.id, gems2250, StringComparison.Ordinal))
+        else if (String.Equals(purchasedId, ProductIds.RemoveAds, StringComparison.Ordinal))
         {
-            DataHolder.instance.gems += 2250;
+            // Entitlements go to the profile, never to an array index in dataSaved.
+            // CaptureFromSaveData does not touch removeAdsOwned, so it survives the Save below.
+            SpaceshipDivine.Save.PlayerProfile profile = DataHolder.instance.Profile;
+            if (profile != null)
+                profile.removeAdsOwned = true;
+            else
+                Debug.LogError("removeads purchased but no profile is loaded; not granted.");
         }
-        else if (String.Equals(args.purchasedProduct.definition.id, gems5000, StringComparison.Ordinal))
+        else
         {
-            DataHolder.instance.gems += 5000;
+            // Fail closed and keep the receipt pending, so a product this build does not
+            // understand is retried after an update rather than being consumed for nothing.
+            Debug.LogWarning("Unrecognised product purchased: " + purchasedId);
+            return PurchaseProcessingResult.Pending;
         }
 
         DataHolder.instance.Save();
