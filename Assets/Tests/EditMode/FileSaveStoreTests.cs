@@ -128,5 +128,60 @@ namespace SpaceshipDivine.Save.Tests
             store.Delete();
             Assert.IsFalse(store.Exists());
         }
-    }
+    
+        /// <summary>
+        /// Bumps the envelope's version in place. No re-signing needed: the signature covers
+        /// the payload only, so the version rides outside it.
+        /// </summary>
+        private void RewriteEnvelopeVersion(int version)
+        {
+            string path = Path.Combine(dir, FileSaveStore.SaveFileName);
+            var envelope = JsonUtility.FromJson<SaveEnvelope>(File.ReadAllText(path));
+            envelope.version = version;
+            File.WriteAllText(path, JsonUtility.ToJson(envelope));
+        }
+
+        [Test]
+        public void AFutureVersionSaveIsLoadedButNotOverwritten()
+        {
+            // An older build must leave a newer save alone rather than reset it or write
+            // stale fields over it. Losing this session beats losing the save.
+            var writer = new FileSaveStore(dir);
+            PlayerProfile original = PlayerProfile.CreateDefault();
+            original.gems = 4242;
+            writer.Write(original);
+
+            RewriteEnvelopeVersion(SaveEnvelope.CurrentVersion + 1);
+            string before = File.ReadAllText(Path.Combine(dir, FileSaveStore.SaveFileName));
+
+            var older = new FileSaveStore(dir);
+            PlayerProfile read = older.Read();
+
+            Assert.AreEqual(4242, read.gems, "a newer save should still be readable");
+            Assert.IsTrue(older.IsReadOnlyBecauseNewer);
+
+            PlayerProfile overwrite = PlayerProfile.CreateDefault();
+            overwrite.gems = 1;
+            older.Write(overwrite);
+
+            Assert.AreEqual(before, File.ReadAllText(Path.Combine(dir, FileSaveStore.SaveFileName)),
+                "an older build must not overwrite a newer save");
+        }
+
+        [Test]
+        public void ACurrentVersionSaveIsStillWritable()
+        {
+            // Guards the obvious over-correction: latching every save read-only.
+            var store = new FileSaveStore(dir);
+            store.Write(PlayerProfile.CreateDefault());
+            store.Read();
+            Assert.IsFalse(store.IsReadOnlyBecauseNewer);
+
+            PlayerProfile p = PlayerProfile.CreateDefault();
+            p.gems = 777;
+            store.Write(p);
+
+            Assert.AreEqual(777, new FileSaveStore(dir).Read().gems);
+        }
+}
 }

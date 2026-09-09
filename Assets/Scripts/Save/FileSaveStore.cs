@@ -19,6 +19,7 @@ namespace SpaceshipDivine.Save
         private readonly string directory;
 
         public ReadOutcome LastReadOutcome { get; private set; } = ReadOutcome.Fresh;
+        public bool IsReadOnlyBecauseNewer { get; private set; }
 
         public FileSaveStore(string directory)
         {
@@ -45,6 +46,12 @@ namespace SpaceshipDivine.Save
         public void Write(PlayerProfile profile)
         {
             if (profile == null) return;
+
+            if (IsReadOnlyBecauseNewer)
+            {
+                Debug.LogWarning("Refusing to overwrite a save written by a newer build.");
+                return;
+            }
 
             string payload = JsonUtility.ToJson(profile);
             var envelope = new SaveEnvelope
@@ -88,6 +95,9 @@ namespace SpaceshipDivine.Save
 
         public PlayerProfile Read()
         {
+            // Recomputed on every read: a Delete() followed by a Read() must not stay latched.
+            IsReadOnlyBecauseNewer = false;
+
             if (!File.Exists(LivePath) && !File.Exists(BackupPath))
             {
                 LastReadOutcome = ReadOutcome.Fresh;
@@ -123,6 +133,18 @@ namespace SpaceshipDivine.Save
                 var envelope = JsonUtility.FromJson<SaveEnvelope>(File.ReadAllText(path));
                 if (envelope == null || string.IsNullOrEmpty(envelope.payload)) return null;
                 if (!SaveIntegrity.Verify(envelope.payload, envelope.signature)) return null;
+
+                // Forward compatibility is impossible; data loss is avoidable. Read what we
+                // can and then refuse to write, rather than resetting a save that is merely
+                // newer than this build. Note the signature covers the payload only, not the
+                // version, so this flag is a safety measure and not a security boundary.
+                if (envelope.version > SaveEnvelope.CurrentVersion)
+                {
+                    IsReadOnlyBecauseNewer = true;
+                    Debug.LogWarning("Save was written by a newer build (v" + envelope.version +
+                                     " > v" + SaveEnvelope.CurrentVersion +
+                                     "); loading it read-only and refusing to overwrite it.");
+                }
 
                 return JsonUtility.FromJson<PlayerProfile>(envelope.payload);
             }
