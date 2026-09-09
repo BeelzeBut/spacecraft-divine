@@ -92,6 +92,21 @@ namespace SpaceshipDivine.Haptics.Tests
         }
 
         [Test]
+        public void PlayedCountAccumulatesAcrossDeliveredPulses()
+        {
+            // Guards against a counter that is SET rather than incremented — the existing
+            // single-pulse test cannot distinguish those two implementations.
+            service.Play(Haptic.Selection);
+            now += HapticService.MinIntervalSeconds + 0.001f;
+            service.Play(Haptic.Selection);
+            now += HapticService.MinIntervalSeconds + 0.001f;
+            service.Play(Haptic.Selection);
+
+            Assert.AreEqual(3, service.PlayedCount);
+            Assert.AreEqual(3, backend.Played.Count);
+        }
+
+        [Test]
         public void NullBackendIsToleratedRatherThanThrowing()
         {
             var s = new HapticService(null, () => 0f);
