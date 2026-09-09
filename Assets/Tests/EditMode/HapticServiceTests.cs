@@ -113,5 +113,33 @@ namespace SpaceshipDivine.Haptics.Tests
             Assert.DoesNotThrow(() => s.Play(Haptic.Selection));
             Assert.IsFalse(s.Play(Haptic.Selection));
         }
+
+        [Test]
+        public void MinIntervalIsTheValueTheTimingFixturesAssume()
+        {
+            // The other timing tests advance the clock by MinIntervalSeconds + epsilon, i.e. by
+            // the constant under test, which makes them blind to a change in the constant
+            // itself: set it to 5f and they all stay green while, on the phone, every button
+            // after the first feels dead for five seconds. This is what notices.
+            Assert.AreEqual(0.05f, HapticService.MinIntervalSeconds, 0.0001f);
+        }
+
+        [Test]
+        public void HapticOrdinalsAreTheWireContractWithTheNativePlugins()
+        {
+            // Assets/Plugins/iOS/SdHaptics.mm switches on these integers, and the Android
+            // backend maps them to VibrationEffect constants. Inserting or reordering a member
+            // silently gives every effect after it the wrong feel, on a device, with nothing
+            // failing anywhere. Appending leaves this passing - which is the intent.
+            Assert.AreEqual(0, (int)Haptic.Selection);
+            Assert.AreEqual(1, (int)Haptic.Confirm);
+            Assert.AreEqual(2, (int)Haptic.Reject);
+            Assert.AreEqual(3, (int)Haptic.ImpactLight);
+            Assert.AreEqual(4, (int)Haptic.ImpactHeavy);
+            Assert.AreEqual(5, (int)Haptic.Ability);
+            Assert.AreEqual(6, (int)Haptic.Reward);
+            Assert.AreEqual(7, (int)Haptic.Death);
+            Assert.AreEqual(8, (int)Haptic.BossRumble);
+        }
     }
 }

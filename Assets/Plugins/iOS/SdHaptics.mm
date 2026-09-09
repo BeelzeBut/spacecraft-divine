@@ -18,13 +18,25 @@ bool _SdHapticsAvailable() {
     return false;
 }
 
-void _SdHapticsPrepare() {
+// Allocation only. `prepare` is deliberately NOT called here for all five: prepare powers up
+// the Taptic Engine and holds it in a high-power state for about a second, so preparing every
+// generator on every pulse would keep the engine continuously warm during combat — precisely
+// the battery drain the rate limiter exists to avoid.
+static void EnsureAllocated() {
     if (@available(iOS 10.0, *)) {
         if (lightGen  == nil) lightGen  = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
         if (mediumGen == nil) mediumGen = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
         if (heavyGen  == nil) heavyGen  = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy];
         if (noticeGen == nil) noticeGen = [[UINotificationFeedbackGenerator alloc] init];
         if (selectGen == nil) selectGen = [[UISelectionFeedbackGenerator alloc] init];
+    }
+}
+
+// Called once at startup, while the menu is idle, so the first pulse the player feels is not
+// the one UIKit drops for being unprepared.
+void _SdHapticsPrepare() {
+    if (@available(iOS 10.0, *)) {
+        EnsureAllocated();
         [lightGen prepare]; [mediumGen prepare]; [heavyGen prepare];
         [noticeGen prepare]; [selectGen prepare];
     }
@@ -37,17 +49,18 @@ void _SdHapticsPrepare() {
 // Changing the enum without changing this switch silently gives every effect the wrong feel.
 void _SdHapticsPlay(int kind) {
     if (@available(iOS 10.0, *)) {
-        _SdHapticsPrepare();
+        EnsureAllocated();
+        // Prepare only the generator about to fire, immediately before firing it.
         switch (kind) {
-            case 0: [selectGen selectionChanged]; break;                                        // Selection
-            case 1: [noticeGen notificationOccurred:UINotificationFeedbackTypeSuccess]; break;  // Confirm
-            case 2: [noticeGen notificationOccurred:UINotificationFeedbackTypeError];   break;  // Reject
-            case 3: [lightGen  impactOccurred]; break;                                          // ImpactLight
-            case 4: [heavyGen  impactOccurred]; break;                                          // ImpactHeavy
-            case 5: [mediumGen impactOccurred]; break;                                          // Ability
-            case 6: [noticeGen notificationOccurred:UINotificationFeedbackTypeSuccess]; break;  // Reward
-            case 7: [noticeGen notificationOccurred:UINotificationFeedbackTypeError];   break;  // Death
-            case 8: [heavyGen  impactOccurred]; break;                                          // BossRumble
+            case 0: [selectGen prepare]; [selectGen selectionChanged]; break;                                       // Selection
+            case 1: [noticeGen prepare]; [noticeGen notificationOccurred:UINotificationFeedbackTypeSuccess]; break; // Confirm
+            case 2: [noticeGen prepare]; [noticeGen notificationOccurred:UINotificationFeedbackTypeError];   break; // Reject
+            case 3: [lightGen  prepare]; [lightGen  impactOccurred]; break;                                         // ImpactLight
+            case 4: [heavyGen  prepare]; [heavyGen  impactOccurred]; break;                                         // ImpactHeavy
+            case 5: [mediumGen prepare]; [mediumGen impactOccurred]; break;                                         // Ability
+            case 6: [noticeGen prepare]; [noticeGen notificationOccurred:UINotificationFeedbackTypeSuccess]; break; // Reward
+            case 7: [noticeGen prepare]; [noticeGen notificationOccurred:UINotificationFeedbackTypeError];   break; // Death
+            case 8: [heavyGen  prepare]; [heavyGen  impactOccurred]; break;                                         // BossRumble
             default: break;
         }
     }

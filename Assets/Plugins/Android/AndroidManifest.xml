@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Declares ONLY the VIBRATE permission. Unity's manifest merger folds this into the manifest it
-    generates, leaving the <application> and <activity> nodes it produces completely untouched.
+    Custom MAIN manifest. A file at this exact path does not merge into the manifest Unity
+    generates: it REPLACES Apk/UnityManifest.xml as the template the Android build patches.
+    Selection is by File.Exists alone, so it takes effect even with
+    useCustomMainManifest: 0 in ProjectSettings.
 
-    Do NOT add an <activity> declaration here. An earlier draft did, and inspecting the shipped
-    Build Android/SpaceshipDivine.apk showed why that is dangerous: Unity's generated manifest
-    carries attributes and nodes a hand-written one omits — android:resizeableActivity="false",
-    a LEANBACK_LAUNCHER intent category, and SDK-injected activities such as
-    com.unity3d.services.ads.adunit.AdUnitActivity plus the com.google.android.gms.permission.AD_ID
-    permission. Overriding the application node risks losing those, and a wrong activity
-    declaration means the app does not launch at all — a black screen on every device, which no
-    test in this project would catch.
+    Which is why the body below is Apk/UnityManifest.xml copied verbatim, with one permission
+    added. An earlier version of this file declared only the permission; that would have
+    deleted the sole declaration of UnityPlayerActivity and of the MAIN/LAUNCHER intent filter
+    (Apk/LauncherManifest.xml contains no activity at all), producing an app that installs and
+    cannot be started.
 
-    When the ads plan adds AdMob, its own manifest entries arrive the same way: via the merger,
-    not by editing this file.
+    Everything absent here is added by the build, onto the activity below, and must NOT be
+    hand-written: resizeableActivity, configChanges, screenOrientation, launchMode and the
+    LEANBACK_LAUNCHER category come from the Android build patcher, while AdUnitActivity and
+    the AD_ID permission arrive from SDK .aar library manifests through the Gradle merger.
+
+    android.permission.VIBRATE is what AndroidHapticBackend needs: it is required by
+    Vibrator.vibrate(long), vibrate(VibrationEffect) and VibrationEffect.createPredefined.
+    It is a normal install-time permission, so it costs the player no prompt.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.unity3d.player"
+    xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.VIBRATE" />
+    <application>
+        <activity android:name="com.unity3d.player.UnityPlayerActivity"
+                  android:theme="@style/UnityThemeSelector">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+        </activity>
+    </application>
 </manifest>

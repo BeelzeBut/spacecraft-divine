@@ -17,7 +17,7 @@ namespace SpaceshipDivine.Haptics
 
         private readonly AndroidJavaObject vibrator;
         private readonly int apiLevel;
-        private readonly bool hasVibrator;
+        private bool hasVibrator;
 
         public AndroidHapticBackend()
         {
@@ -41,19 +41,59 @@ namespace SpaceshipDivine.Haptics
 
         public bool IsAvailable => hasVibrator;
 
+        /// <summary>
+        /// Set the first time a tier throws, so the device stays permanently demoted instead of
+        /// re-entering a call that its ROM cannot service. Without these, a throwing tier would
+        /// also log on every pulse — up to 20 lines a second at the rate limiter's ceiling.
+        /// </summary>
+        private bool predefinedBroken;
+        private bool oneShotBroken;
+
         public void Play(Haptic haptic)
         {
             if (!hasVibrator) return;
 
+            // Each tier gets its own try. One try around all three would let an exception in
+            // the top tier abort Play entirely rather than fall through — which is the whole
+            // point of having tiers. A ROM that throws IllegalArgumentException from
+            // createPredefined would otherwise lose every menu tap for the session, even
+            // though createOneShot works fine on the same device.
+            if (apiLevel >= 29 && !predefinedBroken)
+            {
+                try
+                {
+                    if (TryPredefined(haptic)) return;
+                }
+                catch (System.Exception e)
+                {
+                    predefinedBroken = true;
+                    Debug.LogWarning("Predefined haptics failed, falling back to one-shot: " + e.Message);
+                }
+            }
+
+            if (apiLevel >= 26 && !oneShotBroken)
+            {
+                try
+                {
+                    OneShot(DurationFor(haptic));
+                    return;
+                }
+                catch (System.Exception e)
+                {
+                    oneShotBroken = true;
+                    Debug.LogWarning("One-shot haptics failed, falling back to legacy vibrate: " + e.Message);
+                }
+            }
+
             try
             {
-                if (apiLevel >= 29 && TryPredefined(haptic)) return;
-                if (apiLevel >= 26) { OneShot(DurationFor(haptic)); return; }
                 vibrator.Call("vibrate", (long)DurationFor(haptic));
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning("Haptic play failed: " + e.Message);
+                // Bottom tier: nothing left to fall back to, so go quiet for good.
+                hasVibrator = false;
+                Debug.LogWarning("Haptics disabled for this session: " + e.Message);
             }
         }
 
@@ -69,7 +109,7 @@ namespace SpaceshipDivine.Haptics
                 case Haptic.ImpactHeavy: effect = EffectHeavyClick;  break;
                 case Haptic.Ability:     effect = EffectClick;       break;
                 case Haptic.Reward:      effect = EffectDoubleClick; break;
-                default: return false;   // Death and BossRumble use waveforms below
+                default: return false;   // Death and BossRumble need a longer one-shot
             }
 
             using (var effectClass = new AndroidJavaClass("android.os.VibrationEffect"))

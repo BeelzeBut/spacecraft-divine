@@ -16,7 +16,11 @@ namespace SpaceshipDivine.Haptics
     public class IosHapticBackend : IHapticBackend
     {
 #if UNITY_IOS && !UNITY_EDITOR
-        [DllImport("__Internal")] private static extern bool _SdHapticsAvailable();
+        // MarshalAs(I1): the native side returns a 1-byte C++ bool, while the default
+        // marshaling for System.Boolean is the 4-byte Win32 BOOL.
+        [DllImport("__Internal")]
+        [return: MarshalAs(UnmanagedType.I1)]
+        private static extern bool _SdHapticsAvailable();
         [DllImport("__Internal")] private static extern void _SdHapticsPrepare();
         [DllImport("__Internal")] private static extern void _SdHapticsPlay(int kind);
 #endif
