@@ -96,66 +96,90 @@ public class DataHolder : MonoBehaviour
 
     public PlayerInput PlayerInput => playerInput;
 
+    private SpaceshipDivine.Save.SaveService saveService;
+
+    /// <summary>
+    /// Authoritative for meta-progression. The ads and IAP plan writes removeAdsOwned through
+    /// this, never through dataSaved: entitlements must not be addressed by array index.
+    /// </summary>
+    public SpaceshipDivine.Save.PlayerProfile Profile => saveService?.Profile;
+
+    private SpaceshipDivine.Save.SaveService Service
+    {
+        get
+        {
+            if (saveService == null)
+            {
+                saveService = new SpaceshipDivine.Save.SaveService(
+                    new SpaceshipDivine.Save.FileSaveStore(),
+                    () => PlayerPrefs.HasKey("save") ? PlayerPrefs.GetString("save") : null,
+                    // The legacy blob is deliberately NOT deleted for one release: it is the
+                    // only escape hatch if migration turns out to be wrong on real data.
+                    key => Debug.Log("Legacy save retained as a fallback (key: " + key + ")"));
+            }
+            return saveService;
+        }
+    }
+
     //Saving
     public void Save()
     {
-        if (enableSaving)
-        {
-            SavePlayerData(PlayerController.instance);
+        if (!enableSaving) return;
 
-            PlayerPrefs.SetString("save", Helper.Serialize<SaveData>(dataSaved));
-        }
+        SavePlayerData(PlayerController.instance);
+
+        // Capture BEFORE writing either store, so the two can never disagree about a field
+        // one of them owns.
+        SpaceshipDivine.Save.ProfileProjection.CaptureFromSaveData(dataSaved, Service.Profile);
+        Service.Save();
+
+        PlayerPrefs.SetString("save", Helper.Serialize<SaveData>(dataSaved));
     }
 
     //Loading
     public void Load()
     {
-        if (enableSaving)
-        {
-            if (PlayerPrefs.HasKey("save"))
-            {
-                dataSaved = Helper.Deserialize<SaveData>(PlayerPrefs.GetString("save"));
-                LoadPlayerData();
-            }
-            else
-            {
-                dataSaved = new SaveData();
-                // Only the starter ships begin unlocked. Everything else is earned or bought.
-                //
-                // This branch runs ONLY when there is no existing save. A returning 2021 player
-                // has PlayerPrefs key "save" set (the legacy build used the same key), so they
-                // take the deserialize branch above and never reach this loop — that branch
-                // structure is what preserves their unlocks today.
-                //
-                // NOTE: SpaceshipDivine.Save.MigrationV0ToV1 and SaveService are built and
-                // tested but are NOT yet called from any live code path. Do not restructure
-                // this branch on the assumption that migration already runs — it does not.
-                // Wiring DataHolder over to SaveService is a separate, later piece of work,
-                // and whoever does it must re-verify this exact branch behaviour first.
-                //
-                // grey_byrd_tutorial is deliberately absent from shipPrefabs — the tutorial
-                // ship is wired via MainMenu.tutorialSpaceship, so it needs no entry here.
-                for (int i = 0; i < mainMenu.shipPrefabs.Count; i++)
-                {
-                    string id = mainMenu.shipPrefabs[i].shipId;
-                    dataSaved.isUnlocked[i] =
-                        SpaceshipDivine.Save.PlayerProfile.IsStarterShip(id);
-                }
+        if (!enableSaving) return;
 
-                dataSaved.orderNumber = -1;
-                hasCompletedTutorial = false;
-                hasCompletedButtonsTutorial = false;
-                gems = 350;
-                qualityIndex = 3;
-                QualitySettings.SetQualityLevel(3, true);
-                gameHasEnded = true;
-                Save();
-                LoadPlayerData();
-                Debug.Log("No save file found, creating a new one!");
-            }
-           // if(mainMenu)
-                //mainMenu.RefreshData();
+        // The profile is loaded first and is authoritative for progression. On a returning
+        // player's first launch on this build, this is where the 2021 save is migrated.
+        Service.Load();
+
+        // The PlayerPrefs blob still describes the CURRENT RUN - level, respawns, the selected
+        // ship's live stats - which the profile deliberately does not model.
+        bool hadRunBlob = PlayerPrefs.HasKey("save");
+        if (hadRunBlob)
+        {
+            dataSaved = Helper.Deserialize<SaveData>(PlayerPrefs.GetString("save"));
         }
+        else
+        {
+            dataSaved = new SaveData();
+            dataSaved.orderNumber = -1;
+            dataSaved.gameHasEnded = true;
+        }
+
+        // Profile wins for everything it owns. This is also what makes a returning player's
+        // unlocks survive a PlayerPrefs wipe: the old code decided starter-only whenever the
+        // key was missing, with no way to tell a new player from a cleared one.
+        //
+        // grey_byrd_tutorial is deliberately absent from shipPrefabs - the tutorial ship is
+        // wired via MainMenu.tutorialSpaceship, so it needs no entry here.
+        SpaceshipDivine.Save.ProfileProjection.ApplyToSaveData(Service.Profile, dataSaved);
+
+        if (Service.MigratedThisLoad)
+            Debug.Log("Legacy save migrated on this launch.");
+        if (Service.RecoveredFromLegacyAfterRejection)
+            Debug.LogWarning("Profile failed verification; unlocks recovered from the legacy save.");
+
+        if (!hadRunBlob)
+        {
+            QualitySettings.SetQualityLevel(dataSaved.qualityIndex, true);
+            Save();
+            Debug.Log("No run data found, creating it!");
+        }
+
+        LoadPlayerData();
     }
 
     public void SavePlayerData(PlayerController p)
@@ -282,8 +306,12 @@ public class DataHolder : MonoBehaviour
                 mainMenu.shipPrefabs[i].speedMultiplier = dataSaved.speedMultipliers[i];
                 mainMenu.shipPrefabs[i].damageReduction = dataSaved.damageReductions[i];
                 mainMenu.shipPrefabs[i].level = Mathf.Clamp(dataSaved.shipLevel[i], 1, 5);
-                if (dataSaved.priceToUnlock[i] != 0)
-                    mainMenu.shipPrefabs[i].priceToUnlock = dataSaved.priceToUnlock[i];
+                // ONLY the sentinel comes back from the save. 1 means "blueprint collected,
+                // ship claimable"; any other value is a stale PRICE written by an older build,
+                // and restoring it would quietly undo the price changes for exactly the
+                // players who have been here longest. Prices live on the ship assets.
+                if (dataSaved.priceToUnlock[i] == 1f)
+                    mainMenu.shipPrefabs[i].priceToUnlock = 1f;
             }
 
             if (dataSaved.orderNumber >= 0 && !dataSaved.gameHasEnded)

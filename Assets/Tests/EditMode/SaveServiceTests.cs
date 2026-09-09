@@ -194,5 +194,48 @@ namespace SpaceshipDivine.Save.Tests
             Assert.IsFalse(legacyConsulted, "a healthy save must not read the legacy blob");
             Assert.AreEqual(3, svc.Profile.unlockedShipIds.Count);
         }
+
+        [Test]
+        public void ALegacySaveMigratesAllTheWayToTheRuntimeBlob()
+        {
+            // End to end for the cutover, which is the only part DataHolder itself adds:
+            // 2021 XML -> SaveService -> PlayerProfile -> the SaveData the game reads.
+            var store = new FileSaveStore(dir);
+            var svc = new SaveService(store, LegacyXmlWithEverythingUnlocked, _ => { });
+            svc.Load();
+
+            Assert.IsTrue(svc.MigratedThisLoad);
+
+            var data = new SaveData();
+            ProfileProjection.ApplyToSaveData(svc.Profile, data);
+
+            for (int i = 0; i < LegacyShipIdMap.Count; i++)
+                Assert.IsTrue(data.isUnlocked[i],
+                    "ship " + i + " (" + LegacyShipIdMap.IndexToId(i) + ") was lost in the chain");
+
+            Assert.AreEqual(2500, data.gems);
+            Assert.IsTrue(data.hasCompletedTutorial);
+        }
+
+        [Test]
+        public void AFreshInstallEndsUpWithExactlyTheStartersUnlocked()
+        {
+            // The other half of the gate: a new player must NOT get thirteen ships.
+            var svc = new SaveService(new FileSaveStore(dir), () => null, _ => { });
+            svc.Load();
+
+            var data = new SaveData();
+            ProfileProjection.ApplyToSaveData(svc.Profile, data);
+
+            int unlocked = 0;
+            for (int i = 0; i < LegacyShipIdMap.Count; i++)
+                if (data.isUnlocked[i]) unlocked++;
+
+            Assert.AreEqual(3, unlocked, "only grey_byrd, apollo and the_argon start unlocked");
+            Assert.IsTrue(data.isUnlocked[LegacyShipIdMap.IdToIndex("grey_byrd")]);
+            Assert.IsTrue(data.isUnlocked[LegacyShipIdMap.IdToIndex("apollo")]);
+            Assert.IsTrue(data.isUnlocked[LegacyShipIdMap.IdToIndex("the_argon")]);
+            Assert.AreEqual(PlayerProfile.StartingGems, data.gems);
+        }
 }
 }
