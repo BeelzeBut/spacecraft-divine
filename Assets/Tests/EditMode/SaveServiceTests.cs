@@ -21,6 +21,17 @@ namespace SpaceshipDivine.Save.Tests
             if (Directory.Exists(dir)) Directory.Delete(dir, true);
         }
 
+        /// <summary>
+        /// Makes both the live file and its backup fail verification, which is the only way to
+        /// reach ReadOutcome.RejectedAndReset. Writing garbage rather than deleting matters: a
+        /// deleted file gives Exists() == false and takes a completely different branch.
+        /// </summary>
+        private void CorruptBothCopies()
+        {
+            File.WriteAllText(Path.Combine(dir, FileSaveStore.SaveFileName), "not json");
+            File.WriteAllText(Path.Combine(dir, FileSaveStore.BackupFileName), "not json either");
+        }
+
         private static string LegacyXmlWithEverythingUnlocked()
         {
             var d = new LegacySaveDataV0 { gems = 2500, hasCompletedTutorial = true };
@@ -132,5 +143,56 @@ namespace SpaceshipDivine.Save.Tests
             Assert.AreEqual(350, svc.Profile.gems);
             Assert.AreEqual(3, svc.Profile.unlockedShipIds.Count);
         }
-    }
+    
+        [Test]
+        public void RejectedSaveFallsBackToLegacyInsteadOfResetting()
+        {
+            // Android Auto Backup restores persistentDataPath AND PlayerPrefs onto a new
+            // device. The profile's HMAC is salted with the device id, so it fails there -
+            // while the legacy blob is plain XML and still perfectly readable.
+            var store = new FileSaveStore(dir);
+            store.Write(PlayerProfile.CreateDefault());
+            CorruptBothCopies();
+
+            var svc = new SaveService(store, LegacyXmlWithEverythingUnlocked, _ => { });
+            svc.Load();
+
+            Assert.AreEqual(ReadOutcome.RejectedAndReset, store.LastReadOutcome,
+                "the fixture must actually produce a rejection, or this test proves nothing");
+            Assert.IsTrue(svc.RecoveredFromLegacyAfterRejection);
+            Assert.AreEqual(LegacyShipIdMap.Count, svc.Profile.unlockedShipIds.Count);
+        }
+
+        [Test]
+        public void RejectedSaveWithNoLegacyKeepsTheResetProfile()
+        {
+            var store = new FileSaveStore(dir);
+            store.Write(PlayerProfile.CreateDefault());
+            CorruptBothCopies();
+
+            var svc = new SaveService(store, () => null, _ => { });
+            svc.Load();
+
+            Assert.IsFalse(svc.RecoveredFromLegacyAfterRejection);
+            Assert.IsNotNull(svc.Profile, "a reset profile is still better than none");
+        }
+
+        [Test]
+        public void HealthyLoadNeverConsultsTheLegacyBlob()
+        {
+            // Discriminating on purpose: the legacy provider unlocks every ship, so a guard in
+            // the wrong order shows up immediately as an inflated unlock count.
+            var store = new FileSaveStore(dir);
+            store.Write(PlayerProfile.CreateDefault());   // three starters only
+
+            bool legacyConsulted = false;
+            var svc = new SaveService(store,
+                () => { legacyConsulted = true; return LegacyXmlWithEverythingUnlocked(); },
+                _ => { });
+            svc.Load();
+
+            Assert.IsFalse(legacyConsulted, "a healthy save must not read the legacy blob");
+            Assert.AreEqual(3, svc.Profile.unlockedShipIds.Count);
+        }
+}
 }
