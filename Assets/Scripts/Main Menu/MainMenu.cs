@@ -162,6 +162,10 @@ public class MainMenu : MonoBehaviour
                 shipInstances[i].secondarySound = shipPrefabs[i].secondarySound;
             }
             shipInstances[i].secondaryGun = shipPrefabs[i].secondaryGun;
+            // Below the guard, deliberately. Inside the `selected == false` block above,
+            // this copy would skip the SELECTED ship - the one whose id is the only one
+            // RunState.selectedShipId actually needs.
+            shipInstances[i].shipId = shipPrefabs[i].shipId;
             shipInstances[i].playerUpgrades.Clear();
             shipInstances[i].upgradesIndex.Clear();
 

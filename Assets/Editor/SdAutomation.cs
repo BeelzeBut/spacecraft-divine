@@ -278,4 +278,51 @@ public static class SdAutomation
 
         Finish("ReportUIFeedbackCoverage", problems);
     }
+
+    // ---- Ordinea navelor din scena --------------------------------------------------
+
+    /// <summary>
+    /// LegacyShipIdMap is the bridge between a save's isUnlocked[] index and a ship id. It is
+    /// only correct while MainMenu.shipPrefabs keeps that exact order. Nothing enforced that,
+    /// so one drag in the Inspector could silently hand a player who paid for Bat-Oh-No a
+    /// different ship. This turns the assumption into a check that can fail a build.
+    /// </summary>
+    public static void VerifyShipPrefabOrder()
+    {
+        var problems = new List<string>();
+
+        UnityEngine.SceneManagement.Scene scene =
+            UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/Main Menu.unity");
+
+        MainMenu menu = null;
+        foreach (GameObject root in scene.GetRootGameObjects())
+        {
+            menu = root.GetComponentInChildren<MainMenu>(true);
+            if (menu != null) break;
+        }
+
+        if (menu == null)
+        {
+            problems.Add("no MainMenu component found in the scene");
+            Finish("VerifyShipPrefabOrder", problems);
+            return;
+        }
+
+        var expected = SpaceshipDivine.Save.LegacyShipIdMap.OrderedShipIds;
+        if (menu.shipPrefabs.Count != expected.Count)
+            problems.Add("shipPrefabs has " + menu.shipPrefabs.Count +
+                         " entries, LegacyShipIdMap has " + expected.Count);
+
+        int shared = Mathf.Min(menu.shipPrefabs.Count, expected.Count);
+        for (int i = 0; i < shared; i++)
+        {
+            string actual = menu.shipPrefabs[i] == null ? "<null>" : menu.shipPrefabs[i].shipId;
+            if (actual != expected[i])
+                problems.Add("index " + i + ": scene has '" + actual +
+                             "', LegacyShipIdMap has '" + expected[i] + "'");
+        }
+
+        Debug.Log("VerifyShipPrefabOrder: checked " + shared + " ships");
+        Finish("VerifyShipPrefabOrder", problems);
+    }
 }

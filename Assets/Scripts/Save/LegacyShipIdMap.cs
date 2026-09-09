@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace SpaceshipDivine.Save
 {
     /// <summary>
@@ -31,6 +34,22 @@ namespace SpaceshipDivine.Save
         };
 
         public static int Count => Ids.Length;
+
+        // Array.AsReadOnly wraps rather than clones, so this stays allocation-cheap while
+        // returning something callers cannot mutate. Same arrangement as PlayerProfile.
+        public static IReadOnlyList<string> OrderedShipIds => Array.AsReadOnly(Ids);
+
+        /// <summary>
+        /// -1 when the id is not a ship this map knows. Callers must skip rather than throw:
+        /// an unknown id in a save is bad data, and bad data must never crash the game.
+        /// </summary>
+        public static int IdToIndex(string shipId)
+        {
+            if (string.IsNullOrEmpty(shipId)) return -1;
+            for (int i = 0; i < Ids.Length; i++)
+                if (Ids[i] == shipId) return i;
+            return -1;
+        }
 
         public static string IndexToId(int index)
         {
