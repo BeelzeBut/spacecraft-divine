@@ -5,7 +5,8 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "SpaceshipDivine.Save",
-        "SpaceshipDivine.Haptics"
+        "SpaceshipDivine.Haptics",
+        "SpaceshipDivine.Levels"
     ],
     "includePlatforms": [
         "Editor"

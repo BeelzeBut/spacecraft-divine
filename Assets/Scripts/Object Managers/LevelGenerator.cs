@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SpaceshipDivine.Levels;
 
 
 public class LevelGenerator : MonoBehaviour
@@ -37,7 +38,42 @@ public class LevelGenerator : MonoBehaviour
     {
         instance = this;
     }
+    /// <summary>What actually generated the current level. Submitted with a score so the
+    /// server can confirm the run was played on the dungeon it claims.</summary>
+    public int LastUsedSeed { get; private set; }
+
     void Start()
+    {
+        // Seed the LAYOUT only. Enemy AI, drops and combat keep drawing from the global
+        // stream, so a run is not fully deterministic - the daily challenge needs everyone on
+        // the same dungeon, not in the same fight.
+        //
+        // LevelSeed.Consume clears the pending seed as it hands it over. That matters because
+        // GenerateLevel calls itself when a layout is rejected for being too small: if the seed
+        // were still pending on re-entry, the retry would reseed to the same value, generate
+        // the same rejected layout, and recurse until the stack gave out.
+        int seed = LevelSeed.Consume();
+        LastUsedSeed = seed;
+
+        Random.State stateBeforeGeneration = Random.state;
+        Random.InitState(seed);
+        try
+        {
+            GenerateLevel();
+        }
+        finally
+        {
+            // Restore even if generation throws, so a failed level cannot leave the whole
+            // game's randomness pinned to one seed for the rest of the session.
+            Random.state = stateBeforeGeneration;
+        }
+    }
+
+    /// <summary>
+    /// The generation itself, re-entered on rejection. Kept separate from Start so the retry
+    /// continues drawing from the seeded stream rather than restarting it.
+    /// </summary>
+    void GenerateLevel()
     {
         if (shouldGenerateMap)
         {
@@ -91,7 +127,7 @@ public class LevelGenerator : MonoBehaviour
                     Destroy(firstRoom);
                     rooms.Clear();
                     Benchmark.GenRejected(); // [benchmark]
-                    Start();
+                    GenerateLevel();
                     return;
                 }
             }
@@ -105,7 +141,7 @@ public class LevelGenerator : MonoBehaviour
                     Destroy(firstRoom);
                     rooms.Clear();
                     Benchmark.GenRejected(); // [benchmark]
-                    Start();
+                    GenerateLevel();
                     return;
                 }
             }
@@ -119,7 +155,7 @@ public class LevelGenerator : MonoBehaviour
                     Destroy(firstRoom);
                     rooms.Clear();
                     Benchmark.GenRejected(); // [benchmark]
-                    Start();
+                    GenerateLevel();
                     return;
                 }
             }
